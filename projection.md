@@ -42,7 +42,12 @@ Pour les types (plante, eau...) je propose une enum
 - éventuellement des effets (genre paralysie, dégâts spéciaux à la célébi)
 	
 pour gérer les effet le mieux ce serait peut être de faire un type effet mais je propose qu'on voit ça plus tard
-si jamais on fait un type *énergie* (je pense que ce serait le plus pratique), je pense à un tableau dynamique d'enum energie, avec des fonctions de manipulations pour ajouter, retirer, vérifier si on a assez d'energie
+si jamais on fait un type *énergie* (je pense que ce serait le plus pratique), je pense à un tableau dynamique d'enum energie, avec des fonctions de manipulations pour ajouter, retirer, vérifier si on a assez d'energie. ok en fait après réflexion on fait un type énergie
+
+### Energie :
+
+On fait une enum avec tous les types d'énergie. Pour représenter un montant d'énergie, on pourra faire un tableau, et du coup energie\[eau\] ce sera un entier qui correspont au nb d'énergie eau.
+Ensuite une fonction pour ajouter une énergie, une fonction pour enlever une énergie, une fonction pour enlever plusieurs énergies, une fonction pour vérifier si on a assez d'énergie pour faire un truc
 
 ### deck :
 - tableau dynamique de cartes
