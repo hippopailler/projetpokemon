@@ -48,6 +48,7 @@ si jamais on fait un type *énergie* (je pense que ce serait le plus pratique), 
 
 On fait une enum avec tous les types d'énergie. Pour représenter un montant d'énergie, on pourra faire un tableau, et du coup energie\[eau\] ce sera un entier qui correspont au nb d'énergie eau.
 Ensuite une fonction pour ajouter une énergie, une fonction pour enlever une énergie, une fonction pour enlever plusieurs énergies, une fonction pour vérifier si on a assez d'énergie pour faire un truc
+En fait j'ai reréfléchi et plutôt qu'un tableau il vaudrait mieux utiliser un *dictionnaire* (sparkles), ce sera carrément mieux non ?
 
 ### deck :
 - tableau dynamique de cartes
