@@ -7,14 +7,14 @@ int main() {
     Pokemon pikachu("Pikachu", 100,"electric");
     Pokemon charmander("Salamèche", 120, "fire");
 
-        // Ajout des attaques
+    // Ajout des attaques
     pikachu.addMove(Move("Tonnerre", 50));
     pikachu.addMove(Move("Queue de Fer", 40));
 
     charmander.addMove(Move("Flammeche", 45));
     charmander.addMove(Move("Griffe", 35));
 
-// Combat simple
+    // Combat simple
     while (!pikachu.isFainted() && !charmander.isFainted()) {
         std::cout << "\n--- Tour de Pikachu ---\n";
         Move chosenMove = pikachu.chooseMove();
