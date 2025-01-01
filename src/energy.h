@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-enum type{
+enum typeEnergy{
     COLORLESS = 0,
     GRASS,
     FIRE,
@@ -21,20 +21,21 @@ class energyList{
 public:
     // Création
     energyList();
-    energyList(const std::vector<type> &energies);
+    energyList(const std::vector<typeEnergy> &energies);
 
     // Accesseur
-    bool enoughEnergy(energyList cost);
+    int energyAmount() const;
+    bool enoughEnergy(const energyList& cost);
 
     // Mutateur
-    void operator+=(const type energy);
+    void operator+=(const typeEnergy energy);
     void operator+=(const energyList &energy);
-    void operator-=(const type energy);
+    void operator-=(const typeEnergy energy);
     void operator-=(const energyList &energy);
 
 
 private:
-    std::map<type, unsigned int> _energy;
+    std::map<typeEnergy, unsigned int> _energy;
 };
 
 #endif
