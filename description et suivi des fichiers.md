@@ -29,3 +29,11 @@ Pour l'instant il ne se passe pas grand chose car je viens de créer le github
 - tous les fichiers de codes => dossier src
 - création d'une branche dev pour... dev
 - début du support des énergies
+
+## Update du 02/01
+Je crois qu j'ai oublié un jour
+- fin de toutes les fonctions d'énergies
+- création des joueurs
+- création de la game
+- possibilté d'attacher des énergies et de passer son tour
+Bref je suis fière de moi
