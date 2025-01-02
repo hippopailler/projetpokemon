@@ -19,10 +19,10 @@ public:
     int getHP() const;
 
 private:
-    std::string name;
-    int hp;
-    const std::string& type;
-    std::vector<Move> moves; // Liste d'attaques
+    std::string _name;
+    int _hp;
+    const std::string& _type;
+    std::vector<Move> _moves; // Liste d'attaques
 };
 
 #endif

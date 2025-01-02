@@ -1,12 +1,12 @@
 #include "move.h"
 
 Move::Move(const std::string& name, int power)
-    : name(name), power(power) {}
+    : _name(name), _power(power) {}
 
 std::string Move::getName() const {
-    return name;
+    return _name;
 }
 
 int Move::getPower() const {
-    return power;
+    return _power;
 }

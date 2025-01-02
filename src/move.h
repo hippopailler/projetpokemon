@@ -11,8 +11,8 @@ public:
     int getPower() const;
 
 private:
-    std::string name;
-    int power;
+    std::string _name;
+    int _power;
 };
 
 #endif
