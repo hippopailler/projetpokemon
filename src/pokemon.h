@@ -23,6 +23,7 @@ public:
     int getHP() const;
     bool canUseMove(Move move);
     energyList energyAttached();
+    typeEnergy type();
 
 private:
     std::string _name;

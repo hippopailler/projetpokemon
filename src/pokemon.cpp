@@ -71,3 +71,7 @@ bool Pokemon::canUseMove(Move move){
 energyList Pokemon::energyAttached(){
     return _energyAttached;
 }
+
+typeEnergy Pokemon::type(){
+    return _type;
+}

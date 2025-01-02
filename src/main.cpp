@@ -1,6 +1,8 @@
 #include "pokemon.h"
 #include "move.h"
 #include "energy.h"
+#include "player.h"
+#include "game.h"
 #include <iostream>
 
 int main() {
@@ -15,6 +17,15 @@ int main() {
     charmander.addMove(Move("Flammeche", 45));
     charmander.addMove(Move("Griffe", 35));
 
+    Player player1(pikachu);
+    Player player2(charmander);
+    Game game(&player1, &player2);
+
+    while (!pikachu.isFainted() && !charmander.isFainted()){
+        game.chooseAction();
+    }
+
+/*
 // Combat simple
     while (!pikachu.isFainted() && !charmander.isFainted()) {
         std::cout << "\n--- Tour de Pikachu ---\n";
@@ -37,6 +48,6 @@ int main() {
             break;
         }
     }
-
+*/
     return 0;
 }
