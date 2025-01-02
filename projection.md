@@ -63,4 +63,37 @@ En fait j'ai reréfléchi et plutôt qu'un tableau il vaudrait mieux utiliser un
 ### Comportement de l'IA
 oui oui tkt on va faire une turbo ia qui
 - si a un pokemon de base dans la main et de la place sur le terrain, joue
-- si peut faire évoluer un pokemon, 
+- si peut faire évoluer un pokemon,
+
+## Gestion des tours :
+
+Je propose de faire une classe game, avec comme variables le numéro du tour, le numéro du joueur actuel, et les données des deux joueurs. Du coup il faudrait une autre classe, joueur, avec un deck, une main, un pokemon actif, un banc, le nombre de points de vicoires.
+
+### Joueur :
+- En paramètres:
+	- Deck (deck)
+	- Main (tableau dynamique de cartes)
+	- Pokémon actif (carte pokemon)
+	- Banc (liste de cartes pokemon)
+	- Points de victoire (int)   
+- En fonctions :
+	- Mélanger le deck
+	- Piocher
+	- Changer de pokemon actif
+	- Prendre/soigner des dégâts
+	- Toutes les manipulation d'énergie
+	- Gain de points de victoire
+
+### Game :
+- En paramètres :
+	- Numéro tour (int)
+	- Numéro du joueur actuel (0/1)
+	- Tableau taille fixe des 2 joueurs
+ - En fonctions :
+	- Pioche
+	- Attaque
+	- Fin du tour
+	- Attacher une énergie
+	- Poser un pokémon
+	- Retraite
+	- Gestion de la fin de game
