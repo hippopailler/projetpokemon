@@ -1,8 +1,8 @@
 #include "pokemon.h"
 #include <iostream>
 
-Pokemon::Pokemon(const std::string& name, int hp, const std::string& type)
-    : _name(name), _hp(hp), _type(type) {}
+Pokemon::Pokemon(const std::string& name, int hp, const typeEnergy type)
+    : _name(name), _hp(hp), _type(type), _energyAttached() {}
 
 void Pokemon::takeDamage(int damage) {
     int actualDamage = damage;
@@ -40,6 +40,10 @@ int Pokemon::attackWithMove(Move move) {
     return move.getPower() ; // Puissance de l'attaque + bonus d'attaque à gérer plus tard selon le type
 }
 
+void Pokemon::attachEnergy(typeEnergy energy){
+    _energyAttached += energy;
+}
+
 bool Pokemon::isFainted() const {
     return _hp <= 0;
 }
@@ -50,4 +54,8 @@ std::string Pokemon::getName() const {
 
 int Pokemon::getHP() const {
     return _hp;
+}
+
+bool Pokemon::canUseMove(Move move){
+    return (_energyAttached.enoughEnergy(move.cost()));
 }

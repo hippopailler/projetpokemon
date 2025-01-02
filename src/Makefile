@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -Wall -Werror
 
-SOURCES = move.cpp pokemon.cpp main.cpp
+SOURCES = energy.cpp move.cpp pokemon.cpp main.cpp
 OBJS = $(SOURCES:.cpp=.o) 
 
 EXECUTABLE = main.x

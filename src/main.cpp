@@ -1,11 +1,12 @@
 #include "pokemon.h"
 #include "move.h"
+#include "energy.h"
 #include <iostream>
 
 int main() {
 
-    Pokemon pikachu("Pikachu", 100,"electric");
-    Pokemon charmander("Salamèche", 120, "fire");
+    Pokemon pikachu("Pikachu", 100, LIGHTING);
+    Pokemon charmander("Salamèche", 120, FIRE);
 
         // Ajout des attaques
     pikachu.addMove(Move("Tonnerre", 50));

@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Création
-energyList::energyList() {} // là je sais pas trop comment gérer si c'est vide
+energyList::energyList() : _energy() {} // là je sais pas trop comment gérer si c'est vide
 
 // Conversion d'un vecteur d'énergie en une energyList
 // Je pense que ce sera plus simple d'implémenter les moves avec des vecteurs donc voilà

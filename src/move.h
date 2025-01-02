@@ -2,17 +2,22 @@
 #define MOVE_H
 
 #include <string>
+#include "energy.h"
 
 class Move {
 public:
     Move(const std::string& name, int power);
+    Move(const std::string& name, int power, energyList cost);
 
     std::string getName() const;
-    int getPower() const;
+    unsigned int getPower() const;
+    energyList cost() const;
 
 private:
     std::string _name;
-    int _power;
+    unsigned int _power;
+    energyList _cost;
+
 };
 
 #endif
