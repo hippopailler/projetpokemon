@@ -44,6 +44,14 @@ void Pokemon::attachEnergy(typeEnergy energy){
     _energyAttached += energy;
 }
 
+void Pokemon::attachEnergy(energyList energies){
+    _energyAttached += energies;
+}
+
+void Pokemon::detachEnergy(energyList energies){
+    _energyAttached -= energies;
+}
+
 bool Pokemon::isFainted() const {
     return _hp <= 0;
 }
@@ -58,4 +66,8 @@ int Pokemon::getHP() const {
 
 bool Pokemon::canUseMove(Move move){
     return (_energyAttached.enoughEnergy(move.cost()));
+}
+
+energyList Pokemon::energyAttached(){
+    return _energyAttached;
 }

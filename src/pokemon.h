@@ -15,11 +15,14 @@ public:
     void addMove(const Move& move); // Ajouter une attaque au Pokémon
     Move chooseMove();
     void attachEnergy(typeEnergy);
+    void attachEnergy(energyList);
+    void detachEnergy(energyList);
     bool isFainted() const;
 
     std::string getName() const;
     int getHP() const;
     bool canUseMove(Move move);
+    energyList energyAttached();
 
 private:
     std::string _name;
