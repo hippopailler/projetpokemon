@@ -31,7 +31,7 @@ public:
     sf::Sprite createCardSprite(const std::string& cardName) {
         sf::Sprite sprite;
         sprite.setTexture(getTexture(cardName));
-// Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
+        // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
         const sf::Vector2u textureSize = sprite.getTexture()->getSize();
         float scaleFactor = std::min(
             targetWidth / static_cast<float>(textureSize.x),
