@@ -1,6 +1,7 @@
 #include "GameRender.h"
 #include "CardManager.h"
 #include <iostream>
+#include "EnergyManager.h"
 
 sf::Sprite Adversaire;
 
@@ -17,11 +18,10 @@ Game::Game()
     CardManager::getInstance().setTargetSize(150.f, 200.f);
     
     initializeHands(5, 5);
-    ActiveCardPlayer("Riolu");
+    ActiveCardPlayer("Bulbasaur");
     Adversaire = ActiveCardEnnemy("Tarsal");
 
 }
-
 
 
 void Game::initializeHands(int playerCardCount, int opponentCardCount) {
@@ -32,6 +32,11 @@ void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     addCard("Etourmi", 3, 800);
     addCard("Mascaiman", 4, 800);
     addCard("Tarsal", 5, 800);
+
+    addEnergy("water", 1, 1);
+    addEnergy("fire", 2, 1);
+    addEnergy("grass", 1, 0);
+    addEnergy("electric", 2, 0);
 
     // Initialisation de la main de l'adversaire
     opponentHand.clear();
@@ -71,6 +76,26 @@ sf::Sprite Game::ActiveCardEnnemy(const std::string& name){
     return ActiveCardE;
 }
 
+void Game::addEnergy(const std::string& name, int index, int player) {
+    sf::Sprite EnergySprite = EnergyManager::getInstance().createEnergySprite(name);
+    positionEnergy(EnergySprite, index, player);
+    // Ajoutez la carte à la collection de cartes du jeu
+    EnergyPlayer.push_back(EnergySprite);
+}
+
+void Game::positionEnergy(sf::Sprite& sprite, int index, int player) {
+    if (player == 1){
+        sprite.setPosition(550, 775 - index*40);
+    }
+    else{
+        sprite.setPosition(360, 270 + index * 40);
+    }
+}
+
+
+
+
+
 void Game::run() {
     while (window.isOpen()) {
         sf::Event event;
@@ -92,7 +117,14 @@ void Game::run() {
         }
         window.draw(MainCard);
         window.draw(Adversaire);
+
+
+        for (const auto& energy : EnergyPlayer) {
+            window.draw(energy);
+        }
+
         window.display();
     }
 }
+
 

@@ -11,6 +11,8 @@ public:
     Game();
     void run();
 
+    void positionEnergy(sf::Sprite &sprite, int index, int player);
+
 private:
     void processEvents();
     void update();
@@ -26,7 +28,7 @@ private:
     
     std::vector<sf::Sprite> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
-
+    std::vector<sf::Sprite> EnergyPlayer; // énergie du joueur
     sf::Sprite MainCard;
     
 
@@ -43,7 +45,11 @@ private:
     void ActiveCardPlayer(const std::string &name);
 
     sf::Sprite ActiveCardEnnemy(const std::string &name);
+
+    void addEnergy(const std::string &name, int index, int y);
 };
 
 
 #endif // GAME_H
+
+
