@@ -58,3 +58,8 @@ si jamais on fait un type *énergie* (je pense que ce serait le plus pratique), 
 oui oui tkt on va faire une turbo ia qui
 - si a un pokemon de base dans la main et de la place sur le terrain, joue
 - si peut faire évoluer un pokemon, 
+
+
+
+- pour les designs des cartes pokémon je vais les prendre sur le site : https://tcg.pokemon.com/fr-fr/galleries/scarlet-violet/
+comme ça j'aurai moins de problème de redimensionnement 

@@ -24,3 +24,9 @@ Pour l'instant il ne se passe pas grand chose car je viens de créer le github
 - création d'un fichier projection avec l'idée d'organisation de Doris
 - changement de ce fichier en md pour pouvoir le formatter un peu
 - j'ai enlevé la brancheen trop et main.c++
+
+
+
+
+## Update du 01/01 : 
+- étude de la fenetre graphique 
