@@ -4,7 +4,8 @@
 #include "EnergyManager.h"
 
 sf::Sprite Adversaire;
-
+sf::RectangleShape playerBenchZone; // Zone bleue pour le joueur
+sf::RectangleShape opponentBenchZone; // Zone rouge pour l'adversaire
 
 Game::Game()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
@@ -16,6 +17,15 @@ Game::Game()
     backgroundSprite.setTexture(backgroundTexture);
     // Définir la taille standard des cartes
     CardManager::getInstance().setTargetSize(150.f, 200.f);
+
+    // Initialisation des zones de banc
+    playerBenchZone.setSize(sf::Vector2f(150.f, 500.f)); 
+    playerBenchZone.setPosition(100.f, 275.f); // Position en bas
+    playerBenchZone.setFillColor(sf::Color(0, 0, 255, 100));
+
+    opponentBenchZone.setSize(sf::Vector2f(150.f, 500.f)); 
+    opponentBenchZone.setPosition(675.f, 275.f); 
+    opponentBenchZone.setFillColor(sf::Color(255, 0, 0, 100)); // Rouge transparent
     
     initializeHands(5, 5);
     ActiveCardPlayer("Bulbasaur");
@@ -92,7 +102,62 @@ void Game::positionEnergy(sf::Sprite& sprite, int index, int player) {
     }
 }
 
+void Game::handleMouseClick(const sf::Event::MouseButtonEvent& mouseEvent) {
+    if (mouseEvent.button == sf::Mouse::Left) {
+        for (const auto& card : playerHand) {
+            if (card.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+                displayCardInLarge(card);
+                break;
+            }
+        }
+        
+        if (MainCard.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+            displayCardInLarge(MainCard);
+            return;
+        }
 
+        // Vérifier si la souris est sur la carte active de l'adversaire
+        if (Adversaire.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+            displayCardInLarge(Adversaire);
+            return;
+        }
+    }
+}
+
+void Game::displayCardInLarge(const sf::Sprite& card) {
+    // Récupérer la texture de la carte
+    const sf::Texture* cardTexture = card.getTexture();
+    if (!cardTexture) {
+        std::cerr << "Erreur : Texture de la carte introuvable pour l'agrandissement.\n";
+        return;
+    }
+
+    // Créer une texture locale pour garantir qu'elle reste valide
+    sf::Texture largeCardTexture = *cardTexture;
+
+    sf::RenderWindow largeWindow(sf::VideoMode(300, 400), "Carte en grand");
+    sf::Sprite largeCard;
+    largeCard.setTexture(largeCardTexture);
+
+    // Ajuster l'échelle pour agrandir la carte
+    largeCard.setScale(
+        largeWindow.getSize().x / static_cast<float>(largeCardTexture.getSize().x),
+        largeWindow.getSize().y / static_cast<float>(largeCardTexture.getSize().y)
+    );
+
+    while (largeWindow.isOpen()) {
+        sf::Event event;
+        while (largeWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                largeWindow.close();
+            }
+        }
+
+        largeWindow.clear();
+        largeWindow.draw(largeCard);
+        largeWindow.display();
+    }
+}
 
 
 
@@ -102,8 +167,11 @@ void Game::run() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
+            }else if (event.type == sf::Event::MouseButtonPressed) {
+                handleMouseClick(event.mouseButton);
             }
         }
+        
         
 
         window.clear();
@@ -111,6 +179,11 @@ void Game::run() {
         for (const auto& card : playerHand) {
             window.draw(card); // Dessiner chaque carte
         }
+
+        // Dessiner les zones de banc
+        window.draw(playerBenchZone);
+        window.draw(opponentBenchZone);
+
         // Dessiner la main de l'adversaire
         for (const auto& card : opponentHand) {
             window.draw(card);

@@ -13,6 +13,10 @@ public:
 
     void positionEnergy(sf::Sprite &sprite, int index, int player);
 
+    void handleMouseClick(const sf::Event::MouseButtonEvent &mouseEvent);
+
+    void displayCardInLarge(const sf::Sprite &card);
+
 private:
     void processEvents();
     void update();
@@ -47,6 +51,7 @@ private:
     sf::Sprite ActiveCardEnnemy(const std::string &name);
 
     void addEnergy(const std::string &name, int index, int y);
+
 };
 
 
