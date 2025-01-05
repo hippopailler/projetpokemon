@@ -8,6 +8,13 @@
 
 class CardManager {
 public:
+
+    struct Card {
+        sf::Sprite sprite;
+        int hp;
+    };
+
+
     static CardManager& getInstance() {
         static CardManager instance;
         return instance;
@@ -27,19 +34,21 @@ public:
         return textures[cardName];
     }
 
-    // Crée un sprite redimensionné à la taille standard
-    sf::Sprite createCardSprite(const std::string& cardName) {
-        sf::Sprite sprite;
-        sprite.setTexture(getTexture(cardName));
+    // Crée une carte avec des points de vie
+    Card createCard(const std::string& cardName, int hp) {
+        Card card;
+        card.sprite.setTexture(getTexture(cardName));
+        card.hp = hp;
+
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
-        const sf::Vector2u textureSize = sprite.getTexture()->getSize();
+        const sf::Vector2u textureSize = card.sprite.getTexture()->getSize();
         float scaleFactor = std::min(
             targetWidth / static_cast<float>(textureSize.x),
             targetHeight / static_cast<float>(textureSize.y)
         );
-        sprite.setScale(scaleFactor, scaleFactor);
-       
-        return sprite;
+        card.sprite.setScale(scaleFactor, scaleFactor);
+
+        return card;
     }
 
     // Définir la taille standard pour les cartes

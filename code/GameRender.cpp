@@ -3,9 +3,13 @@
 #include <iostream>
 #include "EnergyManager.h"
 
-sf::Sprite Adversaire;
+CardManager::Card Adversaire;
 sf::RectangleShape playerBenchZone; // Zone bleue pour le joueur
 sf::RectangleShape opponentBenchZone; // Zone rouge pour l'adversaire
+
+sf::Text playerHPText;
+sf::Text opponentHPText;
+sf::Font font;
 
 Game::Game()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
@@ -28,20 +32,35 @@ Game::Game()
     opponentBenchZone.setFillColor(sf::Color(255, 0, 0, 100)); // Rouge transparent
     
     initializeHands(5, 5);
-    ActiveCardPlayer("Bulbasaur");
-    Adversaire = ActiveCardEnnemy("Tarsal");
+    ActiveCardPlayer("Bulbasaur",70);
+    Adversaire = ActiveCardEnnemy("Tarsal",70);
 
+if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
+        std::cerr << "Erreur: Impossible de charger la police.\n";
+        return;
+    }
+    playerHPText.setFont(font);
+    playerHPText.setCharacterSize(30);
+    playerHPText.setFillColor(sf::Color::Black);
+    playerHPText.setPosition(560, 600);
+
+    opponentHPText.setFont(font);
+    opponentHPText.setCharacterSize(30);
+    opponentHPText.setFillColor(sf::Color::Black);
+    opponentHPText.setPosition(300, 325);
 }
+
+
 
 
 void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
-    addCard("Riolu", 1, 800);
-    addCard("Pachirisu", 2, 800);
-    addCard("Etourmi", 3, 800);
-    addCard("Mascaiman", 4, 800);
-    addCard("Tarsal", 5, 800);
+    addCard("Riolu", 1, 800,60);
+    addCard("Pachirisu", 2, 800,60);
+    addCard("Etourmi", 3, 800,60);
+    addCard("Mascaiman", 4, 800,60);
+    addCard("Tarsal", 5, 800,60);
 
     addEnergy("water", 1, 1);
     addEnergy("fire", 2, 1);
@@ -66,24 +85,24 @@ void Game::positionCards(sf::Sprite& sprite, int index, int yPosition) {
     sprite.setPosition(200 + index * 120, yPosition); 
 }
 
-void Game::addCard(const std::string& name, int index, int y) {
-    sf::Sprite cardSprite = CardManager::getInstance().createCardSprite(name);
-    positionCards(cardSprite, index, y);
+void Game::addCard(const std::string& name, int index, int y,int hp) {
+    CardManager::Card  card = CardManager::getInstance().createCard(name,hp);
+    positionCards(card.sprite, index, y);
     // Ajoutez la carte à la collection de cartes du jeu
-    playerHand.push_back(cardSprite);
+    playerHand.push_back(card);
 }
 
-void Game::ActiveCardPlayer(const std::string& name){
-    sf::Sprite ActiveCardP = CardManager::getInstance().createCardSprite(name);
-    MainCard = ActiveCardP;
-    MainCard.setPosition(400,575);
+void Game::ActiveCardPlayer(const std::string& name,int hp){
+    CardManager::Card activeCard = CardManager::getInstance().createCard(name,hp);
+    MainCard = activeCard;
+    MainCard.sprite.setPosition(400,575);
 }
 
 
-sf::Sprite Game::ActiveCardEnnemy(const std::string& name){
-    sf::Sprite ActiveCardE = CardManager::getInstance().createCardSprite(name);
-    ActiveCardE.setPosition(400,300);
-    return ActiveCardE;
+CardManager::Card Game::ActiveCardEnnemy(const std::string& name,int hp){
+    CardManager::Card activeCard = CardManager::getInstance().createCard(name, hp);
+    activeCard.sprite.setPosition(400, 300);
+    return activeCard;
 }
 
 void Game::addEnergy(const std::string& name, int index, int player) {
@@ -105,20 +124,20 @@ void Game::positionEnergy(sf::Sprite& sprite, int index, int player) {
 void Game::handleMouseClick(const sf::Event::MouseButtonEvent& mouseEvent) {
     if (mouseEvent.button == sf::Mouse::Left) {
         for (const auto& card : playerHand) {
-            if (card.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
-                displayCardInLarge(card);
+            if (card.sprite.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+                displayCardInLarge(card.sprite);
                 break;
             }
         }
         
-        if (MainCard.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
-            displayCardInLarge(MainCard);
+        if (MainCard.sprite.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+            displayCardInLarge(MainCard.sprite);
             return;
         }
 
         // Vérifier si la souris est sur la carte active de l'adversaire
-        if (Adversaire.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
-            displayCardInLarge(Adversaire);
+        if (Adversaire.sprite.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
+            displayCardInLarge(Adversaire.sprite);
             return;
         }
     }
@@ -167,17 +186,18 @@ void Game::run() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
-            }else if (event.type == sf::Event::MouseButtonPressed) {
+            } else if (event.type == sf::Event::MouseButtonPressed) {
                 handleMouseClick(event.mouseButton);
             }
         }
-        
-        
+
+        playerHPText.setString("HP: " + std::to_string(MainCard.hp));
+        opponentHPText.setString("HP: " + std::to_string(Adversaire.hp));
 
         window.clear();
         window.draw(backgroundSprite); // Dessiner le fond
         for (const auto& card : playerHand) {
-            window.draw(card); // Dessiner chaque carte
+            window.draw(card.sprite); // Dessiner chaque carte
         }
 
         // Dessiner les zones de banc
@@ -188,9 +208,12 @@ void Game::run() {
         for (const auto& card : opponentHand) {
             window.draw(card);
         }
-        window.draw(MainCard);
-        window.draw(Adversaire);
+        window.draw(MainCard.sprite);
+        window.draw(Adversaire.sprite);
 
+        // Dessiner les points de vie
+        window.draw(playerHPText);
+        window.draw(opponentHPText);
 
         for (const auto& energy : EnergyPlayer) {
             window.draw(energy);

@@ -5,6 +5,7 @@
 #include <vector>
 #include "Card.h"
 #include "Player.h"
+#include "CardManager.h"
 
 class Game {
 public:
@@ -30,10 +31,11 @@ private:
     Player player2;
 
     
-    std::vector<sf::Sprite> playerHand;     // Cartes du joueur (dos visible)
+    std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
     std::vector<sf::Sprite> EnergyPlayer; // énergie du joueur
-    sf::Sprite MainCard;
+
+    CardManager::Card MainCard;
     
 
 
@@ -44,11 +46,11 @@ private:
 
     void positionCards(sf::Sprite &sprite, int index, int yPosition);
 
-    void addCard(const std::string &name, int x, int y);
+    void addCard(const std::string &name, int x, int y,int hp);
 
-    void ActiveCardPlayer(const std::string &name);
+    void ActiveCardPlayer(const std::string &name,int hp);
 
-    sf::Sprite ActiveCardEnnemy(const std::string &name);
+    CardManager::Card ActiveCardEnnemy(const std::string &name, int hp);
 
     void addEnergy(const std::string &name, int index, int y);
 
