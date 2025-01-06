@@ -1,8 +1,8 @@
 #include "pokemon.h"
 #include <iostream>
 
-Pokemon::Pokemon(const std::string& name, int hp, const typeEnergy type)
-    : _name(name), _hp(hp), _type(type), _energyAttached() {}
+Pokemon::Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness)
+    : _name(name), _hp(hp), _type(type), _weakness(weakness), _energyAttached() {}
 
 void Pokemon::takeDamage(int damage) {
     int actualDamage = damage;

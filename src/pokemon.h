@@ -3,12 +3,13 @@
 
 #include <string>
 #include <vector>
+#include "card.h"
 #include "energy.h"
 #include "move.h"
 
-class Pokemon {
+class Pokemon: public Card{
 public:
-    Pokemon(const std::string& name, int hp, const typeEnergy type);
+    Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness);
 
     void takeDamage(int damage);
     int attackWithMove(Move move);
@@ -20,6 +21,7 @@ public:
     bool isFainted() const;
 
     std::string getName() const;
+    typeEnergy _weakness() const;
     int getHP() const;
     bool canUseMove(Move move);
     energyList energyAttached();
@@ -29,6 +31,7 @@ private:
     std::string _name;
     int _hp;
     const typeEnergy _type;
+    const typeEnergy _weakness;
     std::vector<Move> _moves; // Liste d'attaques
     energyList _energyAttached;
 };
