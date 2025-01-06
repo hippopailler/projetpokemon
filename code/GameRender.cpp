@@ -2,6 +2,7 @@
 #include "CardManager.h"
 #include <iostream>
 #include "EnergyManager.h"
+#include "StatusManager.h"
 
 CardManager::Card Adversaire;
 sf::RectangleShape playerBenchZone; // Zone bleue pour le joueur
@@ -10,6 +11,10 @@ sf::RectangleShape opponentBenchZone; // Zone rouge pour l'adversaire
 sf::Text playerHPText;
 sf::Text opponentHPText;
 sf::Font font;
+
+std::vector<StatusManager::Status> StatusPlayer;
+std::vector<StatusManager::Status> StatusEnnemy;
+
 
 Game::Game()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
@@ -42,16 +47,13 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
     playerHPText.setFont(font);
     playerHPText.setCharacterSize(30);
     playerHPText.setFillColor(sf::Color::Black);
-    playerHPText.setPosition(560, 600);
+    playerHPText.setPosition(320, 575);
 
     opponentHPText.setFont(font);
     opponentHPText.setCharacterSize(30);
     opponentHPText.setFillColor(sf::Color::Black);
-    opponentHPText.setPosition(300, 325);
+    opponentHPText.setPosition(560, 300);
 }
-
-
-
 
 void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
@@ -62,10 +64,14 @@ void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     addCard("Mascaiman", 4, 800,60);
     addCard("Tarsal", 5, 800,60);
 
-    addEnergy("water", 1, 1);
-    addEnergy("fire", 2, 1);
-    addEnergy("grass", 1, 0);
-    addEnergy("electric", 2, 0);
+    addEnergy("grass", 1, 1);
+    addEnergy("grass", 2, 1);
+    addEnergy("psy", 1, 0);
+    addEnergy("psy", 2, 0);
+
+    addStatus("poison", 1);
+    addStatus("poison", 1);
+    addStatus("sleep", 0);
 
     // Initialisation de la main de l'adversaire
     opponentHand.clear();
@@ -75,7 +81,6 @@ void Game::initializeHands(int playerCardCount, int opponentCardCount) {
         opponentHand.push_back(backSprite);
     }
 }
-
 
 void Game::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
     sprite.setPosition(50 + index *120 , yPosition); // Espacement horizontal
@@ -98,7 +103,6 @@ void Game::ActiveCardPlayer(const std::string& name,int hp){
     MainCard.sprite.setPosition(400,575);
 }
 
-
 CardManager::Card Game::ActiveCardEnnemy(const std::string& name,int hp){
     CardManager::Card activeCard = CardManager::getInstance().createCard(name, hp);
     activeCard.sprite.setPosition(400, 300);
@@ -112,12 +116,33 @@ void Game::addEnergy(const std::string& name, int index, int player) {
     EnergyPlayer.push_back(EnergySprite);
 }
 
+void Game::addStatus(const std::string& name, int player) {
+    StatusManager::Status status = StatusManager::getInstance().createStatus(name,name);
+    positionStatus(status.sprite, player);
+    // Ajoutez la carte à la collection de cartes du jeu
+    if (player == 1){
+        StatusPlayer.push_back(status);
+    }
+    else{
+        StatusEnnemy.push_back(status);
+    }
+}
+
 void Game::positionEnergy(sf::Sprite& sprite, int index, int player) {
     if (player == 1){
         sprite.setPosition(550, 775 - index*40);
     }
     else{
         sprite.setPosition(360, 270 + index * 40);
+    }
+}
+
+void Game::positionStatus(sf::Sprite& sprite, int player) {
+    if (player == 1){
+        sprite.setPosition(350, 575+40);
+    }
+    else{
+        sprite.setPosition(560, 300 + 40);
     }
 }
 
@@ -178,8 +203,6 @@ void Game::displayCardInLarge(const sf::Sprite& card) {
     }
 }
 
-
-
 void Game::run() {
     while (window.isOpen()) {
         sf::Event event;
@@ -219,6 +242,13 @@ void Game::run() {
             window.draw(energy);
         }
 
+
+        for (const auto& status : StatusPlayer) {
+            window.draw(status.sprite);
+        }
+        for(const auto& status : StatusEnnemy){
+            window.draw(status.sprite);
+        }
         window.display();
     }
 }

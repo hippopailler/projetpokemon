@@ -3,9 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Card.h"
 #include "Player.h"
 #include "CardManager.h"
+#include "StatusManager.h"
+#include "EnergyManager.h"
+
+
 
 class Game {
 public:
@@ -13,6 +16,8 @@ public:
     void run();
 
     void positionEnergy(sf::Sprite &sprite, int index, int player);
+
+    void positionStatus(sf::Sprite &sprite, int player);
 
     void handleMouseClick(const sf::Event::MouseButtonEvent &mouseEvent);
 
@@ -54,6 +59,7 @@ private:
 
     void addEnergy(const std::string &name, int index, int y);
 
+    void addStatus(const std::string &name, int player);
 };
 
 

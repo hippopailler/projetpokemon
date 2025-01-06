@@ -41,7 +41,8 @@
 }
 */
 
-#include "Game.h"
+#include "GameRender.h"
+
 
 int main() {
     Game game;

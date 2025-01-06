@@ -24,7 +24,7 @@ public:
     const sf::Texture& getTexture(const std::string& cardName) {
         if (textures.find(cardName) == textures.end()) {
             sf::Texture texture;
-            if (!texture.loadFromFile("assets/" + cardName + ".png")) {
+            if (!texture.loadFromFile("assets/pokemon/" + cardName + ".png")) {
                 std::cerr << "Erreur: Impossible de charger " << cardName << ".png\n";
                 textures[cardName] = sf::Texture(); // Texture vide par défaut
             } else {
