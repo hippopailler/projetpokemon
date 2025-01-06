@@ -36,6 +36,7 @@ void Game::attachEnergyActive(typeEnergy energy){
         return;
     }
     _players[_activePlayer]->attachEnergyActive(energy);
+    std::cout << "Energie attachée\n";
     _energyPlayed = true;
 }
 

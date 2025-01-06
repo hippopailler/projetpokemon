@@ -11,7 +11,8 @@ int main() {
     Pokemon charmander("Salamèche", 120, FIRE);
 
         // Ajout des attaques
-    pikachu.addMove(Move("Tonnerre", 50));
+    std::vector<typeEnergy> thunderCost = {LIGHTING};
+    pikachu.addMove(Move("Tonnerre", 50, thunderCost));
     pikachu.addMove(Move("Queue de Fer", 40));
 
     charmander.addMove(Move("Flammeche", 45));
