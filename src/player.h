@@ -4,16 +4,18 @@
 #include "pokemon.h"
 #include "energy.h"
 #include <array>
+#include "hand.h"
+#include "deck.h"
 
 class Player{
 public:
-    Player(Pokemon& pokemon);
+    Player(Deck& deck, Pokemon& pokemon);
 
 // Mutateurs
-// void shuffleDeck();
-// void draw();
+void shuffleDeck();
+void draw();
 // void switch_active(unsigned int position);
-// void activeDamaged(unsigned int damage, energyType energy);
+void activeDamaged(unsigned int damage, typeEnergy energy);
 // void heal(Pokemon& pokemon, unsigned int amount);
 void attachEnergyActive(typeEnergy type);
 void attachEnergyActive(energyList energies);
@@ -22,13 +24,15 @@ void attachEnergyActive(energyList energies);
 void detachEnergyActive(energyList energies);
 
 
-// Accesser
+// Accesseur
 
 Pokemon* activePokemon();
+Hand* hand();
+Deck* deck();
 
 private:
-    //deck* _deck;
-    // hand* _hand;
+    Deck* _deck;
+    Hand* _hand;
     Pokemon* _activePokemon;
     //std::array<Pokemon*, 3> _bench;
     int _victoryPoints;

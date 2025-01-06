@@ -11,7 +11,7 @@ class Pokemon: public Card{
 public:
     Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness);
 
-    void takeDamage(int damage);
+    void takeDamage(const unsigned int damage);
     int attackWithMove(Move move);
     void addMove(const Move& move); // Ajouter une attaque au Pokémon
     Move chooseMove();
@@ -21,7 +21,7 @@ public:
     bool isFainted() const;
 
     std::string getName() const;
-    typeEnergy _weakness() const;
+    typeEnergy weakness() const;
     int getHP() const;
     bool canUseMove(Move move);
     energyList energyAttached();

@@ -4,16 +4,12 @@
 Pokemon::Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness)
     : _name(name), _hp(hp), _type(type), _weakness(weakness), _energyAttached() {}
 
-void Pokemon::takeDamage(int damage) {
-    int actualDamage = damage;
-    if (actualDamage < 0) {
-        actualDamage = 0; // Minimum 0 dégâts
-    }
-    _hp -= actualDamage;
+void Pokemon::takeDamage(const unsigned int damage) {
+    _hp -= damage;
     if (_hp < 0) {
         _hp = 0; // Les points de vie ne peuvent pas être négatifs
     }
-    std::cout << _name << " prend " << actualDamage << " dégâts ! Il reste " << _hp << " HP.\n";
+    std::cout << _name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n";
 }
 
 void Pokemon::addMove(const Move& move) {
@@ -74,4 +70,8 @@ energyList Pokemon::energyAttached(){
 
 typeEnergy Pokemon::type(){
     return _type;
+}
+
+typeEnergy Pokemon::weakness() const{
+    return _weakness;
 }

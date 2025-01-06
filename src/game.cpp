@@ -21,7 +21,7 @@ void Game::attack(Move move){
     Pokemon* opponentPokemon = _players[1 - _activePlayer]->activePokemon();
     bool canUse = (activePokemon->energyAttached()).enoughEnergy(move.cost());
     if (canUse){
-        int dmg = activePokemon->attackWithMove(move);
+        unsigned int dmg = activePokemon->attackWithMove(move);
         opponentPokemon->takeDamage(dmg);
         endTurn();
         return;
