@@ -28,17 +28,15 @@ Game::Game()
     CardManager::getInstance().setTargetSize(150.f, 200.f);
 
     // Initialisation des zones de banc
-    playerBenchZone.setSize(sf::Vector2f(150.f, 500.f)); 
-    playerBenchZone.setPosition(100.f, 275.f); // Position en bas
+    playerBenchZone.setSize(sf::Vector2f(175.f, 500.f)); 
+    playerBenchZone.setPosition(82.f, 275.f); // Position en bas
     playerBenchZone.setFillColor(sf::Color(0, 0, 255, 100));
 
-    opponentBenchZone.setSize(sf::Vector2f(150.f, 500.f)); 
-    opponentBenchZone.setPosition(675.f, 275.f); 
+    opponentBenchZone.setSize(sf::Vector2f(175.f, 500.f)); 
+    opponentBenchZone.setPosition(681.f, 275.f); 
     opponentBenchZone.setFillColor(sf::Color(255, 0, 0, 100)); // Rouge transparent
     
-    initializeHands(5, 5);
-    ActiveCardPlayer("Bulbasaur",70);
-    Adversaire = ActiveCardEnnemy("Tarsal",70);
+    
 
 if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
         std::cerr << "Erreur: Impossible de charger la police.\n";
@@ -53,21 +51,39 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
     opponentHPText.setCharacterSize(30);
     opponentHPText.setFillColor(sf::Color::Black);
     opponentHPText.setPosition(560, 300);
+
+    initializeHands(5, 5);
 }
 
 void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
-    addCard("Riolu", 1, 800,60);
-    addCard("Pachirisu", 2, 800,60);
-    addCard("Etourmi", 3, 800,60);
-    addCard("Mascaiman", 4, 800,60);
-    addCard("Tarsal", 5, 800,60);
+    addCard("Riolu", 1,70);
+    addCard("Pachirisu", 2,60);
+    addCard("Etourmi", 3,60);
+    addCard("Mascaiman", 4,60);
+    addCard("Tarsal", 10,60);
+    addCard("Pachirisu", 11,60);
 
-    addEnergy("grass", 1, 1);
-    addEnergy("grass", 2, 1);
-    addEnergy("psy", 1, 0);
-    addEnergy("psy", 2, 0);
+    addCard("Tarsal",5,70);
+
+    addCard("Bulbasaur",6,60);
+    addCard("Etourmi",7,60);
+
+    addEnergy("grass", 1);
+    addEnergy("grass", 1);
+    addEnergy("psy", 5);
+    addEnergy("psy", 5);
+
+    addEnergy("fire",3);
+    addEnergy("fire",3);
+    addEnergy("water",4);
+    addEnergy("water",2);
+
+    addEnergy("fire",6);
+    addEnergy("fire",6);
+    addEnergy("water",7);
+    
 
     addStatus("poison", 1);
     addStatus("poison", 1);
@@ -86,34 +102,40 @@ void Game::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
     sprite.setPosition(50 + index *120 , yPosition); // Espacement horizontal
 }
 
-void Game::positionCards(sf::Sprite& sprite, int index, int yPosition) {
-    sprite.setPosition(200 + index * 120, yPosition); 
+void Game::positionCards(sf::Sprite& sprite, int index) {
+    if (index >= 10){ //carte dans la main
+        sprite.setPosition(200 + (index-9) * 120, 800);
+    }
+    if(index == 1){ //carte active
+        sprite.setPosition(400, 575);
+    }
+    if(2 <= index and index < 5){ //carte banc
+        sprite.setPosition(100, 275 + (index-2)*150);
+    }
+    if(index == 5){ //carte active ennemi
+        sprite.setPosition(400, 300);
+    }
+    if(6 <= index and index < 9){ //carte banc ennemi
+        sprite.setPosition(700, 275 + (index-6)*150);
+    }
 }
 
-void Game::addCard(const std::string& name, int index, int y,int hp) {
+void Game::addCard(const std::string& name, int index,int hp) {
     CardManager::Card  card = CardManager::getInstance().createCard(name,hp);
-    positionCards(card.sprite, index, y);
+    positionCards(card.sprite,index);
     // Ajoutez la carte à la collection de cartes du jeu
+    card.index = index;
+    card.hp = hp;
     playerHand.push_back(card);
 }
 
-void Game::ActiveCardPlayer(const std::string& name,int hp){
-    CardManager::Card activeCard = CardManager::getInstance().createCard(name,hp);
-    MainCard = activeCard;
-    MainCard.sprite.setPosition(400,575);
-}
 
-CardManager::Card Game::ActiveCardEnnemy(const std::string& name,int hp){
-    CardManager::Card activeCard = CardManager::getInstance().createCard(name, hp);
-    activeCard.sprite.setPosition(400, 300);
-    return activeCard;
-}
-
-void Game::addEnergy(const std::string& name, int index, int player) {
-    sf::Sprite EnergySprite = EnergyManager::getInstance().createEnergySprite(name);
-    positionEnergy(EnergySprite, index, player);
+void Game::addEnergy(const std::string& name, int index) {
+    EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
+    positionEnergy(energy.sprite, index,EnergyPlayer);
+    energy.index = index;
     // Ajoutez la carte à la collection de cartes du jeu
-    EnergyPlayer.push_back(EnergySprite);
+    EnergyPlayer.push_back(energy);
 }
 
 void Game::addStatus(const std::string& name, int player) {
@@ -128,12 +150,27 @@ void Game::addStatus(const std::string& name, int player) {
     }
 }
 
-void Game::positionEnergy(sf::Sprite& sprite, int index, int player) {
-    if (player == 1){
-        sprite.setPosition(550, 775 - index*40);
+void Game::positionEnergy(sf::Sprite& sprite, int index,std::vector<EnergyManager::Energy> EnergyPlayer) {
+    int count = 0;
+    for (const auto& energy : EnergyPlayer) {
+        if (energy.index == index){
+            count++;
+        }
+    } //compte combien d'énergie sont déjà sur la carte
+    
+    
+    if (index == 1){
+        sprite.setPosition(550, 590 + count*40);
     }
-    else{
-        sprite.setPosition(360, 270 + index * 40);
+    if(index==5){
+        sprite.setPosition(360, 310 + count * 40);
+    }
+    if(2 <= index and index < 5){ //carte banc
+        sprite.setPosition(60, 280 + (index-2)*150+count*40);
+    }
+
+    if(6 <= index and index < 9){ //carte banc ennemi
+        sprite.setPosition(850, 280 + (index-6)*150+count*40);
     }
 }
 
@@ -214,32 +251,42 @@ void Game::run() {
             }
         }
 
-        playerHPText.setString("HP: " + std::to_string(MainCard.hp));
-        opponentHPText.setString("HP: " + std::to_string(Adversaire.hp));
+
+        for (const auto& card : playerHand) {
+            if (card.index==1 or card.index == 5){
+                playerHPText.setString("HP: " + std::to_string(card.hp));
+                opponentHPText.setString("HP: " + std::to_string(card.hp));
+            }
+                
+        }
+        
 
         window.clear();
         window.draw(backgroundSprite); // Dessiner le fond
-        for (const auto& card : playerHand) {
-            window.draw(card.sprite); // Dessiner chaque carte
-        }
 
         // Dessiner les zones de banc
         window.draw(playerBenchZone);
         window.draw(opponentBenchZone);
 
+        for (const auto& card : playerHand) {
+            window.draw(card.sprite); // Dessiner chaque carte
+        }
+
+        
+        
         // Dessiner la main de l'adversaire
         for (const auto& card : opponentHand) {
             window.draw(card);
         }
-        window.draw(MainCard.sprite);
-        window.draw(Adversaire.sprite);
+        //window.draw(MainCard.sprite);
+        //window.draw(Adversaire.sprite);
 
         // Dessiner les points de vie
         window.draw(playerHPText);
         window.draw(opponentHPText);
 
         for (const auto& energy : EnergyPlayer) {
-            window.draw(energy);
+            window.draw(energy.sprite);
         }
 
 

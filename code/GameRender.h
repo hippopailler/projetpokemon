@@ -15,7 +15,7 @@ public:
     Game();
     void run();
 
-    void positionEnergy(sf::Sprite &sprite, int index, int player);
+    void positionEnergy(sf::Sprite &sprite, int index, std::vector<EnergyManager::Energy> EnergyPlayer);
 
     void positionStatus(sf::Sprite &sprite, int player);
 
@@ -38,26 +38,25 @@ private:
     
     std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
-    std::vector<sf::Sprite> EnergyPlayer; // énergie du joueur
+    std::vector<EnergyManager::Energy> EnergyPlayer; // énergie du joueur
 
     CardManager::Card MainCard;
     
 
 
     void initializeHands(int playerCardCount, int opponentCardCount); // Initialiser les mains
-   
 
     void positionCardsAdv(sf::Sprite &sprite, int index, int yPosition);
 
-    void positionCards(sf::Sprite &sprite, int index, int yPosition);
+    void positionCards(sf::Sprite &sprite, int index);
 
-    void addCard(const std::string &name, int x, int y,int hp);
+    void addCard(const std::string &name, int x,int hp);
 
-    void ActiveCardPlayer(const std::string &name,int hp);
+    
 
-    CardManager::Card ActiveCardEnnemy(const std::string &name, int hp);
+    
 
-    void addEnergy(const std::string &name, int index, int y);
+    void addEnergy(const std::string &name, int index);
 
     void addStatus(const std::string &name, int player);
 };

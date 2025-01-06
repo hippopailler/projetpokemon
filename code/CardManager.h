@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include "EnergyManager.h"
 
 class CardManager {
 public:
@@ -12,6 +13,8 @@ public:
     struct Card {
         sf::Sprite sprite;
         int hp;
+        int index; //1 : carte active joueur, 2-4 : carte banc joueur, 5 : carte active ennemi, 4-8 : carte banc ennemi, 10- pour la main
+        std::vector<EnergyManager::Energy> energystock;
     };
 
 

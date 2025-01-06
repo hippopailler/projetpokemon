@@ -8,6 +8,12 @@
 
 class EnergyManager {
 public:
+
+    struct Energy {
+        sf::Sprite sprite;
+        int index; //1 : carte active joueur, 2-4 : carte banc joueur, 5 : carte active ennemi, 4-8 : carte banc ennemi
+    };
+
     static EnergyManager& getInstance() {
         static EnergyManager instance;
         return instance;
@@ -28,18 +34,18 @@ public:
     }
 
     // Crée un sprite redimensionné à la taille standard
-    sf::Sprite createEnergySprite(const std::string& cardName) {
-        sf::Sprite sprite;
-        sprite.setTexture(getTexture(cardName));
+    Energy createEnergy(const std::string& cardName, int index) {
+        Energy energy;
+        energy.sprite.setTexture(getTexture(cardName));
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
-        const sf::Vector2u textureSize = sprite.getTexture()->getSize();
+        const sf::Vector2u textureSize = energy.sprite.getTexture()->getSize();
         float scaleFactor = std::min(
             targetWidth / static_cast<float>(textureSize.x),
             targetHeight / static_cast<float>(textureSize.y)
         );
-        sprite.setScale(scaleFactor, scaleFactor);
+        energy.sprite.setScale(scaleFactor, scaleFactor);
        
-        return sprite;
+        return energy;
     }
 
     // Définir la taille standard pour les cartes
