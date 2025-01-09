@@ -9,6 +9,9 @@ Game::Game(Player* player1, Player* player2) {
     _energyPlayed = false;
 }
 // Mutateur
+void Game::draw(){
+    _players[_activePlayer]->draw();
+}
 
 void Game::endTurn(){
     _activePlayer = 1 - _activePlayer;
@@ -38,6 +41,14 @@ void Game::attachEnergyActive(typeEnergy energy){
     _players[_activePlayer]->attachEnergyActive(energy);
     std::cout << "Energie attachée\n";
     _energyPlayed = true;
+}
+
+void Game::attachEnergyBench(typeEnergy energy, unsigned int slot){
+    _players[_activePlayer]->attachEnergyBench(energy, slot);
+}
+
+void Game::placeOnBench(Pokemon& pokemon){
+    _players[_activePlayer]->placeOnBench(pokemon);
 }
 
 void Game::chooseAction() {

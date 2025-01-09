@@ -52,6 +52,11 @@ bool Pokemon::isFainted() const {
     return _hp <= 0;
 }
 
+void Pokemon::heal(unsigned int amount){
+    _hp += amount;
+    // capper au max hp
+}
+
 std::string Pokemon::getName() const {
     return _name;
 }

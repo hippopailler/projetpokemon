@@ -9,11 +9,12 @@
 class Game{
 public:
     Game(Player*, Player*);
-    //void draw(int);
+    void draw();
     void endTurn();
     void attack(Move);
     void attachEnergyActive(typeEnergy);
-    //void placeOnBench(Pokemon&);
+    void attachEnergyBench(typeEnergy, unsigned int);
+    void placeOnBench(Pokemon&);
     //void retreat(??);
     //fin de la game??
     void chooseAction();

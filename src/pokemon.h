@@ -19,6 +19,8 @@ public:
     void attachEnergy(energyList);
     void detachEnergy(energyList);
     bool isFainted() const;
+    void heal(unsigned int amount);
+    // trouver un moyen de trouver les hp max
 
     std::string getName() const;
     typeEnergy weakness() const;
