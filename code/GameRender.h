@@ -27,6 +27,12 @@ public:
 
     void switchCard(int index1, int index2);
 
+   
+
+    void updateActiveHPTexts();
+
+    void attaque(int attackerIndex, int damage);
+
 private:
     void processEvents();
     void update();

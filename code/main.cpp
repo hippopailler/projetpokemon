@@ -47,6 +47,7 @@
 
 int main() {
     Game game;
+    game.updateActiveHPTexts();
     game.run(); // Démarre la boucle principale du jeu
 
     return 0;

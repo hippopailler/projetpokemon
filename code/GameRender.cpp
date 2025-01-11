@@ -15,8 +15,6 @@ sf::Font font;
 std::vector<StatusManager::Status> StatusPlayer;
 std::vector<StatusManager::Status> StatusEnnemy;
 
-bool switchCards = false;
-
 
 Game::Game()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
@@ -133,7 +131,6 @@ void Game::addCard(const std::string& name, int index,int hp) {
     playerHand.push_back(card);
 }
 
-
 void Game::addEnergy(const std::string& name, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
     positionEnergy(energy.sprite, index,EnergyPlayer);
@@ -245,8 +242,6 @@ void Game::displayCardInLarge(const sf::Sprite& card) {
     }
 }
 
-
-
 void Game::switchCard(int index1, int index2) {
     // Échange des indices des cartes
     for (auto& card : playerHand) {
@@ -289,6 +284,39 @@ void Game::switchCard(int index1, int index2) {
             energy.sprite.setPosition(850, 280 + (energy.index - 6) * 150 + (count - 1) * 40);
         }
     }
+
+    updateActiveHPTexts();
+}
+
+
+void Game::updateActiveHPTexts() {
+    for (const auto& card : playerHand) {
+        if (card.index == 1) { // Carte active du joueur
+            playerHPText.setString("HP: " + std::to_string(card.hp));
+        } else if (card.index == 5) { // Carte active de l'adversaire
+            opponentHPText.setString("HP: " + std::to_string(card.hp));
+        }
+    }
+}
+
+void Game::attaque(int attackerIndex, int damage) {
+    // Parcourir les cartes pour trouver la carte correspondant à l'index
+    for (auto& card : playerHand) {
+        if (card.index == attackerIndex) {
+            // Réduire les points de vie
+            card.hp -= damage;
+            if (card.hp < 0) card.hp = 0; // Évite les HP négatifs
+
+            // Mettre à jour le texte correspondant uniquement pour la carte active ciblée
+            if (attackerIndex == 1) { // Carte active du joueur
+                playerHPText.setString("HP: " + std::to_string(card.hp));
+            } else if (attackerIndex == 5) { // Carte active de l'adversaire
+                opponentHPText.setString("HP: " + std::to_string(card.hp));
+            
+            }
+            return; // Une fois le texte mis à jour, on sort de la fonction
+        }
+    }
 }
 
 
@@ -306,16 +334,25 @@ void Game::run() {
                     switchCard(1,3);
                 }
             }
-        }
-
-
-        for (const auto& card : playerHand) {
-            if (card.index==1 or card.index == 5){
-                playerHPText.setString("HP: " + std::to_string(card.hp));
-                opponentHPText.setString("HP: " + std::to_string(card.hp));
+            if(event.type == sf::Event::KeyPressed){
+                if(event.key.code == sf::Keyboard::A){
+                    addCard("Riolu", 12,70);
+                }
             }
-                
+            if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::B) { // Touche A pour attaquer l'adversaire
+            attaque(5, 20); // 20 dégâts à la carte active de l'adversaire
+        } 
+        if (event.key.code == sf::Keyboard::S) { // Touche A pour attaquer l'adversaire
+            attaque(1, 20); // 20 dégâts à la carte active de l'adversaire
         }
+        if (event.key.code == sf::Keyboard::H) { // Touche H pour soigner en mettant des dégats négatifs
+            attaque(1, -10); // 20 dégâts à la carte active de l'adversaire
+        }
+
+        }
+}
+
         
 
         window.clear();
