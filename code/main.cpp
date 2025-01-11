@@ -42,10 +42,12 @@
 */
 
 #include "GameRender.h"
+#include <unistd.h>
 
 
 int main() {
     Game game;
     game.run(); // Démarre la boucle principale du jeu
+
     return 0;
 }

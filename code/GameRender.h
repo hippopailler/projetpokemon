@@ -23,6 +23,10 @@ public:
 
     void displayCardInLarge(const sf::Sprite &card);
 
+    void PositionEnergySwitch(EnergyManager::Energy &energy,std::vector<EnergyManager::Energy> EnergyPlayer);
+
+    void switchCard(int index1, int index2);
+
 private:
     void processEvents();
     void update();

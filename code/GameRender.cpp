@@ -15,14 +15,18 @@ sf::Font font;
 std::vector<StatusManager::Status> StatusPlayer;
 std::vector<StatusManager::Status> StatusEnnemy;
 
+bool switchCards = false;
+
 
 Game::Game()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
+    window.setPosition(sf::Vector2i(500,0));
     // Chargement du fond
     if (!backgroundTexture.loadFromFile("assets/fond.jpg")) {
         std::cerr << "Erreur: Impossible de charger l'image de fond.\n";
         return;
     }
+    
     backgroundSprite.setTexture(backgroundTexture);
     // Définir la taille standard des cartes
     CardManager::getInstance().setTargetSize(150.f, 200.f);
@@ -217,6 +221,7 @@ void Game::displayCardInLarge(const sf::Sprite& card) {
     sf::Texture largeCardTexture = *cardTexture;
 
     sf::RenderWindow largeWindow(sf::VideoMode(300, 400), "Carte en grand");
+    largeWindow.setPosition(sf::Vector2i(800,400));
     sf::Sprite largeCard;
     largeCard.setTexture(largeCardTexture);
 
@@ -240,6 +245,53 @@ void Game::displayCardInLarge(const sf::Sprite& card) {
     }
 }
 
+
+
+void Game::switchCard(int index1, int index2) {
+    // Échange des indices des cartes
+    for (auto& card : playerHand) {
+        if (card.index == index1) {
+            card.index = index2;
+            positionCards(card.sprite, index2);
+        } else if (card.index == index2) {
+            card.index = index1;
+            positionCards(card.sprite, index1);
+        }
+    }
+
+    // Mettre à jour les indices des énergies associées
+    for (auto& energy : EnergyPlayer) {
+        if (energy.index == index1) {
+            energy.index = index2;
+        } else if (energy.index == index2) {
+            energy.index = index1;
+        }
+    }
+
+    // Repositionner toutes les énergies
+    for (auto& energy : EnergyPlayer) {
+        int count = 0;
+        for (const auto& e : EnergyPlayer) {
+            if (e.index == energy.index) {
+                ++count;
+                if (&e == &energy) break; // Compte les énergies jusqu'à celle-ci
+            }
+        }
+
+        // Nouvelle position selon l'index et le décalage
+        if (energy.index == 1) { // Carte active du joueur
+            energy.sprite.setPosition(550, 590 + (count - 1) * 40);
+        } else if (energy.index == 5) { // Carte active de l'adversaire
+            energy.sprite.setPosition(360, 310 + (count - 1) * 40);
+        } else if (2 <= energy.index && energy.index < 5) { // Banc du joueur
+            energy.sprite.setPosition(60, 280 + (energy.index - 2) * 150 + (count - 1) * 40);
+        } else if (6 <= energy.index && energy.index < 9) { // Banc de l'adversaire
+            energy.sprite.setPosition(850, 280 + (energy.index - 6) * 150 + (count - 1) * 40);
+        }
+    }
+}
+
+
 void Game::run() {
     while (window.isOpen()) {
         sf::Event event;
@@ -248,6 +300,11 @@ void Game::run() {
                 window.close();
             } else if (event.type == sf::Event::MouseButtonPressed) {
                 handleMouseClick(event.mouseButton);
+            }
+            if(event.type == sf::Event::KeyPressed){
+                if(event.key.code == sf::Keyboard::Space){
+                    switchCard(1,3);
+                }
             }
         }
 
