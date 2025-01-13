@@ -140,7 +140,7 @@ void Game::addEnergy(const std::string& name, int index) {
 }
 
 void Game::addStatus(const std::string& name, int player) {
-    StatusManager::Status status = StatusManager::getInstance().createStatus(name,name);
+    StatusManager::Status status = StatusManager::getInstance().createStatus(name,name,player);
     positionStatus(status.sprite, player);
     // Ajoutez la carte à la collection de cartes du jeu
     if (player == 1){
@@ -263,6 +263,19 @@ void Game::switchCard(int index1, int index2) {
         }
     }
 
+    //Supprimer les statuts sur les cartes actives si elles sont échangées
+    for (auto& status : StatusPlayer) {
+        if (status.index == index1 || status.index == index2) {
+                        StatusPlayer.erase(StatusPlayer.begin());
+                    }
+                }
+
+    for (auto& status : StatusEnnemy) {
+        if (status.index == index1 || status.index == index2) {
+                        StatusEnnemy.erase(StatusEnnemy.begin());
+                    }
+                }            
+
     // Repositionner toutes les énergies
     for (auto& energy : EnergyPlayer) {
         int count = 0;
@@ -287,7 +300,6 @@ void Game::switchCard(int index1, int index2) {
 
     updateActiveHPTexts();
 }
-
 
 void Game::updateActiveHPTexts() {
     for (const auto& card : playerHand) {
@@ -318,7 +330,6 @@ void Game::attaque(int attackerIndex, int damage) {
         }
     }
 }
-
 
 void Game::run() {
     while (window.isOpen()) {
@@ -393,5 +404,4 @@ void Game::run() {
         window.display();
     }
 }
-
 

@@ -12,6 +12,7 @@ public:
     struct Status {
         sf::Sprite sprite;
         std::string type;
+        int index;
 
     };
 
@@ -35,7 +36,7 @@ public:
     }
 
     // Crée un sprite redimensionné à la taille standard
-    Status createStatus(const std::string& cardName,const std::string& type) {
+    Status createStatus(const std::string& cardName,const std::string& type, int player) {
         Status status;
         status.sprite.setTexture(getTexture(cardName));
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
@@ -46,6 +47,7 @@ public:
         );
         status.sprite.setScale(scaleFactor, scaleFactor);
         status.type = type;
+        status.index = player;
         return status;
     }
 

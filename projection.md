@@ -63,3 +63,5 @@ oui oui tkt on va faire une turbo ia qui
 
 - pour les designs des cartes pokémon je vais les prendre sur le site : https://tcg.pokemon.com/fr-fr/galleries/scarlet-violet/
 comme ça j'aurai moins de problème de redimensionnement 
+
+- idéalement pour le système de point de vie il faut rajouter un champ hpinitial pour ne pas permettre les dépassements en cas de heal (mais très grosse flemme de tout changer, on va faire comme si ce problème n'existait pas)

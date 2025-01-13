@@ -68,7 +68,7 @@ private:
 
     void addEnergy(const std::string &name, int index);
 
-    void addStatus(const std::string &name, int player);
+    void addStatus(const std::string &name, int player); //player prendra la valeur 1 pour le joueur et 5 pour l'adversaire
 };
 
 
