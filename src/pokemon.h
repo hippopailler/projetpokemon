@@ -6,35 +6,46 @@
 #include "card.h"
 #include "energy.h"
 #include "move.h"
+#include <optional>
+
+struct pokemonData{
+    std::string cardID;
+    std::string name;
+    int hp;
+    typeEnergy type;
+    typeEnergy weakness;
+    energyList retreatCost;
+    bool isEx;
+    std::vector<Move> moves;
+    std::optional<std::string> evolveFrom;
+};
 
 class Pokemon: public Card{
 public:
-    Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness);
+    Pokemon(pokemonData data);
 
     void takeDamage(const unsigned int damage);
     int attackWithMove(Move move);
-    void addMove(const Move& move); // Ajouter une attaque au Pokémon
     Move chooseMove();
     void attachEnergy(typeEnergy);
     void attachEnergy(energyList);
     void detachEnergy(energyList);
     bool isFainted() const;
     void heal(unsigned int amount);
-    // trouver un moyen de trouver les hp max
+
+// Accesseurs
 
     std::string getName() const;
     typeEnergy weakness() const;
-    int getHP() const;
+    int hp() const;
+    int maxHP() const;
     bool canUseMove(Move move);
     energyList energyAttached();
     typeEnergy type();
 
 private:
-    std::string _name;
+    pokemonData _data;
     int _hp;
-    const typeEnergy _type;
-    const typeEnergy _weakness;
-    std::vector<Move> _moves; // Liste d'attaques
     energyList _energyAttached;
 };
 

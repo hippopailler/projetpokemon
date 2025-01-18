@@ -1,38 +1,34 @@
 #include "pokemon.h"
 #include <iostream>
 
-Pokemon::Pokemon(const std::string& name, int hp, const typeEnergy type, const typeEnergy weakness)
-    : _name(name), _hp(hp), _type(type), _weakness(weakness), _energyAttached() {}
+Pokemon::Pokemon(pokemonData data) :
+    _data(data), _hp(data.hp), _energyAttached() {}
 
 void Pokemon::takeDamage(const unsigned int damage) {
     _hp -= damage;
     if (_hp < 0) {
         _hp = 0; // Les points de vie ne peuvent pas être négatifs
     }
-    std::cout << _name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n";
-}
-
-void Pokemon::addMove(const Move& move) {
-    _moves.push_back(move); // Ajouter une attaque à la liste
+    std::cout << _data.name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n";
 }
 
 Move Pokemon::chooseMove() {
-    std::cout << "Choisissez une attaque pour " << _name << " :\n";
-    for (size_t i = 0; i < _moves.size(); ++i) {
-        std::cout << i + 1 << ". " << _moves[i].getName() << " (Puissance: " << _moves[i].getPower() << ")\n";
+    std::cout << "Choisissez une attaque pour " << _data.name << " :\n";
+    for (size_t i = 0; i < _data.moves.size(); ++i) {
+        std::cout << i + 1 << ". " << _data.moves[i].getName() << " (Puissance: " << _data.moves[i].getPower() << ")\n";
     }
 
     size_t choice;
     do {
         std::cout << "Entrez le numéro de l'attaque : ";
         std::cin >> choice;
-    } while (choice < 1 || choice > _moves.size());
+    } while (choice < 1 || choice > _data.moves.size());
 
-    return _moves[choice - 1];
+    return _data.moves[choice - 1];
 }
 
 int Pokemon::attackWithMove(Move move) {
-    std::cout << _name << " utilise " << move.getName() << " !\n";
+    std::cout << _data.name << " utilise " << move.getName() << " !\n";
     return move.getPower() ; // Puissance de l'attaque + bonus d'attaque à gérer plus tard selon le type
 }
 
@@ -58,11 +54,15 @@ void Pokemon::heal(unsigned int amount){
 }
 
 std::string Pokemon::getName() const {
-    return _name;
+    return _data.name;
 }
 
-int Pokemon::getHP() const {
+int Pokemon::hp() const {
     return _hp;
+}
+
+int Pokemon::maxHP() const {
+    return _data.hp;
 }
 
 bool Pokemon::canUseMove(Move move){
@@ -74,9 +74,9 @@ energyList Pokemon::energyAttached(){
 }
 
 typeEnergy Pokemon::type(){
-    return _type;
+    return _data.type;
 }
 
 typeEnergy Pokemon::weakness() const{
-    return _weakness;
+    return _data.weakness;
 }
