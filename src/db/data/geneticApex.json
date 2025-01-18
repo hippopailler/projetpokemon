@@ -1,0 +1,97 @@
+[
+    {
+        "cardID": "A1#001",
+        "name": "bulbasaur",
+        "hp": 70,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "retreatCost": ["COLORLESS"],
+        "isEx": false,
+        "moves": [
+            { "name": "Vine Whip", "power": 40, "cost": ["GRASS", "COLORLESS"] }
+        ]
+    },
+
+    {
+        "cardID": "A1#002",
+        "name": "Ivysaur",
+        "hp": 90,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "retreatCost": ["COLORLESS", "COLORLESS"],
+        "isEx": false,
+        "moves": [
+            { "name": "Razor Leaf", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] }
+        ],
+        "evolvesFrom": "Bulbasaur"
+    },
+    
+    {
+        "cardID": "A1#003",
+        "name": "Venusaur",
+        "hp": 160,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "retreatCost": ["COLORLESS", "COLORLESS", "COLORLESS"],
+        "isEx": false,
+        "moves": [
+            { "name": "Mega Drain", "power": 80, "cost": ["GRASS", "GRASS", "COLORLESS", "COLORLESS"] }
+        ],
+        "evolvesFrom": "Ivysaur"
+    },
+    
+    {
+        "cardID": "A1#004",
+        "name": "Venusaur",
+        "hp": 190,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "isEx": true,
+        "retreatCost": ["COLORLESS", "COLORLESS", "COLORLESS"],
+        "moves": [
+            { "name": "Razor Leaf", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] },
+            { "name": "Giant Bloom", "power": 100, "cost": ["GRASS", "GRASS", "COLORLESS", "COLORLESS"] }
+        ],
+        "evolvesFrom": "Ivysaur"
+    },
+    
+    {
+        "cardID": "A1#005",
+        "name": "Caterpie",
+        "hp": 50,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "isEx":false,
+        "retreatCost": ["COLORLESS"],
+        "moves": [
+            { "name": "Find a Friend", "power": 0, "cost": ["COLORLESS"] }
+        ]
+    },
+    
+    {
+        "cardID": "A1#006",
+        "name": "Metapod",
+        "hp": 80,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "isEx":false,
+        "retreatCost": ["COLORLESS","COLORLESS"],
+        "moves": [
+            { "name": "Bug Bite", "power": 30, "cost": ["COLORLESS", "COLORLESS"] }
+        ],
+        "evolvesFrom": "Caterpie"
+    },
+    
+    {
+        "cardID": "A1#007",
+        "name": "Butterfree",
+        "hp": 120,
+        "type": "GRASS",
+        "weakness": "FIRE",
+        "isEx":false,
+        "retreatCost": ["COLORLESS"],
+        "moves": [
+            { "name": "Gust", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] }
+        ]
+    }
+]
