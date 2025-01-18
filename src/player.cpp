@@ -1,7 +1,7 @@
 #include "player.h"
 
 Player::Player(Deck& deck, Pokemon& pokemon)
-    : _deck(&deck), _hand(new Hand()), _activePokemon(&pokemon), _victoryPoints(0){}
+    : _deck(&deck), _hand(new Hand()), _activePokemon(&pokemon), _bench(), _victoryPoints(0){}
 
 // Mutateurs
 void Player::shuffleDeck(){
@@ -11,6 +11,10 @@ void Player::shuffleDeck(){
 void Player::draw(){
     Card& card = _deck->draw();
     _hand->addCard(card);
+}
+
+void Player::placeOnBench(Pokemon& pokemon){
+    _bench->placeOnBench(pokemon);
 }
 
 // void switch_active(unsigned int position);
@@ -29,7 +33,10 @@ void Player::attachEnergyActive(energyList energies){
     _activePokemon->attachEnergy(energies);
 }
 
-// void attachEnergyBench(energyType type, unsigned int slot);
+void Player::attachEnergyBench(typeEnergy type, unsigned int slot){
+    _bench->attachEnergyBench(type, slot);
+}
+
 // void attachEnergyBench(energyList energies, unsigned int slot);
 
 void Player::detachEnergyActive(energyList energies){

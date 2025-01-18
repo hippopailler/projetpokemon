@@ -6,6 +6,7 @@
 #include <array>
 #include "hand.h"
 #include "deck.h"
+#include "bench.h"
 
 class Player{
 public:
@@ -14,12 +15,13 @@ public:
 // Mutateurs
 void shuffleDeck();
 void draw();
+void placeOnBench(Pokemon& pokemon);
 // void switch_active(unsigned int position);
 void activeDamaged(unsigned int damage, typeEnergy energy);
 // void heal(Pokemon& pokemon, unsigned int amount);
 void attachEnergyActive(typeEnergy type);
 void attachEnergyActive(energyList energies);
-// void attachEnergyBench(energyType type, unsigned int slot);
+void attachEnergyBench(typeEnergy type, unsigned int slot);
 // void attachEnergyBench(energyList energies, unsigned int slot);
 void detachEnergyActive(energyList energies);
 
@@ -34,7 +36,7 @@ private:
     Deck* _deck;
     Hand* _hand;
     Pokemon* _activePokemon;
-    //std::array<Pokemon*, 3> _bench;
+    Bench* _bench;
     int _victoryPoints;
 };
 
