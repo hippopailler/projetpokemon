@@ -4,10 +4,6 @@
 Bench::Bench():
     _cards{nullptr, nullptr, nullptr}{};
 
-std::array<Pokemon*, 3> Bench::cards() const{
-    return _cards;
-}
-
 // Mutateurs
 void Bench::placeOnBench(Pokemon& pokemon){
     for (auto& card : _cards) {
