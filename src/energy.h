@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 enum typeEnergy{
     COLORLESS = 0,
@@ -16,6 +17,8 @@ enum typeEnergy{
     METAL,
     DRAGON //En soit il n'y a pas d'énergie dragon mais il y un type dragon soo
 };
+
+typeEnergy stringToTypeEnergy(const std::string& type);
 
 class energyList{
 public:

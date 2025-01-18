@@ -1,6 +1,20 @@
 #include "energy.h"
 #include <iostream>
 
+typeEnergy stringToTypeEnergy(const std::string& type) {
+    if (type == "COLORLESS") return COLORLESS;
+    if (type == "GRASS") return GRASS;
+    if (type == "FIRE") return FIRE;
+    if (type == "WATER") return WATER;
+    if (type == "LIGHTING") return LIGHTING;
+    if (type == "PSYCHIC") return PSYCHIC;
+    if (type == "FIGHTING") return FIGHTING;
+    if (type == "DARKNESS") return DARKNESS;
+    if (type == "METAL") return METAL;
+    if (type == "DRAGON") return DRAGON;
+    throw std::invalid_argument("Unknown type: " + type);
+}
+
 // Création
 energyList::energyList() : _energy() {} // là je sais pas trop comment gérer si c'est vide
 
