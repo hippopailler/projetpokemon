@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include "json.hpp"
 #include "../pokemon.h"
+#include "../deck.h"
 #include <iostream>
 
 using json = nlohmann::json;
@@ -72,4 +73,29 @@ pokemonData findPokemonInFile(const std::string& filename, const std::string& ca
 pokemonData getPokemonData(const std::string& cardID) {
     std::string prefix = getPrefix(cardID);
     return findPokemonInFile(prefixToFile[prefix], cardID);
+}
+
+Deck getDeck(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Impossible d'ouvrir le fichier JSON : " + filename);
+    }
+
+    json jsonData;
+    file >> jsonData;
+
+    std::vector<Card> cards;
+    std::set<typeEnergy> energyTypes;
+    std::cout<<"okkk"<<std::endl;
+    for (const auto& energy : jsonData["energy"]) {
+        energyTypes.insert(stringToTypeEnergy(energy.get<std::string>()));
+    }
+    std::cout << "okkk2" << std::endl;
+    for (auto cardID : jsonData["cards"]) {
+        pokemonData data = getPokemonData(cardID);
+        cards.push_back(Pokemon(data));
+        energyTypes.insert(data.type);
+    }
+
+    return Deck(cards, energyTypes);
 }
