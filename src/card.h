@@ -5,10 +5,10 @@
 
 class Card{
 public:
-    std::string cardID() const{
+    virtual std::string cardID() const{
         return _cardID;
     }
-    std::string name() const{
+    virtual std::string name() const{
         return _name;
     }
 private:

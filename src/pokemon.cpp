@@ -53,7 +53,7 @@ void Pokemon::heal(unsigned int amount){
     // capper au max hp
 }
 
-std::string Pokemon::getName() const {
+std::string Pokemon::name() const {
     return _data.name;
 }
 

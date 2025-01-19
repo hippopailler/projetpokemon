@@ -18,6 +18,7 @@ public:
     //void retreat(??);
     //fin de la game??
     void chooseAction();
+    void beginTurn();
 
 // Accesseurs
     unsigned int turn() const;

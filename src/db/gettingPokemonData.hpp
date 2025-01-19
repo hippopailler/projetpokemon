@@ -6,7 +6,7 @@
 #include "json.hpp"
 #include "../pokemon.h"
 #include "../deck.h"
-#include <iostream>
+#include <set>
 
 using json = nlohmann::json;
 
@@ -85,17 +85,21 @@ Deck getDeck(const std::string& filename) {
     file >> jsonData;
 
     std::vector<Card> cards;
-    std::set<typeEnergy> energyTypes;
-    std::cout<<"okkk"<<std::endl;
-    for (const auto& energy : jsonData["energy"]) {
-        energyTypes.insert(stringToTypeEnergy(energy.get<std::string>()));
+    std::set<typeEnergy> energySet;
+    for (const auto& energy : jsonData["energyType"]) {
+        energySet.insert(stringToTypeEnergy(energy.get<std::string>()));
     }
-    std::cout << "okkk2" << std::endl;
-    for (auto cardID : jsonData["cards"]) {
+    std::vector<typeEnergy> energyTypes(energySet.begin(), energySet.end());
+    for (const auto& cardEntry : jsonData["cardsList"]) {
+        std::string cardID = cardEntry["cardID"].get<std::string>();
+        int count = cardEntry["count"].get<int>();
+
         pokemonData data = getPokemonData(cardID);
-        cards.push_back(Pokemon(data));
-        energyTypes.insert(data.type);
+        for (int i = 0; i < count; ++i) {
+            cards.push_back(Pokemon(data));
+        }
     }
+
 
     return Deck(cards, energyTypes);
 }

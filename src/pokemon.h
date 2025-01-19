@@ -35,7 +35,7 @@ public:
 
 // Accesseurs
 
-    std::string getName() const;
+    std::string name() const;
     typeEnergy weakness() const;
     int hp() const;
     int maxHP() const;

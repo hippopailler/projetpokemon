@@ -4,22 +4,21 @@
 #include "card.h"
 #include "energy.h"
 #include <vector>
-#include <set>
 
 class Deck{
 public:
-    Deck(std::vector<Card> cards, std::set<typeEnergy> energyTypes);
+    Deck(std::vector<Card> cards, std::vector<typeEnergy> energyTypes);
 // Mutateurs
     void shuffle();
     Card& draw();
-    std::vector<Card> draw(int);
 // Accesseurs
-    std::vector<Card> cards() const;
     typeEnergy randomEnergy() const;
+    bool isEmpty() const;
+    unsigned int size() const;
 
 private:
     std::vector<Card> _cards;
-    std::set<typeEnergy> _energyTypes;
+    const std::vector<typeEnergy> _energyTypes;
 };
 
 #endif

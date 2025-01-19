@@ -15,6 +15,7 @@ public:
 // Mutateurs
 void shuffleDeck();
 void draw();
+void draw(unsigned int amount);
 void placeOnBench(Pokemon& pokemon);
 // void switch_active(unsigned int position);
 void activeDamaged(unsigned int damage, typeEnergy energy);
@@ -24,9 +25,10 @@ void attachEnergyActive(energyList energies);
 void attachEnergyBench(typeEnergy type, unsigned int slot);
 // void attachEnergyBench(energyList energies, unsigned int slot);
 void detachEnergyActive(energyList energies);
-
+typeEnergy randomEnergy() const;
 
 // Accesseur
+void printHand() const;
 
 Pokemon* activePokemon();
 Hand* hand();

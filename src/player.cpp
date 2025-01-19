@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 
 Player::Player(Deck& deck, Pokemon& pokemon)
     : _deck(&deck), _hand(new Hand()), _activePokemon(&pokemon), _bench(), _victoryPoints(0){}
@@ -9,8 +10,19 @@ void Player::shuffleDeck(){
 }
 
 void Player::draw(){
+    if (_deck->isEmpty()){
+        std::cout << "Le deck est vide" << std::endl;
+        return;
+    }
     Card& card = _deck->draw();
     _hand->addCard(card);
+}
+
+void Player::draw(unsigned int n){
+    n > _deck->size() ? n = _deck->size() : n;
+    for (unsigned int i = 0; i < n; i++){
+        draw();
+    }
 }
 
 void Player::placeOnBench(Pokemon& pokemon){
@@ -43,7 +55,15 @@ void Player::detachEnergyActive(energyList energies){
     _activePokemon->detachEnergy(energies);
 }
 
+typeEnergy Player::randomEnergy() const{
+    return _deck->randomEnergy();
+}
+
 // Accesseurs
+
+void Player::printHand() const{
+    _hand->printHand();
+}
 
 Pokemon* Player::activePokemon(){
     return _activePokemon;
@@ -51,4 +71,8 @@ Pokemon* Player::activePokemon(){
 
 Hand* Player::hand(){
     return _hand;
+}
+
+Deck* Player::deck(){
+    return _deck;
 }

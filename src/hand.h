@@ -13,7 +13,9 @@ public:
     void removeCard(const int index);
 
     // Accesseur
+    void printHand() const;
     std::vector<Card> cards() const;
+
 private:
     std::vector<Card> _cards;
 };

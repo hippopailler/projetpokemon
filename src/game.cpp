@@ -82,7 +82,17 @@ void Game::chooseAction() {
     }
 }
 
-// Accesseur
+void Game::beginTurn(){
+    std::cout << "Début du tour " << _turn+1 << " : c'est au joueur " << _activePlayer + 1
+    << "de jouer"<< std::endl;
+    draw();
+    typeEnergy energy = _players[_activePlayer]->randomEnergy();
+    std::cout << "Energie du tour " << energy << "\n";
+    _players[_activePlayer]->printHand();
+    chooseAction();
+}
+
+// Accesseurs
 
 unsigned int Game::turn() const{
     return _turn;

@@ -3,10 +3,30 @@
 #include "energy.h"
 #include "player.h"
 #include "game.h"
+#include "deck.h"
+#include "hand.h"
+#include "bench.h"
+#include "card.h"
+#include "db/gettingPokemonData.hpp"
 #include <iostream>
 
 int main() {
 
+    pokemonData dataBulb = getPokemonData("A1#001");
+    pokemonData dataChen = getPokemonData("A1#005");
+    Pokemon bulbizarre = Pokemon(dataBulb);
+    Pokemon chenipan = Pokemon(dataChen);
+
+//    Deck deck1({Card(bulbizarre), Card(chenipan)});
+    Deck deck1 = getDeck("db/data/decks/deck1.json");
+
+    Player player1(deck1, bulbizarre);
+    Player player2(deck1 ,chenipan);
+
+    Game game(&player1, &player2);
+    game.beginTurn();
+
+/*
     Pokemon pikachu("Pikachu", 100, LIGHTING);
     Pokemon charmander("Salamèche", 120, FIRE);
 
@@ -25,30 +45,7 @@ int main() {
     while (!pikachu.isFainted() && !charmander.isFainted()){
         game.chooseAction();
     }
-
-/*
-// Combat simple
-    while (!pikachu.isFainted() && !charmander.isFainted()) {
-        std::cout << "\n--- Tour de Pikachu ---\n";
-        Move chosenMove = pikachu.chooseMove();
-        int damage = pikachu.attackWithMove(chosenMove);
-        charmander.takeDamage(damage);
-
-        if (charmander.isFainted()) {
-            std::cout << charmander.getName() << " est K.O. !\n";
-            break;
-        }
-
-        std::cout << "\n--- Tour de Salamèche ---\n";
-        chosenMove = charmander.chooseMove();
-        damage = charmander.attackWithMove(chosenMove);
-        pikachu.takeDamage(damage);
-
-        if (pikachu.isFainted()) {
-            std::cout << pikachu.getName() << " est K.O. !\n";
-            break;
-        }
-    }
-*/
+    */
+    
     return 0;
 }

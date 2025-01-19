@@ -2,8 +2,8 @@
 #include <algorithm> 
 #include <random> 
 #include <chrono> 
-
-Deck::Deck(std::vector<Card> cards, std::set<typeEnergy> energyTypes) :
+#include <iostream>
+Deck::Deck(std::vector<Card> cards, std::vector<typeEnergy> energyTypes) :
     _cards(cards),  _energyTypes(energyTypes) {};
 
 void Deck::shuffle(){
@@ -19,18 +19,24 @@ Card& Deck::draw(){
     return card;
 }
 
-std::vector<Card> Deck::draw(int n){
-    std::vector<Card> cards;
-    for (int i = 0; i < n; i++){
-        cards.push_back(draw());
-    }
-    return cards;
-}
-
 typeEnergy Deck::randomEnergy() const{
-    std::vector<typeEnergy> energyTypes(_energyTypes.begin(), _energyTypes.end());
+    if (_energyTypes.empty()){
+        throw std::runtime_error("No energy in the deck");
+    }
+    if (_energyTypes.size() == 1){
+        return _energyTypes[0];
+    }
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine e(seed);
-    std::uniform_int_distribution<int> distribution(0, energyTypes.size() - 1);
-    return energyTypes[distribution(e)];
+    std::uniform_int_distribution<int> distribution(0, _energyTypes.size() - 1);
+    typeEnergy energy = _energyTypes[0];
+    return energy;
+}
+
+bool Deck::isEmpty() const{
+    return _cards.empty();
+}
+
+unsigned int Deck::size() const{
+    return _cards.size();
 }
