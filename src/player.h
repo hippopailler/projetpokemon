@@ -10,14 +10,16 @@
 
 class Player{
 public:
-    Player(Deck& deck, Pokemon& pokemon);
+    Player(Deck& deck);
 
 // Mutateurs
 void shuffleDeck();
 void draw();
 void draw(unsigned int amount);
+void placeActivePokemon(Pokemon& pokemon);
 void placeOnBench(Pokemon& pokemon);
-// void switch_active(unsigned int position);
+void switchActive();
+void switchActive(unsigned int position);
 void activeDamaged(unsigned int damage, typeEnergy energy);
 // void heal(Pokemon& pokemon, unsigned int amount);
 void attachEnergyActive(typeEnergy type);
@@ -26,6 +28,7 @@ void attachEnergyBench(typeEnergy type, unsigned int slot);
 // void attachEnergyBench(energyList energies, unsigned int slot);
 void detachEnergyActive(energyList energies);
 void handToDeck();
+void mulligan();
 
 // Accesseur
 typeEnergy randomEnergy() const;

@@ -3,17 +3,28 @@
 
 #include <string>
 
+enum class cardClass{
+    POKEMON,
+    ITEM,
+    TRAINER
+};
+
 class Card{
 public:
-    virtual std::string cardID() const{
-        return _cardID;
-    }
-    virtual std::string name() const{
-        return _name;
-    }
+    Card(cardClass cardType) : _cardType(cardType) {}
+
+    bool isPokemon() const{
+        return _cardType == cardClass::POKEMON;
+    };
+
+    virtual std::string cardID() const = 0;
+
+    virtual std::string name() const = 0;
+
+    cardClass cardType(){ return _cardType;}
+
 private:
-    std::string _cardID;
-    std::string _name;
+    cardClass _cardType;
 };
 
 #endif

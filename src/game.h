@@ -4,6 +4,7 @@
 #include"player.h"
 #include"move.h"
 #include"energy.h"
+#include"pokemon.h"
 #include<array>
 
 class Game{
@@ -19,6 +20,8 @@ public:
     //fin de la game??
     void chooseAction();
     void beginTurn();
+    void placeActivePokemon(int);
+    void beginGame();
 
 // Accesseurs
     unsigned int turn() const;
@@ -29,6 +32,7 @@ private:
     int _activePlayer;
     std::array<Player*, 2> _players;
     bool _energyPlayed;
+    int _winner;
 };
 
 #endif

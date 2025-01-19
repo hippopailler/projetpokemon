@@ -2,7 +2,7 @@
 #include <iostream>
 
 Pokemon::Pokemon(pokemonData data) :
-    _data(data), _hp(data.hp), _energyAttached() {}
+    Card(cardClass::POKEMON), _data(data), _hp(data.hp), _energyAttached() {}
 
 void Pokemon::takeDamage(const unsigned int damage) {
     _hp -= damage;
@@ -49,19 +49,22 @@ bool Pokemon::isFainted() const {
 }
 
 void Pokemon::heal(unsigned int amount){
-    _hp += amount;
-    // capper au max hp
+    _hp + amount > _data.hp ? _hp = _data.hp : _hp += amount;
+}
+
+std::string Pokemon::cardID() const{
+    return _data.cardID;
 }
 
 std::string Pokemon::name() const {
     return _data.name;
 }
 
-int Pokemon::hp() const {
+unsigned int Pokemon::hp() const {
     return _hp;
 }
 
-int Pokemon::maxHP() const {
+unsigned int Pokemon::maxHP() const {
     return _data.hp;
 }
 

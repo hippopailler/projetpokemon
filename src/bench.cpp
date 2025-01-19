@@ -85,6 +85,10 @@ bool Bench::isFull() const{
     return true;
 }
 
+bool Bench::pokemonInSlot(unsigned int slot) const{
+    return _cards[slot] != NULL;
+}
+
 unsigned int Bench::find(Pokemon& pokemon) const{
     for (unsigned int i = 0; i < 3; i++) {
         if (_cards[i] == &pokemon) {

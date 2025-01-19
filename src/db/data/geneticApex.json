@@ -1,7 +1,7 @@
 [
     {
         "cardID": "A1#001",
-        "name": "bulbasaur",
+        "name": "Bulbasaur",
         "hp": 70,
         "type": "GRASS",
         "weakness": "FIRE",

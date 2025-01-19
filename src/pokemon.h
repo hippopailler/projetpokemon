@@ -11,7 +11,7 @@
 struct pokemonData{
     std::string cardID;
     std::string name;
-    int hp;
+    unsigned int hp;
     typeEnergy type;
     typeEnergy weakness;
     energyList retreatCost;
@@ -35,17 +35,18 @@ public:
 
 // Accesseurs
 
+    std::string cardID() const;
     std::string name() const;
     typeEnergy weakness() const;
-    int hp() const;
-    int maxHP() const;
+    unsigned int hp() const;
+    unsigned int maxHP() const;
     bool canUseMove(Move move);
     energyList energyAttached();
     typeEnergy type();
 
 private:
     pokemonData _data;
-    int _hp;
+    unsigned int _hp;
     energyList _energyAttached;
 };
 

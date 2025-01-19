@@ -1,8 +1,8 @@
 #include "player.h"
 #include <iostream>
 
-Player::Player(Deck& deck, Pokemon& pokemon)
-    : _deck(&deck), _hand(new Hand()), _activePokemon(&pokemon), _bench(), _victoryPoints(0) {}
+Player::Player(Deck& deck)
+    : _deck(&deck), _hand(new Hand()), _activePokemon(NULL), _bench(), _victoryPoints(0) {}
 
 // Mutateurs
 void Player::shuffleDeck() {
@@ -25,11 +25,29 @@ void Player::draw(unsigned int n) {
     }
 }
 
+void Player::placeActivePokemon(Pokemon& pokemon) {
+    _activePokemon = &pokemon;
+}
+
 void Player::placeOnBench(Pokemon& pokemon) {
     _bench->placeOnBench(pokemon);
 }
 
-// void switch_active(unsigned int position);
+void Player::switchActive() {
+    unsigned int position;
+    do  {
+        _bench->printBench();
+        std::cout << "Choisir le prochain pokemon actif :";
+        std::cin >> position;
+    } while (position >= 3 || _bench->pokemonInSlot(position) == false);
+    switchActive(position);
+}
+
+void Player::switchActive(unsigned int position){
+    Pokemon* temp = _activePokemon;
+    _activePokemon = _bench->removeFromBench(position);
+    _bench->placeOnBench(*temp, position);
+}
 
 void Player::activeDamaged(unsigned int damage, typeEnergy energy) {
     const int finalDamage = (_activePokemon->weakness() == energy ? damage + 20 : damage);
@@ -57,6 +75,11 @@ void Player::detachEnergyActive(energyList energies) {
 
 void Player::handToDeck() {
     _hand->handToDeck(*_deck);
+}
+
+void Player::mulligan() {
+    handToDeck();
+    draw(5);
 }
 
 // Accesseurs

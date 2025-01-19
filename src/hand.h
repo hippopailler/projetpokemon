@@ -15,7 +15,7 @@ public:
 
     // Accesseur
     void printHand() const;
-    std::vector<std::unique_ptr<Card>> cards() const;
+    const std::vector<std::unique_ptr<Card>>& cards() const;
     bool hasPokemonCard() const;
 
 private:

@@ -7,6 +7,7 @@ Game::Game(Player* player1, Player* player2) {
     _activePlayer = 0;
     _turn = 0;
     _energyPlayed = false;
+    _winner = -1;
 }
 // Mutateur
 void Game::draw(){
@@ -26,6 +27,14 @@ void Game::attack(Move move){
     if (canUse){
         unsigned int dmg = activePokemon->attackWithMove(move);
         opponentPokemon->takeDamage(dmg);
+        if (opponentPokemon->isFainted()){
+            std::cout << "Le pokemon adverse est KO\n";
+            if (!_players[1 - _activePlayer]->hand()->hasPokemonCard()){
+                _winner = _activePlayer;
+                return;
+            }
+            _players[1 - _activePlayer]->switchActive();
+        }
         endTurn();
         return;
     }
@@ -90,6 +99,35 @@ void Game::beginTurn(){
     std::cout << "Energie du tour " << energy << "\n";
     _players[_activePlayer]->printHand();
     chooseAction();
+}
+
+
+void Game::placeActivePokemon(int player){
+    int choice = 0;
+    do {
+        std::cout << "Choisissez votre pokemon actif :";
+        std::cin >> choice;
+    } while ( (choice < 0 || choice > 5) && !_players[player]->hand()->cards()[choice]->isPokemon());
+    const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
+    Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
+    _players[player]->placeActivePokemon(*chosenPokemon);
+    _players[player]->hand()->removeCard(choice);
+}
+
+void Game::beginGame(){
+    for (int i = 0; i < 2; i++){
+        _players[i]->shuffleDeck();
+        _players[i]->draw(5);
+        while (!_players[i]->hand()->hasPokemonCard()){
+            _players[i]->mulligan();
+        }
+        std::cout << "Joueur " << i+1 << ", choisissez un pokémon actif : \n";
+        _players[i]->printHand();
+        placeActivePokemon(i);
+    }
+    while (_winner == -1){
+        beginTurn();
+    }
 }
 
 // Accesseurs

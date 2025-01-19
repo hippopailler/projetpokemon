@@ -19,12 +19,14 @@ int main() {
 
 //    Deck deck1({Card(bulbizarre), Card(chenipan)});
     Deck deck1 = getDeck("db/data/decks/deck1.json");
+    Deck deck2 = getDeck("db/data/decks/deck1.json");
 
-    Player player1(deck1, bulbizarre);
-    Player player2(deck1 ,chenipan);
+    Player player1(deck1);
+    Player player2(deck2);
 
     Game game(&player1, &player2);
-    game.beginTurn();
+    //game.beginTurn();
+    game.beginGame();
 
 /*
     Pokemon pikachu("Pikachu", 100, LIGHTING);

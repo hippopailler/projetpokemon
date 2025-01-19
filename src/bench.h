@@ -21,6 +21,7 @@ public:
     Pokemon& card(int index);
     bool isEmpty() const;
     bool isFull() const;
+    bool pokemonInSlot(unsigned int slot) const;
     unsigned int find(Pokemon& pokemon) const;
     void printBench() const;
 

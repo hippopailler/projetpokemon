@@ -17,12 +17,8 @@ void Hand::handToDeck(Deck& deck){
     }
 }
 
-std::vector<std::unique_ptr<Card>> Hand::cards() const {
-    std::vector<std::unique_ptr<Card>> copy;
-    for (const auto& card : _cards) {
-        copy.push_back(std::make_unique<Card>(*card));
-    }
-    return copy;
+const std::vector<std::unique_ptr<Card>>& Hand::cards() const {
+    return _cards;
 }
 
 bool Hand::hasPokemonCard() const {
