@@ -4,20 +4,21 @@
 #include "card.h"
 #include "energy.h"
 #include <vector>
+#include <memory>
 
-class Deck{
+class Deck {
 public:
-    Deck(std::vector<Card> cards, std::vector<typeEnergy> energyTypes);
-// Mutateurs
+    Deck(std::vector<std::unique_ptr<Card>> cards, std::vector<typeEnergy> energyTypes);
+    // Mutateurs
     void shuffle();
-    Card& draw();
-// Accesseurs
+    std::unique_ptr<Card> draw();
+    // Accesseurs
     typeEnergy randomEnergy() const;
     bool isEmpty() const;
     unsigned int size() const;
 
 private:
-    std::vector<Card> _cards;
+    std::vector<std::unique_ptr<Card>> _cards;
     const std::vector<typeEnergy> _energyTypes;
 };
 

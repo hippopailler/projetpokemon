@@ -84,22 +84,27 @@ Deck getDeck(const std::string& filename) {
     json jsonData;
     file >> jsonData;
 
-    std::vector<Card> cards;
+    std::vector<std::unique_ptr<Card>> cards;
     std::set<typeEnergy> energySet;
+
+    // Parse energy types
     for (const auto& energy : jsonData["energyType"]) {
         energySet.insert(stringToTypeEnergy(energy.get<std::string>()));
     }
+
+    // Convert set to vector
     std::vector<typeEnergy> energyTypes(energySet.begin(), energySet.end());
+
+    // Parse cards
     for (const auto& cardEntry : jsonData["cardsList"]) {
         std::string cardID = cardEntry["cardID"].get<std::string>();
         int count = cardEntry["count"].get<int>();
 
         pokemonData data = getPokemonData(cardID);
         for (int i = 0; i < count; ++i) {
-            cards.push_back(Pokemon(data));
+            cards.push_back(std::make_unique<Pokemon>(data));
         }
     }
 
-
-    return Deck(cards, energyTypes);
+    return Deck(std::move(cards), energyTypes);
 }
