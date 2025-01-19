@@ -1,4 +1,5 @@
 #include "hand.h"
+#include "pokemon.h"
 #include <iostream>
 
 void Hand::addCard(std::unique_ptr<Card> card) {
@@ -9,12 +10,28 @@ void Hand::removeCard(const int index) {
     _cards.erase(_cards.begin() + index);
 }
 
+void Hand::handToDeck(Deck& deck){
+    while (!_cards.empty()){
+        deck.addCard(std::move(_cards.back()));
+        _cards.pop_back();
+    }
+}
+
 std::vector<std::unique_ptr<Card>> Hand::cards() const {
     std::vector<std::unique_ptr<Card>> copy;
     for (const auto& card : _cards) {
         copy.push_back(std::make_unique<Card>(*card));
     }
     return copy;
+}
+
+bool Hand::hasPokemonCard() const {
+    for (const auto& card : _cards) {
+        if (dynamic_cast<Pokemon*>(card.get())) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Hand::printHand() const {

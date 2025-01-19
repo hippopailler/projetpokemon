@@ -55,11 +55,15 @@ void Player::detachEnergyActive(energyList energies) {
     _activePokemon->detachEnergy(energies);
 }
 
-typeEnergy Player::randomEnergy() const {
-    return _deck->randomEnergy();
+void Player::handToDeck() {
+    _hand->handToDeck(*_deck);
 }
 
 // Accesseurs
+
+typeEnergy Player::randomEnergy() const {
+    return _deck->randomEnergy();
+}
 
 void Player::printHand() const {
     _hand->printHand();

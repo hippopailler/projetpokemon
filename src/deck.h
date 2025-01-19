@@ -12,6 +12,7 @@ public:
     // Mutateurs
     void shuffle();
     std::unique_ptr<Card> draw();
+    void addCard(std::unique_ptr<Card> card);
     // Accesseurs
     typeEnergy randomEnergy() const;
     bool isEmpty() const;

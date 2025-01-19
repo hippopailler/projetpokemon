@@ -25,9 +25,10 @@ void attachEnergyActive(energyList energies);
 void attachEnergyBench(typeEnergy type, unsigned int slot);
 // void attachEnergyBench(energyList energies, unsigned int slot);
 void detachEnergyActive(energyList energies);
-typeEnergy randomEnergy() const;
+void handToDeck();
 
 // Accesseur
+typeEnergy randomEnergy() const;
 void printHand() const;
 
 Pokemon* activePokemon();

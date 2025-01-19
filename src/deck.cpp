@@ -22,6 +22,12 @@ std::unique_ptr<Card> Deck::draw() {
     return card;
 }
 
+void Deck::addCard(std::unique_ptr<Card> card) {
+    _cards.push_back(std::move(card));
+}
+
+// Accesseurs
+
 typeEnergy Deck::randomEnergy() const {
     if (_energyTypes.empty()) {
         throw std::runtime_error("No energy in the deck");
