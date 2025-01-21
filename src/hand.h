@@ -17,6 +17,7 @@ public:
     void printHand() const;
     const std::vector<std::unique_ptr<Card>>& cards() const;
     bool hasPokemonCard() const;
+    unsigned int size() const;
 
 private:
     std::vector<std::unique_ptr<Card>> _cards;

@@ -36,3 +36,7 @@ void Hand::printHand() const {
         std::cout << i << ". " << _cards[i]->name() << "\n";
     }
 }
+
+unsigned int Hand::size() const {
+    return _cards.size();
+}
