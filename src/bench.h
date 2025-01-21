@@ -22,7 +22,7 @@ public:
     bool isEmpty() const;
     bool isFull() const;
     bool pokemonInSlot(unsigned int slot) const;
-    Pokemon* pokemonInSlot(unsigned int slot);
+    Pokemon* pokemonCardInSlot(unsigned int slot);
     unsigned int find(Pokemon& pokemon) const;
     void printBench() const;
 

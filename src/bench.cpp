@@ -89,7 +89,7 @@ bool Bench::pokemonInSlot(unsigned int slot) const{
     return _cards[slot] != NULL;
 }
 
-Pokemon* Bench::pokemonInSlot(unsigned int slot){
+Pokemon* Bench::pokemonCardInSlot(unsigned int slot){
     return _cards[slot];
 }
 
