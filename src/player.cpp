@@ -25,12 +25,14 @@ void Player::draw(unsigned int n) {
     }
 }
 
-void Player::placeActivePokemon(Pokemon& pokemon) {
+void Player::placeActivePokemon(Pokemon& pokemon, int turn) {
     _activePokemon = &pokemon;
+    pokemon.onPlayed(turn);
 }
 
-void Player::placeOnBench(Pokemon& pokemon) {
+void Player::placeOnBench(Pokemon& pokemon, int turn) {
     _bench->placeOnBench(pokemon);
+    pokemon.onPlayed(turn);
 }
 
 void Player::switchActive() {

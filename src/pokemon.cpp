@@ -52,6 +52,12 @@ void Pokemon::heal(unsigned int amount){
     _hp + amount > _data.hp ? _hp = _data.hp : _hp += amount;
 }
 
+void Pokemon::onPlayed(int turn){
+    _turnPlayed = turn;
+}
+
+// Accesseurs
+
 std::string Pokemon::cardID() const{
     return _data.cardID;
 }
@@ -82,4 +88,8 @@ typeEnergy Pokemon::type(){
 
 typeEnergy Pokemon::weakness() const{
     return _data.weakness;
+}
+
+int Pokemon::turnPlayed() const{
+    return _turnPlayed;
 }

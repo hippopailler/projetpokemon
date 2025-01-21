@@ -57,7 +57,7 @@ void Game::attachEnergyBench(typeEnergy energy, unsigned int slot){
 }
 
 void Game::placeOnBench(Pokemon& pokemon){
-    _players[_activePlayer]->placeOnBench(pokemon);
+    _players[_activePlayer]->placeOnBench(pokemon, _turn);
 }
 
 void Game::chooseAction() {
@@ -110,7 +110,7 @@ void Game::placeActivePokemon(int player){
     } while ( (choice < 0 || choice > 5) && !_players[player]->hand()->cards()[choice]->isPokemon());
     const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
-    _players[player]->placeActivePokemon(*chosenPokemon);
+    _players[player]->placeActivePokemon(*chosenPokemon, _turn);
     _players[player]->hand()->removeCard(choice);
 }
 

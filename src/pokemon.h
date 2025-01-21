@@ -7,6 +7,7 @@
 #include "energy.h"
 #include "move.h"
 #include <optional>
+#include <climits>
 
 struct pokemonData{
     std::string cardID;
@@ -32,6 +33,7 @@ public:
     void detachEnergy(energyList);
     bool isFainted() const;
     void heal(unsigned int amount);
+    void onPlayed(int);
 
 // Accesseurs
 
@@ -43,11 +45,13 @@ public:
     bool canUseMove(Move move);
     energyList energyAttached();
     typeEnergy type();
+    int turnPlayed() const;
 
 private:
     pokemonData _data;
     unsigned int _hp;
     energyList _energyAttached;
+    unsigned int _turnPlayed {UINT_MAX};
 };
 
 #endif

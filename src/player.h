@@ -16,8 +16,8 @@ public:
 void shuffleDeck();
 void draw();
 void draw(unsigned int amount);
-void placeActivePokemon(Pokemon& pokemon);
-void placeOnBench(Pokemon& pokemon);
+void placeActivePokemon(Pokemon& pokemon, int turn);
+void placeOnBench(Pokemon& pokemon, int turn);
 void switchActive();
 void switchActive(unsigned int position);
 void activeDamaged(unsigned int damage, typeEnergy energy);
