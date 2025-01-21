@@ -21,6 +21,7 @@ public:
     void chooseAction();
     void beginTurn();
     void placeActivePokemon(int);
+    void evolvePokemon();
     void beginGame();
 
 // Accesseurs

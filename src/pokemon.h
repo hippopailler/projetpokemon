@@ -33,7 +33,9 @@ public:
     void detachEnergy(energyList);
     bool isFainted() const;
     void heal(unsigned int amount);
-    void onPlayed(int);
+    void onPlayed(unsigned int);
+    bool canEvolve(Pokemon& evolution, unsigned int turn);
+    void evolve(Pokemon& evolution, unsigned int turn);
 
 // Accesseurs
 
@@ -46,6 +48,7 @@ public:
     energyList energyAttached();
     typeEnergy type();
     int turnPlayed() const;
+    unsigned int missingHP() const;
 
 private:
     pokemonData _data;

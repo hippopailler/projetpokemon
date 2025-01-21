@@ -63,13 +63,14 @@ void Game::placeOnBench(Pokemon& pokemon){
 void Game::chooseAction() {
     std::cout << "Choisissez une action :\n";
     std::cout << "1. Attacher une énergie\n";
-    std::cout << "2. Attaquer\n";
-    std::cout << "3. Finir le tour\n";
+    std::cout << "2. Evoluer un pokémon\n";
+    std::cout << "3. Attaquer\n";
+    std::cout << "4. Finir le tour\n";
     int choice = 0;
     do {
         std::cout << "Choisissez votre action :";
         std::cin >> choice;
-    } while (choice < 1 || choice > 3);
+    } while (choice < 1 || choice > 4);
     switch (choice){
     case 1:{
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
@@ -78,12 +79,17 @@ void Game::chooseAction() {
         break;
     }
     case 2:{
+        evolvePokemon();
+        chooseAction();
+        break;
+    }
+    case 3:{
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
         Move move = activePokemon->chooseMove();
         attack(move);
         break;
     }
-    case 3:
+    case 4:
         endTurn();
         break;
     default:
@@ -112,6 +118,57 @@ void Game::placeActivePokemon(int player){
     Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
     _players[player]->placeActivePokemon(*chosenPokemon, _turn);
     _players[player]->hand()->removeCard(choice);
+}
+
+void Game::evolvePokemon(){
+    // choix du pkm à évoluer
+    int choice;
+    std::cout << "Choisissez le pokémon à faire évoluer :\n";
+    _players[_activePlayer]->printBoard();
+    do {
+        std::cout << "Choisissez le pokémon à faire évoluer :";
+        std::cin >> choice;
+    } while (choice < 0 || choice > 5);
+
+    Pokemon* toEvolve;
+    if (choice == 0) {
+        if (_players[_activePlayer]->activePokemon() == nullptr) {
+            std::cout << "Aucun pokémon actif à faire évoluer.\n";
+            return;
+        }
+        else {
+            toEvolve = _players[_activePlayer]->activePokemon();
+        }
+    } else {
+        if (!_players[_activePlayer]->bench().pokemonInSlot(choice - 1)) {
+            std::cout << "Aucun pokémon sur le banc à l'emplacement " << choice - 1 << ".\n";
+            return;
+        }
+        else {
+            toEvolve = _players[_activePlayer]->bench().pokemonInSlot(choice - 1);
+        }
+    }
+
+    // choix de l'évolution
+    std::cout << "Choisissez l'évolution :\n";
+    _players[_activePlayer]->printHand();
+    do {
+        std::cout << "Choisissez l'évolution :";
+        std::cin >> choice;
+    } while (choice < 0 || choice > _players[_activePlayer]->hand()->size());
+    if (!_players[_activePlayer]->hand()->cards()[choice]->isPokemon()) {
+        std::cout << "La carte choisie n'est pas un pokémon.\n";
+        return;
+    }
+
+    // évolution
+    if (toEvolve->canEvolve(*dynamic_cast<Pokemon*>(_players[_activePlayer]->hand()->cards()[choice].get()), _turn)) {
+        toEvolve->evolve(*dynamic_cast<Pokemon*>(_players[_activePlayer]->hand()->cards()[choice].get()), _turn);
+        _players[_activePlayer]->hand()->removeCard(choice);
+    } else {
+        std::cout << "Impossible d'évoluer le pokémon.\n";
+    }
+
 }
 
 void Game::beginGame(){
