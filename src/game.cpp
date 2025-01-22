@@ -122,7 +122,7 @@ void Game::placeActivePokemon(int player){
 
 void Game::evolvePokemon(){
     // choix du pkm à évoluer
-    unsigned int choice;
+    int choice;
     std::cout << "Choisissez le pokémon à faire évoluer :\n";
     _players[_activePlayer]->printBoard();
     do {
@@ -145,7 +145,7 @@ void Game::evolvePokemon(){
             return;
         }
         else {
-            toEvolve = _players[_activePlayer]->bench().pokemonCardInSlot(choice - 1);
+            toEvolve = _players[_activePlayer]->bench().pokemonInSlot(choice - 1);
         }
     }
 
