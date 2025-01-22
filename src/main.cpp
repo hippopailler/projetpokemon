@@ -16,7 +16,7 @@ int main() {
     pokemonData dataChen = getPokemonData("A1#005");
     Pokemon bulbizarre = Pokemon(dataBulb);
     Pokemon chenipan = Pokemon(dataChen);
-
+    std::cout << bulbizarre.name() << std::endl;
 //    Deck deck1({Card(bulbizarre), Card(chenipan)});
     Deck deck1 = getDeck("db/data/decks/deck1.json");
     Deck deck2 = getDeck("db/data/decks/deck1.json");

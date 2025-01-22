@@ -105,7 +105,7 @@ unsigned int Bench::find(Pokemon& pokemon) const{
 
 void Bench::printBench() const{
     for (unsigned int i = 0; i < 3; i++) {
-        if (_cards[i] != NULL) {
+        if (_cards[i] != nullptr) {
             std::cout << "Emplacement " << i << ": " << _cards[i]->name() << std::endl;
         } else {
             std::cout << "Emplacement " << i << ": vide" << std::endl;

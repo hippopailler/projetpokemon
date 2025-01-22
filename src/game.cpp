@@ -67,6 +67,8 @@ void Game::chooseAction() {
     std::cout << "3. Attaquer\n";
     std::cout << "4. Finir le tour\n";
     int choice = 0;
+//    std::cout << "Pokemon actif : " << _players[_activePlayer]->activePokemon()->maxHP() << std::endl;
+//    std::cout << "Pokemon actif : " << _players[_activePlayer]->activePokemon()->name() << std::endl;
     do {
         std::cout << "Choisissez votre action :";
         std::cin >> choice;
@@ -116,6 +118,7 @@ void Game::placeActivePokemon(int player){
     } while ( (choice < 0 || choice > 5) && !_players[player]->hand()->cards()[choice]->isPokemon());
     const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
+    std::cout << "Pokemon choisi : " << chosenPokemon->name() << std::endl;
     _players[player]->placeActivePokemon(*chosenPokemon, _turn);
     _players[player]->hand()->removeCard(choice);
 }
@@ -124,6 +127,7 @@ void Game::evolvePokemon(){
     // choix du pkm à évoluer
     unsigned int choice;
     std::cout << "Choisissez le pokémon à faire évoluer :\n";
+    //std::cout <<_players[_activePlayer]->activePokemon()->name()<< std::endl;
     _players[_activePlayer]->printBoard();
     do {
         std::cout << "Choisissez le pokémon à faire évoluer :";
