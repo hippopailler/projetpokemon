@@ -94,7 +94,7 @@ void Player::printHand() const {
     _hand->printHand();
 }
 
-void Player::printBoard() const {
+void Player::showBoard() const {
     std::cout << "Pokemon actif : " << _activePokemon->name() << " : "
         << _activePokemon->hp() << "/" << _activePokemon->maxHP() << " PV" << std::endl;
     _bench->printBench();
@@ -110,8 +110,4 @@ Hand* Player::hand() {
 
 Deck* Player::deck() {
     return _deck;
-}
-
-Bench& Player::bench() {
-    return *_bench;
 }

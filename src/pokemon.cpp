@@ -52,19 +52,7 @@ void Pokemon::heal(unsigned int amount){
     _hp + amount > _data.hp ? _hp = _data.hp : _hp += amount;
 }
 
-void Pokemon::onPlayed(unsigned int turn){
-    _turnPlayed = turn;
-}
-
-bool Pokemon::canEvolve(Pokemon& pokemon, unsigned int turn){
-    return (_data.evolveFrom.has_value() && _data.evolveFrom.value() == pokemon.name() && turn > _turnPlayed);
-}
-
-void Pokemon::evolve(Pokemon& pokemon, unsigned int turn){
-    unsigned int deltaHP = missingHP();
-    _data = pokemon._data;
-    _hp = _data.hp - deltaHP;
-    _energyAttached = energyList();
+void Pokemon::onPlayed(int turn){
     _turnPlayed = turn;
 }
 
@@ -104,8 +92,4 @@ typeEnergy Pokemon::weakness() const{
 
 int Pokemon::turnPlayed() const{
     return _turnPlayed;
-}
-
-unsigned int Pokemon::missingHP() const{
-    return _data.hp - _hp;
 }

@@ -33,12 +33,11 @@ void mulligan();
 // Accesseur
 typeEnergy randomEnergy() const;
 void printHand() const;
-void printBoard() const;
+void showBoard() const;
 
 Pokemon* activePokemon();
 Hand* hand();
 Deck* deck();
-Bench& bench();
 
 private:
     Deck* _deck;
