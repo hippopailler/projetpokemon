@@ -2,7 +2,7 @@
 #include <iostream>
 
 Player::Player(Deck& deck)
-    : _deck(&deck), _hand(new Hand()), _activePokemon(NULL), _bench(new Bench()), _victoryPoints(0) {}
+    : _deck(&deck), _hand(new Hand()), _activePokemon(NULL), _bench(), _victoryPoints(0) {}
 
 // Mutateurs
 void Player::shuffleDeck() {
@@ -58,7 +58,6 @@ void Player::activeDamaged(unsigned int damage, typeEnergy energy) {
 
 // void heal(Pokemon& pokemon, unsigned int amount);
 void Player::attachEnergyActive(typeEnergy type) {
-    std::cout << _activePokemon->name() << std::endl;
     _activePokemon->attachEnergy(type);
 }
 
@@ -96,7 +95,7 @@ void Player::printHand() const {
 }
 
 void Player::printBoard() const {
-    std::cout << "Pokemon actif : ça marche pas somehow"
+    std::cout << "Pokemon actif : " << _activePokemon->name() << " : "
         << _activePokemon->hp() << "/" << _activePokemon->maxHP() << " PV" << std::endl;
     _bench->printBench();
 }
