@@ -12,6 +12,7 @@ enum class cardClass{
 class Card{
 public:
     Card(cardClass cardType) : _cardType(cardType) {}
+    virtual ~Card() = default;
 
     bool isPokemon() const{
         return _cardType == cardClass::POKEMON;

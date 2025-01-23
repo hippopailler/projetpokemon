@@ -58,6 +58,10 @@ void Bench::healBench(unsigned int amount, unsigned int index){
     }
 }
 
+Pokemon* Bench::getCard(unsigned int index) const{
+    return _cards[index];
+}
+
 // Accesseurs
 std::array<Pokemon*, 3> Bench::cards() const{
     return _cards;

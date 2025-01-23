@@ -52,8 +52,16 @@ void Pokemon::heal(unsigned int amount){
     _hp + amount > _data.hp ? _hp = _data.hp : _hp += amount;
 }
 
-void Pokemon::onPlayed(int turn){
+void Pokemon::onPlayed(unsigned int turn){
     _turnPlayed = turn;
+}
+
+void Pokemon::evolve(Pokemon* evolution, unsigned int turn){
+    unsigned int missingHP = _data.hp - _hp;
+    _data = evolution->_data;
+    _hp = evolution->_hp - missingHP;
+    _turnPlayed = turn;
+    delete evolution;
 }
 
 // Accesseurs
@@ -92,4 +100,24 @@ typeEnergy Pokemon::weakness() const{
 
 int Pokemon::turnPlayed() const{
     return _turnPlayed;
+}
+
+unsigned int Pokemon::missingHP() const{
+    return _data.hp - _hp;
+}
+
+bool Pokemon::canEvolve(unsigned int turn, std::string name){
+    if (turn <= _turnPlayed){
+        std::cout << "Il faut attendre un tour pour évoluer\n";
+        return false;
+    }
+    if (_data.name == name){
+        return true;
+    }
+    std::cout << "Les pokemons ne sont pas compatibles\n";
+    return false;
+}
+
+std::optional <std::string> Pokemon::evolveFrom() const{
+    return _data.evolveFrom;
 }

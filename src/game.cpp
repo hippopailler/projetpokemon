@@ -66,11 +66,12 @@ void Game::chooseAction() {
     std::cout << "1. Attacher une énergie\n";
     std::cout << "2. Attaquer\n";
     std::cout << "3. Finir le tour\n";
+    std::cout << "4. Evoluer\n";
     int choice = 0;
     do {
         std::cout << "Choisissez votre action :";
         std::cin >> choice;
-    } while (choice < 1 || choice > 3);
+    } while (choice < 1 || choice > 4);
     switch (choice){
     case 1:{
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
@@ -84,9 +85,14 @@ void Game::chooseAction() {
         attack(move);
         break;
     }
-    case 3:
+    case 3:{
         endTurn();
         break;
+    }
+    case 4:{
+        evolve();
+        break;
+    }
     default:
         break;
     }
@@ -140,12 +146,12 @@ void Game::evolve(){
         std::cin >> choice;
     } while (choice > 5);
 
-    //Pokemon* toEvolve;
+    Pokemon* toEvolve;
     if (choice == 0){
-        //toEvolve = _players[_activePlayer]->activePokemon();
+        toEvolve = _players[_activePlayer]->activePokemon();
     } else {
         if (_players[_activePlayer]->bench()->pokemonInSlot(choice-1)){
-            //toEvolve = _players[_activePlayer]->bench()->getCard(choice-1);
+            toEvolve = _players[_activePlayer]->bench()->getCard(choice-1);
         } else {
             std::cout << "Il n'y a pas de pokémon à cet emplacement\n";
             return;
@@ -158,8 +164,17 @@ void Game::evolve(){
         std::cin >> choice;
     } while (choice > _players[_activePlayer]->hand()->size());
 
-    //std::unique_ptr<Card> chosenCard = std::move(_players[_activePlayer]->hand()->cards()[choice]);
+    std::unique_ptr<Card> card = _players[_activePlayer]->hand()->takeCard(choice);
+    Pokemon* evolution = dynamic_cast<Pokemon*>(card.get());
 
+    // evolution
+    if (evolution->evolveFrom().has_value() && toEvolve->canEvolve(_turn, evolution->evolveFrom().value())){
+        toEvolve->evolve(evolution, _turn);
+        std::cout << "Le pokémon a évolué\n";
+    } else {
+        std::cout << "Pas d'évolution" << std::endl;
+        _players[_activePlayer]->hand()->addCard(std::move(card));
+    }
 
 }
 
