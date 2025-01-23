@@ -1,0 +1,17 @@
+{
+    "energyType": ["GRASS"],
+    "cardsList": [
+        {
+            "cardID": "A1#001",
+            "count": 2
+        },
+        {
+            "cardID": "A1#002",
+            "count": 2
+        },
+        {
+            "cardID": "A1#003",
+            "count": 2
+        }
+    ]
+}
