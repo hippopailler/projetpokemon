@@ -24,6 +24,7 @@ public:
     bool pokemonInSlot(unsigned int slot) const;
     unsigned int find(Pokemon& pokemon) const;
     void printBench() const;
+    Pokemon* getCard(unsigned int index) const;
 
 
 private:

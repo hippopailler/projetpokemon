@@ -10,6 +10,7 @@ class Hand {
 public:
     // Mutateurs
     void addCard(std::unique_ptr<Card> card);
+    std::unique_ptr<Card> takeCard(const int index);
     void removeCard(const int index);
     void handToDeck(Deck& deck);
 

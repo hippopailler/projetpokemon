@@ -2,7 +2,7 @@
 #include <iostream>
 
 Player::Player(Deck& deck)
-    : _deck(&deck), _hand(new Hand()), _activePokemon(NULL), _bench(), _victoryPoints(0) {}
+    : _deck(&deck), _hand(new Hand()), _activePokemon(NULL), _bench(new Bench()), _victoryPoints(0) {}
 
 // Mutateurs
 void Player::shuffleDeck() {
@@ -25,9 +25,21 @@ void Player::draw(unsigned int n) {
     }
 }
 
-void Player::placeActivePokemon(Pokemon& pokemon, int turn) {
-    _activePokemon = &pokemon;
-    pokemon.onPlayed(turn);
+void Player::placeActivePokemon(unsigned int index, int turn) {
+    if (index >= _hand->size()) {
+        std::cout << "Index invalide" << std::endl;
+        return;
+    }
+    std::unique_ptr<Card> card = _hand->takeCard(index);
+    Pokemon* pokemon = dynamic_cast<Pokemon*>(card.get());
+    if (pokemon) {
+        _activePokemon = pokemon;
+        pokemon->onPlayed(turn);
+        card.release(); // Release ownership since _activePokemon now owns the pokemon
+    } else {
+        std::cout << "La carte sélectionnée n'est pas un Pokemon" << std::endl;
+        _hand->addCard(std::move(card)); // Put the card back into the hand
+    }
 }
 
 void Player::placeOnBench(Pokemon& pokemon, int turn) {
@@ -95,7 +107,7 @@ void Player::printHand() const {
 }
 
 void Player::showBoard() const {
-    std::cout << "Pokemon actif : " << _activePokemon->name() << " : "
+    std::cout << "Pokemon actif : " << _activePokemon->name() << " "
         << _activePokemon->hp() << "/" << _activePokemon->maxHP() << " PV" << std::endl;
     _bench->printBench();
 }
@@ -110,4 +122,8 @@ Hand* Player::hand() {
 
 Deck* Player::deck() {
     return _deck;
+}
+
+Bench* Player::bench() {
+    return _bench;
 }

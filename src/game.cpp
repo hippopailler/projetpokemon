@@ -61,6 +61,7 @@ void Game::placeOnBench(Pokemon& pokemon){
 }
 
 void Game::chooseAction() {
+    _players[_activePlayer]->showBoard();
     std::cout << "Choisissez une action :\n";
     std::cout << "1. Attacher une énergie\n";
     std::cout << "2. Attaquer\n";
@@ -108,9 +109,9 @@ void Game::placeActivePokemon(int player){
         std::cout << "Choisissez votre pokemon actif :";
         std::cin >> choice;
     } while ( (choice < 0 || choice > 5) && !_players[player]->hand()->cards()[choice]->isPokemon());
-    const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
-    Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
-    _players[player]->placeActivePokemon(*chosenPokemon, _turn);
+    //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
+    //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
+    _players[player]->placeActivePokemon(choice, _turn);
     _players[player]->hand()->removeCard(choice);
 }
 
@@ -128,6 +129,38 @@ void Game::beginGame(){
     while (_winner == -1){
         beginTurn();
     }
+}
+
+void Game::evolve(){
+    // choix du pokemon à évoluer
+    unsigned int choice;
+    std::cout << "Choississez le pokémon à évoluer\n";
+    _players[_activePlayer]->showBoard();
+    do{
+        std::cin >> choice;
+    } while (choice > 5);
+
+    //Pokemon* toEvolve;
+    if (choice == 0){
+        //toEvolve = _players[_activePlayer]->activePokemon();
+    } else {
+        if (_players[_activePlayer]->bench()->pokemonInSlot(choice-1)){
+            //toEvolve = _players[_activePlayer]->bench()->getCard(choice-1);
+        } else {
+            std::cout << "Il n'y a pas de pokémon à cet emplacement\n";
+            return;
+        }
+    }
+    // choix de la carte d'évolution
+    std::cout << "Choisissez l'évolution\n";
+    _players[_activePlayer]->printHand();
+    do{
+        std::cin >> choice;
+    } while (choice > _players[_activePlayer]->hand()->size());
+
+    //std::unique_ptr<Card> chosenCard = std::move(_players[_activePlayer]->hand()->cards()[choice]);
+
+
 }
 
 // Accesseurs

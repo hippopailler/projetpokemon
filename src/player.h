@@ -16,7 +16,7 @@ public:
 void shuffleDeck();
 void draw();
 void draw(unsigned int amount);
-void placeActivePokemon(Pokemon& pokemon, int turn);
+void placeActivePokemon(unsigned int index, int turn);
 void placeOnBench(Pokemon& pokemon, int turn);
 void switchActive();
 void switchActive(unsigned int position);
@@ -38,6 +38,7 @@ void showBoard() const;
 Pokemon* activePokemon();
 Hand* hand();
 Deck* deck();
+Bench* bench();
 
 private:
     Deck* _deck;

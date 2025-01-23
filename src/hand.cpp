@@ -6,6 +6,12 @@ void Hand::addCard(std::unique_ptr<Card> card) {
     _cards.push_back(std::move(card));
 }
 
+std::unique_ptr<Card> Hand::takeCard(const int index) {
+    std::unique_ptr<Card> card = std::move(_cards[index]);
+    _cards.erase(_cards.begin() + index);
+    return card;
+}
+
 void Hand::removeCard(const int index) {
     _cards.erase(_cards.begin() + index);
 }

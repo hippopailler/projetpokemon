@@ -22,6 +22,7 @@ public:
     void beginTurn();
     void placeActivePokemon(int);
     void beginGame();
+    void evolve();
 
 // Accesseurs
     unsigned int turn() const;
