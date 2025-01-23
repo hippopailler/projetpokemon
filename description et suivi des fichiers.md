@@ -25,6 +25,12 @@ Pour l'instant il ne se passe pas grand chose car je viens de créer le github
 - changement de ce fichier en md pour pouvoir le formatter un peu
 - j'ai enlevé la brancheen trop et main.c++
 
+
+
+
+## Update du 01/01 : 
+- étude de la fenetre graphique 
+
 ## Update du 31/12
 - tous les fichiers de codes => dossier src
 - création d'une branche dev pour... dev
