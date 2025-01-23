@@ -1,6 +1,6 @@
 # Compilateur et options
 CC = g++
-CFLAGS = -std=c++17 -Icode -Wall -Werror
+CFLAGS = -std=c++20 -Icode -Wall -Werror
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Répertoires

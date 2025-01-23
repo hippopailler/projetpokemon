@@ -360,6 +360,10 @@ void Game::run() {
         if (event.key.code == sf::Keyboard::H) { // Touche H pour soigner en mettant des dégats négatifs
             attaque(1, -10); // 20 dégâts à la carte active de l'adversaire
         }
+        if(event.key.code == sf::Keyboard::E){
+            addEnergy("water",1);
+
+        }
 
         }
 }
