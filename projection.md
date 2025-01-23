@@ -60,7 +60,7 @@ En fait j'ai reréfléchi et plutôt qu'un tableau il vaudrait mieux utiliser un
 - fonction pioche
 	- fonction joue
 
-### Comportement de l'IA
+### Comportement de l'IA (tema l'IA facile type TCG, tranquille)
 oui oui tkt on va faire une turbo ia qui
 - si a un pokemon de base dans la main et de la place sur le terrain, joue
 - si peut faire évoluer un pokemon,
