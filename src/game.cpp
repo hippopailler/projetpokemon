@@ -61,7 +61,7 @@ void Game::placeOnBench(Pokemon& pokemon){
 }
 
 void Game::chooseAction() {
-    _players[_activePlayer]->showBoard();
+    //_players[_activePlayer]->showBoard();
     std::cout << "Choisissez une action :\n";
     std::cout << "1. Attacher une énergie\n";
     std::cout << "2. Attaquer\n";
@@ -91,6 +91,7 @@ void Game::chooseAction() {
     }
     case 4:{
         evolve();
+        chooseAction();
         break;
     }
     default:
@@ -173,6 +174,10 @@ void Game::evolve(){
         std::cout << "Le pokémon a évolué\n";
     } else {
         std::cout << "Pas d'évolution" << std::endl;
+        _players[_activePlayer]->hand()->addCard(std::move(card));
+    }
+    if(!evolution->evolveFrom().has_value()){
+        std::cout << "wtf\n";
         _players[_activePlayer]->hand()->addCard(std::move(card));
     }
 

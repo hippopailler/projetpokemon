@@ -12,7 +12,7 @@
 
 int main() {
 
-    pokemonData dataBulb = getPokemonData("A1#001");
+    pokemonData dataBulb = getPokemonData("A1#002");
     pokemonData dataChen = getPokemonData("A1#005");
     Pokemon bulbizarre = Pokemon(dataBulb);
     Pokemon chenipan = Pokemon(dataChen);
