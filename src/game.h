@@ -15,7 +15,7 @@ public:
     void attack(Move);
     void attachEnergyActive(typeEnergy);
     void attachEnergyBench(typeEnergy, unsigned int);
-    //void retreat(??);
+    void retreat();
     //fin de la game??
     void chooseAction();
     void beginTurn();

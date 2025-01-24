@@ -44,6 +44,7 @@ public:
     unsigned int hp() const;
     unsigned int maxHP() const;
     bool canUseMove(Move move);
+    bool canRetreat();
     energyList energyAttached();
     typeEnergy type();
     int turnPlayed() const;

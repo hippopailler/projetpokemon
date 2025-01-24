@@ -56,6 +56,23 @@ void Game::attachEnergyBench(typeEnergy energy, unsigned int slot){
     _players[_activePlayer]->attachEnergyBench(energy, slot);
 }
 
+void Game::retreat(){
+    if (_players[_activePlayer]->bench()->isEmpty()){
+        std::cout << "Le banc est vide\n";
+        return;
+    }
+    if (!_players[_activePlayer]->activePokemon()->canRetreat()){
+        std::cout << "Pas assez d'énergie pour battre en retraite\n";
+        return;
+    }
+    int choice = 0;
+    do {
+        std::cout << "Choisissez nouveau pokémon actif :";
+        std::cin >> choice;
+    } while (choice < 0 || choice > 3 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
+    _players[_activePlayer]->activePokemon()->detachEnergy(_players[_activePlayer]->activePokemon()->energyAttached());
+    _players[_activePlayer]->switchActive(choice);
+}
 
 void Game::chooseAction() {
     //_players[_activePlayer]->showBoard();
@@ -63,13 +80,14 @@ void Game::chooseAction() {
     std::cout << "1. Attacher une énergie\n";
     std::cout << "2. Evoluer\n";
     std::cout << "3. Placer un pokémon sur le banc\n";
-    std::cout << "4. Attaquer\n";
-    std::cout << "5. Finir le tour\n";
+    std::cout << "4. Battre en retraite\n";
+    std::cout << "5. Attaquer\n";
+    std::cout << "6. Finir le tour\n";
     int choice = 0;
     do {
         std::cout << "Choisissez votre action :";
         std::cin >> choice;
-    } while (choice < 1 || choice > 5);
+    } while (choice < 1 || choice > 6);
     switch (choice){
     case 1:{
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
@@ -88,12 +106,17 @@ void Game::chooseAction() {
         break;
     }
     case 4:{
+        retreat();
+        chooseAction();
+        break;
+    }
+    case 5:{
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
         Move move = activePokemon->chooseMove();
         attack(move);
         break;
     }
-    case 5:{
+    case 6:{
         endTurn();
         break;
     }
@@ -134,6 +157,7 @@ void Game::placePokemonOnBench(){
         std::cout << "Pas de pokémon de base en main\n";
         return;
     }
+    _players[_activePlayer]->printHand();
     int choice = 0;
     do {
         std::cout << "Choisissez le pokémon à placer sur le banc :";

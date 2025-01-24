@@ -60,10 +60,10 @@ void Player::switchActive() {
     switchActive(position);
 }
 
-void Player::switchActive(unsigned int position){
-    Pokemon* temp = _activePokemon;
-    _activePokemon = _bench->removeFromBench(position);
-    _bench->placeOnBench(*temp, position);
+void Player::switchActive(unsigned int position) {
+    std::unique_ptr<Pokemon> temp(_activePokemon);
+    _activePokemon = _bench->removeFromBench(position).release();
+    _bench->placeOnBench(std::move(temp), position);
 }
 
 void Player::activeDamaged(unsigned int damage, typeEnergy energy) {

@@ -2,6 +2,7 @@
 #define BENCH
 
 #include "pokemon.h"
+#include <memory>
 #include <array>
 class Bench{
 public:
@@ -10,7 +11,8 @@ public:
 // Mutateurs
     void placeOnBench(Pokemon&);
     void placeOnBench(Pokemon&, unsigned int);
-    Pokemon* removeFromBench(unsigned int);
+    void placeOnBench(std::unique_ptr<Pokemon>, unsigned int);
+    std::unique_ptr<Pokemon> removeFromBench(unsigned int);
     void attachEnergyBench(typeEnergy type, unsigned int slot);
     void attachEnergyBench(energyList energies, unsigned int slot);
     void healBench(unsigned int amount, unsigned int index);

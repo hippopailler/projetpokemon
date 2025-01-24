@@ -86,6 +86,10 @@ bool Pokemon::canUseMove(Move move){
     return (_energyAttached.enoughEnergy(move.cost()));
 }
 
+bool Pokemon::canRetreat(){
+    return (_energyAttached.enoughEnergy(_data.retreatCost));
+}
+
 energyList Pokemon::energyAttached(){
     return _energyAttached;
 }
