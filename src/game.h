@@ -15,12 +15,12 @@ public:
     void attack(Move);
     void attachEnergyActive(typeEnergy);
     void attachEnergyBench(typeEnergy, unsigned int);
-    void placeOnBench(Pokemon&);
     //void retreat(??);
     //fin de la game??
     void chooseAction();
     void beginTurn();
     void placeActivePokemon(int);
+    void placePokemonOnBench();
     void beginGame();
     void evolve();
 
