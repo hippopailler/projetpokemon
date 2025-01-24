@@ -27,6 +27,22 @@ energyList::energyList(const std::vector<typeEnergy> &energies){
         _energy[e]++;
 }
 
+std::string typeEnergyToString(const typeEnergy& type) {
+    switch (type) {
+        case COLORLESS: return "normale";
+        case GRASS: return "plante";
+        case FIRE: return "feu";
+        case WATER: return "eau";
+        case LIGHTING: return "électrique";
+        case PSYCHIC: return "psy";
+        case FIGHTING: return "combat";
+        case DARKNESS: return "ténèbre";
+        case METAL: return "métal";
+        case DRAGON: return "dragon";
+        default: return "inconnue";
+    }
+}
+
 // Accesseur
 // Renvoie le nombre total d'énergie
 int energyList::energyAmount() const{

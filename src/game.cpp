@@ -8,6 +8,7 @@ Game::Game(Player* player1, Player* player2) {
     _turn = 0;
     _energyPlayed = false;
     _winner = -1;
+    _energy = COLORLESS;
 }
 // Mutateur
 void Game::draw(){
@@ -90,8 +91,7 @@ void Game::chooseAction() {
     } while (choice < 1 || choice > 6);
     switch (choice){
     case 1:{
-        Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
-        attachEnergyActive(activePokemon->type()); //pour l'instant on attache la bonne énergie
+        attachEnergyActive(_energy);
         chooseAction();
         break;
     }
@@ -129,8 +129,8 @@ void Game::beginTurn(){
     std::cout << "Début du tour " << _turn+1 << " : c'est au joueur " << _activePlayer + 1
     << "de jouer"<< std::endl;
     draw();
-    typeEnergy energy = _players[_activePlayer]->randomEnergy();
-    std::cout << "Energie du tour " << energy << "\n";
+    _energy = _players[_activePlayer]->randomEnergy();
+    std::cout << "Energie du tour : " << typeEnergyToString(_energy) << "\n";
     _players[_activePlayer]->printHand();
     chooseAction();
 }

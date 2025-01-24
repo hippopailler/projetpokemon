@@ -34,6 +34,7 @@ private:
     std::array<Player*, 2> _players;
     bool _energyPlayed;
     int _winner;
+    typeEnergy _energy;
 };
 
 #endif
