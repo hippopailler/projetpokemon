@@ -48,6 +48,10 @@ void Game::attachEnergyActive(typeEnergy energy){
         std::cout << "Impossible d'attacher plusieurs énergie par tour\n";
         return;
     }
+    if (_turn == 0){
+        std::cout << "Impossible d'attacher de l'énergie au premier tour\n";
+        return;
+    }
     _players[_activePlayer]->attachEnergyActive(energy);
     std::cout << "Energie attachée\n";
     _energyPlayed = true;
@@ -111,6 +115,11 @@ void Game::chooseAction() {
         break;
     }
     case 5:{
+        if (_turn == 0){
+            std::cout << "Impossible d'attaquer au premier tour\n";
+            chooseAction();
+            break;
+        }
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
         Move move = activePokemon->chooseMove();
         attack(move);
