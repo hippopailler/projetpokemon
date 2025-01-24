@@ -163,7 +163,7 @@ void Game::evolve(){
     _players[_activePlayer]->printHand();
     do{
         std::cin >> choice;
-    } while (choice > _players[_activePlayer]->hand()->size());
+    } while (choice >= _players[_activePlayer]->hand()->size());
 
     std::unique_ptr<Card> card = _players[_activePlayer]->hand()->takeCard(choice);
     Pokemon* evolution = dynamic_cast<Pokemon*>(card.get());
@@ -172,15 +172,11 @@ void Game::evolve(){
     if (evolution->evolveFrom().has_value() && toEvolve->canEvolve(_turn, evolution->evolveFrom().value())){
         toEvolve->evolve(evolution, _turn);
         std::cout << "Le pokémon a évolué\n";
+        card.release();
     } else {
         std::cout << "Pas d'évolution" << std::endl;
         _players[_activePlayer]->hand()->addCard(std::move(card));
     }
-    if(!evolution->evolveFrom().has_value()){
-        std::cout << "wtf\n";
-        _players[_activePlayer]->hand()->addCard(std::move(card));
-    }
-
 }
 
 // Accesseurs

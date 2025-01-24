@@ -61,7 +61,7 @@ void Pokemon::evolve(Pokemon* evolution, unsigned int turn){
     _data = evolution->_data;
     _hp = evolution->_hp - missingHP;
     _turnPlayed = turn;
-    delete evolution;
+    //delete evolution;
 }
 
 // Accesseurs
@@ -120,4 +120,8 @@ bool Pokemon::canEvolve(unsigned int turn, std::string name){
 
 std::optional <std::string> Pokemon::evolveFrom() const{
     return _data.evolveFrom;
+}
+
+bool Pokemon::isBasic() const{
+    return !_data.evolveFrom.has_value();
 }

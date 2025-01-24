@@ -36,6 +36,15 @@ bool Hand::hasPokemonCard() const {
     return false;
 }
 
+bool Hand::hasBasicPokemonCard() const {
+    for (const auto& card : _cards) {
+        if (dynamic_cast<Pokemon*>(card.get())->isBasic()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Hand::printHand() const {
     std::cout << "Main :\n";
     for (unsigned int i = 0; i < _cards.size(); i++) {

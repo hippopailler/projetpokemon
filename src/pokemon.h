@@ -50,6 +50,7 @@ public:
     unsigned int missingHP() const;
     bool canEvolve(unsigned int, std::string);
     std::optional<std::string> evolveFrom() const;
+    bool isBasic() const;
 
 private:
     pokemonData _data;
