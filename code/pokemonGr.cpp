@@ -1,4 +1,4 @@
-#include "pokemon.h"
+#include "pokemonGr.h"
 #include <iostream>
 
 Pokemon::Pokemon(const std::string& name, int hp, const std::string& type)
@@ -20,7 +20,7 @@ void Pokemon::addMove(const Move& move) {
     moves.push_back(move); // Ajouter une attaque à la liste
 }
 
-Move Pokemon::chooseMove() {
+Move Pokemon::chooseMoveGr() {
     std::cout << "Choisissez une attaque pour " << name << " :\n";
     for (size_t i = 0; i < moves.size(); ++i) {
         std::cout << i + 1 << ". " << moves[i].getName() << " (Puissance: " << moves[i].getPower() << ")\n";
@@ -35,12 +35,12 @@ Move Pokemon::chooseMove() {
     return moves[choice - 1];
 }
 
-int Pokemon::attackWithMove(Move move) {
+int Pokemon::attackWithMoveGr(Move move) {
     std::cout << name << " utilise " << move.getName() << " !\n";
     return move.getPower() ; // Puissance de l'attaque + bonus d'attaque à gérer plus tard selon le type
 }
 
-bool Pokemon::isFainted() const {
+bool Pokemon::isFaintedGr() const {
     return hp <= 0;
 }
 

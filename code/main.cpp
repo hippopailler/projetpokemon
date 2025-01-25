@@ -40,8 +40,8 @@
     return 0;
 }
 */
-
-#include "GameRender.h"
+/*
+#include "GameRenderGr.h"
 #include <unistd.h>
 
 
@@ -51,4 +51,4 @@ int main() {
     game.run(); // Démarre la boucle principale du jeu
 
     return 0;
-}
+}*/

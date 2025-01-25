@@ -1,5 +1,5 @@
-#ifndef StatusManager_H
-#define StatusManager_H
+#ifndef STATUSMANAGERGR_H
+#define STATUSMANAGERGR_H
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
@@ -69,4 +69,4 @@ public:
     
 };
 
-#endif // STATUSMANAGER_H
+#endif // STATUSMANAGERGR_H

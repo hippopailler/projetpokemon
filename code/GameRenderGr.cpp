@@ -1,8 +1,8 @@
-#include "GameRender.h"
-#include "CardManager.h"
+#include "GameRenderGr.h"
+#include "CardManagerGr.h"
 #include <iostream>
-#include "EnergyManager.h"
-#include "StatusManager.h"
+#include "EnergyManagerGr.h"
+#include "StatusManagerGr.h"
 
 CardManager::Card Adversaire;
 sf::RectangleShape playerBenchZone; // Zone bleue pour le joueur
@@ -331,6 +331,66 @@ void Game::attaque(int attackerIndex, int damage) {
     }
 }
 
+void Game::handleKeyPress(sf::Keyboard::Key key) {
+    switch (key) {
+        case sf::Keyboard::Space:
+            switchCard(1, 3); // Exemple : changement de carte
+            break;
+        case sf::Keyboard::A:
+            addCard("Riolu", 12, 70); // Ajout d'une carte
+            break;
+        case sf::Keyboard::B:
+            attaque(5, 20); // Attaque avec 20 dégâts
+            break;
+        case sf::Keyboard::S:
+            attaque(1, 20); // Une autre attaque
+            break;
+        case sf::Keyboard::H:
+            attaque(1, -10); // Soin (dégâts négatifs)
+            break;
+        case sf::Keyboard::E:
+            addEnergy("water", 1); // Ajout d'énergie
+            break;
+        default:
+            std::cout << "Touche non attribuée." << std::endl;
+            break;
+    }
+}
+
+void Game::renderWindow() {
+    window.clear();
+    window.draw(backgroundSprite); // Dessiner le fond
+
+    // Dessiner les zones de banc
+    window.draw(playerBenchZone);
+    window.draw(opponentBenchZone);
+
+    for (const auto& card : playerHand) {
+        window.draw(card.sprite); // Dessiner chaque carte
+    }
+
+    for (const auto& card : opponentHand) {
+        window.draw(card);
+    }
+
+    // Dessiner les points de vie
+    window.draw(playerHPText);
+    window.draw(opponentHPText);
+
+    for (const auto& energy : EnergyPlayer) {
+        window.draw(energy.sprite);
+    }
+
+    for (const auto& status : StatusPlayer) {
+        window.draw(status.sprite);
+    }
+    for (const auto& status : StatusEnnemy) {
+        window.draw(status.sprite);
+    }
+
+    window.display();
+}
+
 void Game::run() {
     while (window.isOpen()) {
         sf::Event event;
@@ -339,73 +399,13 @@ void Game::run() {
                 window.close();
             } else if (event.type == sf::Event::MouseButtonPressed) {
                 handleMouseClick(event.mouseButton);
+            } else if (event.type == sf::Event::KeyPressed) {
+                handleKeyPress(event.key.code); // Appel d'une fonction dédiée
             }
-            if(event.type == sf::Event::KeyPressed){
-                if(event.key.code == sf::Keyboard::Space){
-                    switchCard(1,3);
-                }
-            }
-            if(event.type == sf::Event::KeyPressed){
-                if(event.key.code == sf::Keyboard::A){
-                    addCard("Riolu", 12,70);
-                }
-            }
-            if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::B) { // Touche A pour attaquer l'adversaire
-            attaque(5, 20); // 20 dégâts à la carte active de l'adversaire
-        } 
-        if (event.key.code == sf::Keyboard::S) { // Touche A pour attaquer l'adversaire
-            attaque(1, 20); // 20 dégâts à la carte active de l'adversaire
-        }
-        if (event.key.code == sf::Keyboard::H) { // Touche H pour soigner en mettant des dégats négatifs
-            attaque(1, -10); // 20 dégâts à la carte active de l'adversaire
-        }
-        if(event.key.code == sf::Keyboard::E){
-            addEnergy("water",1);
-
         }
 
-        }
-}
-
-        
-
-        window.clear();
-        window.draw(backgroundSprite); // Dessiner le fond
-
-        // Dessiner les zones de banc
-        window.draw(playerBenchZone);
-        window.draw(opponentBenchZone);
-
-        for (const auto& card : playerHand) {
-            window.draw(card.sprite); // Dessiner chaque carte
-        }
-
-        
-        
-        // Dessiner la main de l'adversaire
-        for (const auto& card : opponentHand) {
-            window.draw(card);
-        }
-        //window.draw(MainCard.sprite);
-        //window.draw(Adversaire.sprite);
-
-        // Dessiner les points de vie
-        window.draw(playerHPText);
-        window.draw(opponentHPText);
-
-        for (const auto& energy : EnergyPlayer) {
-            window.draw(energy.sprite);
-        }
-
-
-        for (const auto& status : StatusPlayer) {
-            window.draw(status.sprite);
-        }
-        for(const auto& status : StatusEnnemy){
-            window.draw(status.sprite);
-        }
-        window.display();
+        // Dessiner la fenêtre
+        renderWindow();
     }
 }
 

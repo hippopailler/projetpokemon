@@ -1,11 +1,11 @@
-#ifndef CARDMANAGER_H
-#define CARDMANAGER_H
+#ifndef CARDMANAGERGR_H
+#define CARDMANAGERGR_H
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include "EnergyManager.h"
+#include "EnergyManagerGr.h"
 
 class CardManager {
 public:

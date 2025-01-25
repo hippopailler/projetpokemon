@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYERGR_H
+#define PLAYERGR_H
 
 #include <string>
 

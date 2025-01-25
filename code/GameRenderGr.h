@@ -3,10 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Player.h"
-#include "CardManager.h"
-#include "StatusManager.h"
-#include "EnergyManager.h"
+#include "PlayerGr.h"
+#include "CardManagerGr.h"
+#include "StatusManagerGr.h"
+#include "EnergyManagerGr.h"
 
 
 
@@ -14,6 +14,10 @@ class Game {
 public:
     Game();
     void run();
+
+    void renderWindow();
+
+    void handleKeyPress(sf::Keyboard::Key key);
 
     void positionEnergy(sf::Sprite &sprite, int index, std::vector<EnergyManager::Energy> EnergyPlayer);
 

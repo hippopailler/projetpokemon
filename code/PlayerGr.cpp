@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "PlayerGr.h"
 
 Player::Player(const std::string& name) : name(name) {}
 Player::Player() : name("Default Player") {}
