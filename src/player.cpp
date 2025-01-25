@@ -42,9 +42,12 @@ void Player::placeActivePokemon(unsigned int index, int turn) {
     }
 }
 
-void Player::placeOnBench(Pokemon& pokemon, int turn) {
-    _bench->placeOnBench(pokemon);
-    pokemon.onPlayed(turn);
+void Player::placePokemonOnBench(unsigned int index, int turn) {
+    std::unique_ptr<Card> card = _hand->takeCard(index);
+    Pokemon* pokemon = dynamic_cast<Pokemon*>(card.get());
+    _bench->placeOnBench(*pokemon);
+    pokemon->onPlayed(turn);
+    card.release(); 
 }
 
 void Player::switchActive() {
@@ -57,10 +60,10 @@ void Player::switchActive() {
     switchActive(position);
 }
 
-void Player::switchActive(unsigned int position){
-    Pokemon* temp = _activePokemon;
-    _activePokemon = _bench->removeFromBench(position);
-    _bench->placeOnBench(*temp, position);
+void Player::switchActive(unsigned int position) {
+    std::unique_ptr<Pokemon> temp(_activePokemon);
+    _activePokemon = _bench->removeFromBench(position).release();
+    _bench->placeOnBench(std::move(temp), position);
 }
 
 void Player::activeDamaged(unsigned int damage, typeEnergy energy) {

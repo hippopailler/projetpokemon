@@ -19,6 +19,7 @@ enum typeEnergy{
 };
 
 typeEnergy stringToTypeEnergy(const std::string& type);
+std::string typeEnergyToString(const typeEnergy& type);
 
 class energyList{
 public:

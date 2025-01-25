@@ -50,7 +50,7 @@ pokemonData findPokemonInFile(const std::string& filename, const std::string& ca
             data.hp = item["hp"];
             data.type = stringToTypeEnergy(item["type"]);
             data.weakness = stringToTypeEnergy(item["weakness"]);
-            data.evolveFrom = item.contains("evolveFrom") ? std::optional<std::string>(item["evolveFrom"].get<std::string>()) : std::nullopt;
+            data.evolveFrom = item.contains("evolvesFrom") ? std::optional<std::string>(item["evolvesFrom"].get<std::string>()) : std::nullopt;
 
             // Coût de retraite
             data.retreatCost = parseEnergyList(item["retreatCost"]);

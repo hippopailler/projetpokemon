@@ -61,7 +61,7 @@ void Pokemon::evolve(Pokemon* evolution, unsigned int turn){
     _data = evolution->_data;
     _hp = evolution->_hp - missingHP;
     _turnPlayed = turn;
-    delete evolution;
+    //delete evolution;
 }
 
 // Accesseurs
@@ -84,6 +84,10 @@ unsigned int Pokemon::maxHP() const {
 
 bool Pokemon::canUseMove(Move move){
     return (_energyAttached.enoughEnergy(move.cost()));
+}
+
+bool Pokemon::canRetreat(){
+    return (_energyAttached.enoughEnergy(_data.retreatCost));
 }
 
 energyList Pokemon::energyAttached(){
@@ -120,4 +124,8 @@ bool Pokemon::canEvolve(unsigned int turn, std::string name){
 
 std::optional <std::string> Pokemon::evolveFrom() const{
     return _data.evolveFrom;
+}
+
+bool Pokemon::isBasic() const{
+    return !_data.evolveFrom.has_value();
 }

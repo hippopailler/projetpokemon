@@ -23,14 +23,22 @@ void Bench::placeOnBench(Pokemon& pokemon, unsigned int index){
     }
 }
 
-Pokemon* Bench::removeFromBench(unsigned int index){
+void Bench::placeOnBench(std::unique_ptr<Pokemon> pokemon, unsigned int index){
+    if (_cards[index] == NULL) {
+        _cards[index] = pokemon.release();
+    } else {
+        std::cout << "Il y a déjà un pokémon sur l'emplacement " << index << std::endl;
+    }
+}
+
+std::unique_ptr<Pokemon> Bench::removeFromBench(unsigned int index){
     if (_cards[index] != NULL) {
-        Pokemon* card = _cards[index];
+        std::unique_ptr<Pokemon> pokemon(_cards[index]);
         _cards[index] = NULL;
-        return card;
+        return pokemon;
     } else {
         std::cout << "Il n'y a pas de pokémon sur l'emplacement " << index << std::endl;
-        return NULL;
+        return nullptr;
     }
 }
 

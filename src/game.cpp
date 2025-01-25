@@ -8,6 +8,7 @@ Game::Game(Player* player1, Player* player2) {
     _turn = 0;
     _energyPlayed = false;
     _winner = -1;
+    _energy = COLORLESS;
 }
 // Mutateur
 void Game::draw(){
@@ -47,6 +48,10 @@ void Game::attachEnergyActive(typeEnergy energy){
         std::cout << "Impossible d'attacher plusieurs énergie par tour\n";
         return;
     }
+    if (_turn == 0){
+        std::cout << "Impossible d'attacher de l'énergie au premier tour\n";
+        return;
+    }
     _players[_activePlayer]->attachEnergyActive(energy);
     std::cout << "Energie attachée\n";
     _energyPlayed = true;
@@ -56,41 +61,72 @@ void Game::attachEnergyBench(typeEnergy energy, unsigned int slot){
     _players[_activePlayer]->attachEnergyBench(energy, slot);
 }
 
-void Game::placeOnBench(Pokemon& pokemon){
-    _players[_activePlayer]->placeOnBench(pokemon, _turn);
+void Game::retreat(){
+    if (_players[_activePlayer]->bench()->isEmpty()){
+        std::cout << "Le banc est vide\n";
+        return;
+    }
+    if (!_players[_activePlayer]->activePokemon()->canRetreat()){
+        std::cout << "Pas assez d'énergie pour battre en retraite\n";
+        return;
+    }
+    int choice = 0;
+    do {
+        std::cout << "Choisissez nouveau pokémon actif :";
+        std::cin >> choice;
+    } while (choice < 0 || choice > 3 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
+    _players[_activePlayer]->activePokemon()->detachEnergy(_players[_activePlayer]->activePokemon()->energyAttached());
+    _players[_activePlayer]->switchActive(choice);
 }
 
 void Game::chooseAction() {
-    _players[_activePlayer]->showBoard();
+    //_players[_activePlayer]->showBoard();
     std::cout << "Choisissez une action :\n";
     std::cout << "1. Attacher une énergie\n";
-    std::cout << "2. Attaquer\n";
-    std::cout << "3. Finir le tour\n";
-    std::cout << "4. Evoluer\n";
+    std::cout << "2. Evoluer\n";
+    std::cout << "3. Placer un pokémon sur le banc\n";
+    std::cout << "4. Battre en retraite\n";
+    std::cout << "5. Attaquer\n";
+    std::cout << "6. Finir le tour\n";
     int choice = 0;
     do {
         std::cout << "Choisissez votre action :";
         std::cin >> choice;
-    } while (choice < 1 || choice > 4);
+    } while (choice < 1 || choice > 6);
     switch (choice){
     case 1:{
-        Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
-        attachEnergyActive(activePokemon->type()); //pour l'instant on attache la bonne énergie
+        attachEnergyActive(_energy);
         chooseAction();
         break;
     }
     case 2:{
+        evolve();
+        chooseAction();
+        break;
+    }
+    case 3:{
+        placePokemonOnBench();
+        chooseAction();
+        break;
+    }
+    case 4:{
+        retreat();
+        chooseAction();
+        break;
+    }
+    case 5:{
+        if (_turn == 0){
+            std::cout << "Impossible d'attaquer au premier tour\n";
+            chooseAction();
+            break;
+        }
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
         Move move = activePokemon->chooseMove();
         attack(move);
         break;
     }
-    case 3:{
+    case 6:{
         endTurn();
-        break;
-    }
-    case 4:{
-        evolve();
         break;
     }
     default:
@@ -102,8 +138,8 @@ void Game::beginTurn(){
     std::cout << "Début du tour " << _turn+1 << " : c'est au joueur " << _activePlayer + 1
     << "de jouer"<< std::endl;
     draw();
-    typeEnergy energy = _players[_activePlayer]->randomEnergy();
-    std::cout << "Energie du tour " << energy << "\n";
+    _energy = _players[_activePlayer]->randomEnergy();
+    std::cout << "Energie du tour : " << typeEnergyToString(_energy) << "\n";
     _players[_activePlayer]->printHand();
     chooseAction();
 }
@@ -113,18 +149,37 @@ void Game::placeActivePokemon(int player){
     do {
         std::cout << "Choisissez votre pokemon actif :";
         std::cin >> choice;
-    } while ( (choice < 0 || choice > 5) && !_players[player]->hand()->cards()[choice]->isPokemon());
+    } while ( (choice < 0 || choice > 5) || !_players[player]->hand()->cards()[choice]->isPokemon() || !dynamic_cast<Pokemon*>(_players[player]->hand()->cards()[choice].get())->isBasic());
     //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
     _players[player]->placeActivePokemon(choice, _turn);
     _players[player]->hand()->removeCard(choice);
 }
 
+void Game::placePokemonOnBench(){
+    if (_players[_activePlayer]->bench()->isFull()){
+        std::cout << "Le banc est plein\n";
+        return;
+    }
+    if (!_players[_activePlayer]->hand()->hasBasicPokemonCard()){
+        std::cout << "Pas de pokémon de base en main\n";
+        return;
+    }
+    _players[_activePlayer]->printHand();
+    int choice = 0;
+    do {
+        std::cout << "Choisissez le pokémon à placer sur le banc :";
+        std::cin >> choice;
+    } while ( (choice < 0 || choice > 5) || !_players[_activePlayer]->hand()->cards()[choice]->isPokemon());
+    _players[_activePlayer]->placePokemonOnBench(choice, _turn);
+    _players[_activePlayer]->hand()->removeCard(choice);
+}
+
 void Game::beginGame(){
     for (int i = 0; i < 2; i++){
         _players[i]->shuffleDeck();
         _players[i]->draw(5);
-        while (!_players[i]->hand()->hasPokemonCard()){
+        while (!_players[i]->hand()->hasBasicPokemonCard()){
             _players[i]->mulligan();
         }
         std::cout << "Joueur " << i+1 << ", choisissez un pokémon actif : \n";
@@ -161,7 +216,7 @@ void Game::evolve(){
     _players[_activePlayer]->printHand();
     do{
         std::cin >> choice;
-    } while (choice > _players[_activePlayer]->hand()->size());
+    } while (choice >= _players[_activePlayer]->hand()->size());
 
     std::unique_ptr<Card> card = _players[_activePlayer]->hand()->takeCard(choice);
     Pokemon* evolution = dynamic_cast<Pokemon*>(card.get());
@@ -170,11 +225,11 @@ void Game::evolve(){
     if (evolution->evolveFrom().has_value() && toEvolve->canEvolve(_turn, evolution->evolveFrom().value())){
         toEvolve->evolve(evolution, _turn);
         std::cout << "Le pokémon a évolué\n";
+        card.release();
     } else {
         std::cout << "Pas d'évolution" << std::endl;
         _players[_activePlayer]->hand()->addCard(std::move(card));
     }
-
 }
 
 // Accesseurs

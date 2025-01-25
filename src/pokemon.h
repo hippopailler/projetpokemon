@@ -44,12 +44,14 @@ public:
     unsigned int hp() const;
     unsigned int maxHP() const;
     bool canUseMove(Move move);
+    bool canRetreat();
     energyList energyAttached();
     typeEnergy type();
     int turnPlayed() const;
     unsigned int missingHP() const;
     bool canEvolve(unsigned int, std::string);
     std::optional<std::string> evolveFrom() const;
+    bool isBasic() const;
 
 private:
     pokemonData _data;
