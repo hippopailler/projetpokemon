@@ -29,23 +29,26 @@ void attachEnergyBench(typeEnergy type, unsigned int slot);
 void detachEnergyActive(energyList energies);
 void handToDeck();
 void mulligan();
+void gainPoints(unsigned int);
 
 // Accesseur
 typeEnergy randomEnergy() const;
 void printHand() const;
 void showBoard() const;
+bool hasWon() const;
 
 Pokemon* activePokemon();
 Hand* hand();
 Deck* deck();
 Bench* bench();
+unsigned int victoryPoints();
 
 private:
     Deck* _deck;
     Hand* _hand;
     Pokemon* _activePokemon;
     Bench* _bench;
-    int _victoryPoints;
+    unsigned int _victoryPoints;
 };
 
 #endif

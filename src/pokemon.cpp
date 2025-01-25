@@ -129,3 +129,7 @@ std::optional <std::string> Pokemon::evolveFrom() const{
 bool Pokemon::isBasic() const{
     return !_data.evolveFrom.has_value();
 }
+
+bool Pokemon::isEx() const{
+    return _data.isEx;
+}

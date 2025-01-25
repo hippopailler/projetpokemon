@@ -34,7 +34,14 @@ void Game::attack(Move move){
                 _winner = _activePlayer;
                 return;
             }
+            unsigned int point = opponentPokemon->isEx() ? 2:1;
+            _players[_activePlayer]->gainPoints(point);
+            if (_players[_activePlayer]->hasWon()){
+                _winner = _activePlayer;
+                return;
+            }
             _players[1 - _activePlayer]->switchActive();
+            _players[1 - _activePlayer]->activePokemon()->onPlayed(_turn);
         }
         endTurn();
         return;

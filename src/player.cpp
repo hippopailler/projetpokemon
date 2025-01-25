@@ -99,6 +99,10 @@ void Player::mulligan() {
     draw(5);
 }
 
+void Player::gainPoints(unsigned int points){
+    _victoryPoints += points;
+}
+
 // Accesseurs
 
 typeEnergy Player::randomEnergy() const {
@@ -119,6 +123,10 @@ Pokemon* Player::activePokemon() {
     return _activePokemon;
 }
 
+bool Player::hasWon() const {
+    return _victoryPoints >= 3;
+}
+
 Hand* Player::hand() {
     return _hand;
 }
@@ -129,4 +137,8 @@ Deck* Player::deck() {
 
 Bench* Player::bench() {
     return _bench;
+}
+
+unsigned int Player::victoryPoints(){
+    return _victoryPoints;
 }
