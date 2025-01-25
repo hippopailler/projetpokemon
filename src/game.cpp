@@ -29,8 +29,8 @@ void Game::attack(Move move){
         unsigned int dmg = activePokemon->attackWithMove(move);
         opponentPokemon->takeDamage(dmg);
         if (opponentPokemon->isFainted()){
-            std::cout << "Le pokemon adverse est KO\n";
-            if (!_players[1 - _activePlayer]->hand()->hasPokemonCard()){
+            std::cout << CYAN << "Le pokemon adverse est KO\n" << RESET;
+            if (_players[1 - _activePlayer]->bench()->isEmpty()){
                 _winner = _activePlayer;
                 return;
             }
@@ -46,21 +46,21 @@ void Game::attack(Move move){
         endTurn();
         return;
     }
-    std::cout<< "Pas assez d'énergie\n";
+    std::cout<< RED << "Pas assez d'énergie\n" << RESET;
     chooseAction();
 }
 
 void Game::attachEnergyActive(typeEnergy energy){
     if (_energyPlayed){
-        std::cout << "Impossible d'attacher plusieurs énergie par tour\n";
+        std::cout << RED << "Impossible d'attacher plusieurs énergie par tour\n" << RESET;
         return;
     }
     if (_turn == 0){
-        std::cout << "Impossible d'attacher de l'énergie au premier tour\n";
+        std::cout << RED <<"Impossible d'attacher de l'énergie au premier tour\n" << RESET;
         return;
     }
     _players[_activePlayer]->attachEnergyActive(energy);
-    std::cout << "Energie attachée\n";
+    std::cout << GREEN << "Energie attachée\n" << RESET;
     _energyPlayed = true;
 }
 
@@ -70,16 +70,16 @@ void Game::attachEnergyBench(typeEnergy energy, unsigned int slot){
 
 void Game::retreat(){
     if (_players[_activePlayer]->bench()->isEmpty()){
-        std::cout << "Le banc est vide\n";
+        std::cout << RED << "Le banc est vide\n" << RESET;
         return;
     }
     if (!_players[_activePlayer]->activePokemon()->canRetreat()){
-        std::cout << "Pas assez d'énergie pour battre en retraite\n";
+        std::cout << RED << "Pas assez d'énergie pour battre en retraite\n" << RESET;
         return;
     }
     int choice = 0;
     do {
-        std::cout << "Choisissez nouveau pokémon actif :";
+        std::cout << BLUE << "Choisissez nouveau pokémon actif :" << RESET;
         std::cin >> choice;
     } while (choice < 0 || choice > 3 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
     _players[_activePlayer]->activePokemon()->detachEnergy(_players[_activePlayer]->activePokemon()->energyAttached());
@@ -88,16 +88,18 @@ void Game::retreat(){
 
 void Game::chooseAction() {
     //_players[_activePlayer]->showBoard();
-    std::cout << "Choisissez une action :\n";
-    std::cout << "1. Attacher une énergie\n";
-    std::cout << "2. Evoluer\n";
-    std::cout << "3. Placer un pokémon sur le banc\n";
-    std::cout << "4. Battre en retraite\n";
-    std::cout << "5. Attaquer\n";
-    std::cout << "6. Finir le tour\n";
+    std::cout << MAGENTA << BOLD
+    << "Actions :\n" << RESET << MAGENTA
+    << "1. Attacher une énergie\n"
+    << "2. Evoluer\n"
+    << "3. Placer un pokémon sur le banc\n"
+    << "4. Battre en retraite\n"
+    << "5. Attaquer\n"
+    << "6. Finir le tour\n"
+    << RESET;
     int choice = 0;
     do {
-        std::cout << "Choisissez votre action :";
+        std::cout << BLUE << "Choisissez votre action :" << RESET;
         std::cin >> choice;
     } while (choice < 1 || choice > 6);
     switch (choice){
@@ -123,7 +125,7 @@ void Game::chooseAction() {
     }
     case 5:{
         if (_turn == 0){
-            std::cout << "Impossible d'attaquer au premier tour\n";
+            std::cout << RED << "Impossible d'attaquer au premier tour\n" << RESET;
             chooseAction();
             break;
         }
@@ -143,10 +145,10 @@ void Game::chooseAction() {
 
 void Game::beginTurn(){
     std::cout << "Début du tour " << _turn+1 << " : c'est au joueur " << _activePlayer + 1
-    << "de jouer"<< std::endl;
+    << " de jouer"<< std::endl;
     draw();
     _energy = _players[_activePlayer]->randomEnergy();
-    std::cout << "Energie du tour : " << typeEnergyToString(_energy) << "\n";
+    std::cout << "Energie du tour : " << BOLD << MAGENTA << typeEnergyToString(_energy) << RESET <<"\n";
     _players[_activePlayer]->printHand();
     chooseAction();
 }
@@ -154,7 +156,7 @@ void Game::beginTurn(){
 void Game::placeActivePokemon(int player){
     int choice = 0;
     do {
-        std::cout << "Choisissez votre pokemon actif :";
+        std::cout << BLUE << "Choisissez votre pokemon actif :" << RESET;
         std::cin >> choice;
     } while ( (choice < 0 || choice > 5) || !_players[player]->hand()->cards()[choice]->isPokemon() || !dynamic_cast<Pokemon*>(_players[player]->hand()->cards()[choice].get())->isBasic());
     //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
@@ -165,17 +167,17 @@ void Game::placeActivePokemon(int player){
 
 void Game::placePokemonOnBench(){
     if (_players[_activePlayer]->bench()->isFull()){
-        std::cout << "Le banc est plein\n";
+        std::cout << RED << "Le banc est plein\n" << RESET;
         return;
     }
     if (!_players[_activePlayer]->hand()->hasBasicPokemonCard()){
-        std::cout << "Pas de pokémon de base en main\n";
+        std::cout << RED << "Pas de pokémon de base en main\n" << RESET;
         return;
     }
     _players[_activePlayer]->printHand();
     int choice = 0;
     do {
-        std::cout << "Choisissez le pokémon à placer sur le banc :";
+        std::cout << BLUE << "Choisissez le pokémon à placer sur le banc :" << RESET;
         std::cin >> choice;
     } while ( (choice < 0 || choice > 5) || !_players[_activePlayer]->hand()->cards()[choice]->isPokemon());
     _players[_activePlayer]->placePokemonOnBench(choice, _turn);
@@ -196,11 +198,17 @@ void Game::beginGame(){
     while (_winner == -1){
         beginTurn();
     }
+    std::cout << "\nLe gagnant est le joueur " << _winner << std::endl;
 }
 
 void Game::evolve(){
     // choix du pokemon à évoluer
     unsigned int choice;
+    if (!_players[_activePlayer]->hand()->hasPokemonCard()){
+        std::cout << RED << "Pas de pokémon dans la main";
+        return;
+    }
+
     std::cout << "Choississez le pokémon à évoluer\n";
     _players[_activePlayer]->showBoard();
     do{
@@ -214,12 +222,12 @@ void Game::evolve(){
         if (_players[_activePlayer]->bench()->pokemonInSlot(choice-1)){
             toEvolve = _players[_activePlayer]->bench()->getCard(choice-1);
         } else {
-            std::cout << "Il n'y a pas de pokémon à cet emplacement\n";
+            std::cout << RED << "Il n'y a pas de pokémon à cet emplacement\n" << RESET;
             return;
         }
     }
     // choix de la carte d'évolution
-    std::cout << "Choisissez l'évolution\n";
+    std::cout << BLUE << "Choisissez l'évolution\n" << RESET;
     _players[_activePlayer]->printHand();
     do{
         std::cin >> choice;
@@ -231,10 +239,10 @@ void Game::evolve(){
     // evolution
     if (evolution->evolveFrom().has_value() && toEvolve->canEvolve(_turn, evolution->evolveFrom().value())){
         toEvolve->evolve(evolution, _turn);
-        std::cout << "Le pokémon a évolué\n";
+        std::cout << GREEN << "Le pokémon a évolué" << RESET << std::endl;
         card.release();
     } else {
-        std::cout << "Pas d'évolution" << std::endl;
+        std::cout << RED << "Pas d'évolution" << RESET << std::endl;
         _players[_activePlayer]->hand()->addCard(std::move(card));
     }
 }

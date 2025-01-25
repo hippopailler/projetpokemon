@@ -1,5 +1,6 @@
 #include "hand.h"
 #include "pokemon.h"
+#include "color.hpp"
 #include <iostream>
 
 void Hand::addCard(std::unique_ptr<Card> card) {
@@ -46,10 +47,11 @@ bool Hand::hasBasicPokemonCard() const {
 }
 
 void Hand::printHand() const {
-    std::cout << "Main :\n";
+    std::cout << YELLOW << BOLD << "Main :\n" << RESET << YELLOW;
     for (unsigned int i = 0; i < _cards.size(); i++) {
         std::cout << i << ". " << _cards[i]->name() << "\n";
     }
+    std::cout << RESET << std::endl;
 }
 
 unsigned int Hand::size() const {

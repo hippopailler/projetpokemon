@@ -5,6 +5,7 @@
 #include"move.h"
 #include"energy.h"
 #include"pokemon.h"
+#include"color.hpp"
 #include<array>
 
 class Game{

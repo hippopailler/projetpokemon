@@ -30,6 +30,7 @@ public:
     // Accesseur
     int energyAmount() const;
     bool enoughEnergy(const energyList& cost);
+    void print();
 
     // Mutateur
     void operator+=(const typeEnergy energy);

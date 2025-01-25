@@ -1,4 +1,5 @@
 #include "pokemon.h"
+#include "color.hpp"
 #include <iostream>
 
 Pokemon::Pokemon(pokemonData data) :
@@ -7,18 +8,20 @@ Pokemon::Pokemon(pokemonData data) :
 void Pokemon::takeDamage(const unsigned int damage) {
     unsigned int realDamage = damage > _hp ? _hp : damage;
     _hp -= realDamage;
-    std::cout << _data.name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n";
+    std::cout << RED << _data.name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n" << RESET;
 }
 
 Move Pokemon::chooseMove() {
     std::cout << "Choisissez une attaque pour " << _data.name << " :\n";
     for (size_t i = 0; i < _data.moves.size(); ++i) {
-        std::cout << i + 1 << ". " << _data.moves[i].getName() << " (Puissance: " << _data.moves[i].getPower() << ")\n";
+        std::cout << i + 1 << ". " << _data.moves[i].getName() << " (Puissance: " << _data.moves[i].getPower() << ")";
+        _data.moves[i].cost().print();
+        std::cout << "\n";
     }
 
     size_t choice;
     do {
-        std::cout << "Entrez le numéro de l'attaque : ";
+        std::cout << BLUE << "Entrez le numéro de l'attaque : " << RESET;
         std::cin >> choice;
     } while (choice < 1 || choice > _data.moves.size());
 
@@ -26,7 +29,7 @@ Move Pokemon::chooseMove() {
 }
 
 int Pokemon::attackWithMove(Move move) {
-    std::cout << _data.name << " utilise " << move.getName() << " !\n";
+    std::cout << YELLOW << _data.name << " utilise " << move.getName() << " !\n" << RESET;
     return move.getPower() ; // Puissance de l'attaque + bonus d'attaque à gérer plus tard selon le type
 }
 

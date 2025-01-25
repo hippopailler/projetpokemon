@@ -69,6 +69,12 @@ bool energyList::enoughEnergy(const energyList &cost){
     return(true);
 }
 
+void energyList::print(){
+    for (auto const x : _energy){
+        std::cout << " " << x.second << " énergies " << typeEnergyToString(x.first) << ",";
+    }
+}
+
 // Mutateur
 // ajout d'une énergie
 void energyList::operator+=(const typeEnergy energy){
