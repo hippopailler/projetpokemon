@@ -33,8 +33,8 @@ int main() {
     Pokemon bulbizarre = Pokemon(dataBulb);
     Pokemon chenipan = Pokemon(dataChen);
 
-    Deck deck1 = getDeck("/home/hippolyte/projet_c++/src/db/data/decks/deck1.json");
-    Deck deck2 = getDeck("/home/hippolyte/projet_c++/src/db/data/decks/deck1.json");
+    Deck deck1 = getDeck("./src/db/data/decks/deck1.json");
+    Deck deck2 = getDeck("./src/db/data/decks/deck1.json");
 
     Player player1(deck1);
     Player player2(deck2);
