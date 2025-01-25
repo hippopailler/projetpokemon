@@ -108,7 +108,6 @@ void Game::beginTurn(){
     chooseAction();
 }
 
-
 void Game::placeActivePokemon(int player){
     int choice = 0;
     do {

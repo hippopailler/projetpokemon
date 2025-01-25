@@ -1,33 +1,22 @@
-# Compilateur et options
 CC = g++
-CFLAGS = -std=c++20 -Icode -Wall -Werror
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS = -Wall -Werror
 
-# Répertoires
-SRCDIR = code
-OBJDIR = obj
-BINDIR = build
-ASSETS = assets
+SOURCES = bench.cpp deck.cpp hand.cpp player.cpp game.cpp energy.cpp move.cpp pokemon.cpp main.cpp
+OBJS = $(SOURCES:.cpp=.o) 
 
-# Fichiers
-SOURCES = $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
-EXECUTABLE = $(BINDIR)/pokemon_game
+EXECUTABLE = main.x
 
-# Règles
+.PHONY: all clean realclean
+
 all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	@mkdir -p $(BINDIR)
-	$(CC) $^ -o $@ $(LDFLAGS)
+$(EXECUTABLE): $(OBJS)
+	$(CC) -o $@ $^
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp 
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -rf $(OBJDIR) $(BINDIR)
+	rm -f $(OBJS)
 
-# Supprimer tout
 realclean: clean
-	rm -rf $(ASSETS)
