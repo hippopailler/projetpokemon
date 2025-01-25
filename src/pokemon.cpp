@@ -5,10 +5,8 @@ Pokemon::Pokemon(pokemonData data) :
     Card(cardClass::POKEMON), _data(data), _hp(data.hp), _energyAttached() {}
 
 void Pokemon::takeDamage(const unsigned int damage) {
-    _hp -= damage;
-    if (_hp < 0) {
-        _hp = 0; // Les points de vie ne peuvent pas être négatifs
-    }
+    unsigned int realDamage = damage > _hp ? _hp : damage;
+    _hp -= realDamage;
     std::cout << _data.name << " prend " << damage << " dégâts ! Il reste " << _hp << " HP.\n";
 }
 
