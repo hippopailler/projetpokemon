@@ -357,6 +357,7 @@ void GameGr::handleKeyPress(sf::Keyboard::Key key) {
     }
 }
 
+
 void GameGr::renderWindow() {
     window.clear();
     window.draw(backgroundSprite); // Dessiner le fond
