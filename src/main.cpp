@@ -19,9 +19,9 @@ void runLogic(Game& game) {
     game.beginGame();  // Lancer la logique
 }
 
-// Fonction pour la fenêtre graphique
+//Fonction pour la fenêtre graphique 
 void runGraphics(Game& game) {
-    GameRenderGr gameRender(&game);  // Initialise la fenêtre graphique avec la logique
+    GameGr gameRender;  // Initialise la fenêtre graphique avec la logique
     gameRender.updateActiveHPTexts();  // Synchronise les textes
     gameRender.run();  // Démarre la boucle principale graphique
 }

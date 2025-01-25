@@ -16,7 +16,7 @@ std::vector<StatusManager::Status> StatusPlayer;
 std::vector<StatusManager::Status> StatusEnnemy;
 
 
-Game::Game()
+GameGr::GameGr()
     : window(sf::VideoMode(1000, 1000), "Pokemon") {
     window.setPosition(sf::Vector2i(500,0));
     // Chargement du fond
@@ -57,7 +57,7 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
     initializeHands(5, 5);
 }
 
-void Game::initializeHands(int playerCardCount, int opponentCardCount) {
+void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
     addCard("Riolu", 1,70);
@@ -100,11 +100,11 @@ void Game::initializeHands(int playerCardCount, int opponentCardCount) {
     }
 }
 
-void Game::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
+void GameGr::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
     sprite.setPosition(50 + index *120 , yPosition); // Espacement horizontal
 }
 
-void Game::positionCards(sf::Sprite& sprite, int index) {
+void GameGr::positionCards(sf::Sprite& sprite, int index) {
     if (index >= 10){ //carte dans la main
         sprite.setPosition(200 + (index-9) * 120, 800);
     }
@@ -122,7 +122,7 @@ void Game::positionCards(sf::Sprite& sprite, int index) {
     }
 }
 
-void Game::addCard(const std::string& name, int index,int hp) {
+void GameGr::addCard(const std::string& name, int index,int hp) {
     CardManager::Card  card = CardManager::getInstance().createCard(name,hp);
     positionCards(card.sprite,index);
     // Ajoutez la carte à la collection de cartes du jeu
@@ -131,7 +131,7 @@ void Game::addCard(const std::string& name, int index,int hp) {
     playerHand.push_back(card);
 }
 
-void Game::addEnergy(const std::string& name, int index) {
+void GameGr::addEnergy(const std::string& name, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
     positionEnergy(energy.sprite, index,EnergyPlayer);
     energy.index = index;
@@ -139,7 +139,7 @@ void Game::addEnergy(const std::string& name, int index) {
     EnergyPlayer.push_back(energy);
 }
 
-void Game::addStatus(const std::string& name, int player) {
+void GameGr::addStatus(const std::string& name, int player) {
     StatusManager::Status status = StatusManager::getInstance().createStatus(name,name,player);
     positionStatus(status.sprite, player);
     // Ajoutez la carte à la collection de cartes du jeu
@@ -151,7 +151,7 @@ void Game::addStatus(const std::string& name, int player) {
     }
 }
 
-void Game::positionEnergy(sf::Sprite& sprite, int index,std::vector<EnergyManager::Energy> EnergyPlayer) {
+void GameGr::positionEnergy(sf::Sprite& sprite, int index,std::vector<EnergyManager::Energy> EnergyPlayer) {
     int count = 0;
     for (const auto& energy : EnergyPlayer) {
         if (energy.index == index){
@@ -175,7 +175,7 @@ void Game::positionEnergy(sf::Sprite& sprite, int index,std::vector<EnergyManage
     }
 }
 
-void Game::positionStatus(sf::Sprite& sprite, int player) {
+void GameGr::positionStatus(sf::Sprite& sprite, int player) {
     if (player == 1){
         sprite.setPosition(350, 575+40);
     }
@@ -184,7 +184,7 @@ void Game::positionStatus(sf::Sprite& sprite, int player) {
     }
 }
 
-void Game::handleMouseClick(const sf::Event::MouseButtonEvent& mouseEvent) {
+void GameGr::handleMouseClick(const sf::Event::MouseButtonEvent& mouseEvent) {
     if (mouseEvent.button == sf::Mouse::Left) {
         for (const auto& card : playerHand) {
             if (card.sprite.getGlobalBounds().contains(mouseEvent.x, mouseEvent.y)) {
@@ -206,7 +206,7 @@ void Game::handleMouseClick(const sf::Event::MouseButtonEvent& mouseEvent) {
     }
 }
 
-void Game::displayCardInLarge(const sf::Sprite& card) {
+void GameGr::displayCardInLarge(const sf::Sprite& card) {
     // Récupérer la texture de la carte
     const sf::Texture* cardTexture = card.getTexture();
     if (!cardTexture) {
@@ -242,7 +242,7 @@ void Game::displayCardInLarge(const sf::Sprite& card) {
     }
 }
 
-void Game::switchCard(int index1, int index2) {
+void GameGr::switchCard(int index1, int index2) {
     // Échange des indices des cartes
     for (auto& card : playerHand) {
         if (card.index == index1) {
@@ -301,7 +301,7 @@ void Game::switchCard(int index1, int index2) {
     updateActiveHPTexts();
 }
 
-void Game::updateActiveHPTexts() {
+void GameGr::updateActiveHPTexts() {
     for (const auto& card : playerHand) {
         if (card.index == 1) { // Carte active du joueur
             playerHPText.setString("HP: " + std::to_string(card.hp));
@@ -311,7 +311,7 @@ void Game::updateActiveHPTexts() {
     }
 }
 
-void Game::attaque(int attackerIndex, int damage) {
+void GameGr::attaque(int attackerIndex, int damage) {
     // Parcourir les cartes pour trouver la carte correspondant à l'index
     for (auto& card : playerHand) {
         if (card.index == attackerIndex) {
@@ -331,7 +331,7 @@ void Game::attaque(int attackerIndex, int damage) {
     }
 }
 
-void Game::handleKeyPress(sf::Keyboard::Key key) {
+void GameGr::handleKeyPress(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Space:
             switchCard(1, 3); // Exemple : changement de carte
@@ -357,7 +357,7 @@ void Game::handleKeyPress(sf::Keyboard::Key key) {
     }
 }
 
-void Game::renderWindow() {
+void GameGr::renderWindow() {
     window.clear();
     window.draw(backgroundSprite); // Dessiner le fond
 
@@ -391,7 +391,7 @@ void Game::renderWindow() {
     window.display();
 }
 
-void Game::run() {
+void GameGr::run() {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

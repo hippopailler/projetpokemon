@@ -3,16 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "PlayerGr.h"
+
 #include "CardManagerGr.h"
 #include "StatusManagerGr.h"
 #include "EnergyManagerGr.h"
 
 
 
-class Game {
+class GameGr {
 public:
-    Game();
+    GameGr();
     void run();
 
     void renderWindow();
@@ -31,8 +31,6 @@ public:
 
     void switchCard(int index1, int index2);
 
-   
-
     void updateActiveHPTexts();
 
     void attaque(int attackerIndex, int damage);
@@ -45,10 +43,6 @@ private:
     sf::RenderWindow window;
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
-
-    Player player1;
-    Player player2;
-
     
     std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
