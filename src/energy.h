@@ -26,10 +26,13 @@ public:
     // Création
     energyList();
     energyList(const std::vector<typeEnergy> &energies);
+    energyList(const typeEnergy &energy);
 
     // Accesseur
     int energyAmount() const;
     bool enoughEnergy(const energyList& cost);
+    energyList coverWith(const energyList& cost) const;
+    std::map<typeEnergy, unsigned int> energy() const;
 
     // Mutateur
     void operator+=(const typeEnergy energy);

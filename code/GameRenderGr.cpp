@@ -185,10 +185,34 @@ void GameGr::cleanPlayerHand() {
 void GameGr::addEnergy(const typeEnergy energie, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(energie,index);
     positionEnergy(energy.sprite, index,EnergyPlayer);
-    energy.index = index;
+    //energy.index = index;
     // Ajoutez la carte à la collection de cartes du jeu
     EnergyPlayer.push_back(energy);
 }
+
+void GameGr::removeEnergy(energyList energies, int index){
+    std::map<typeEnergy, unsigned int> energiesMap = energies.energy();
+    for (const auto& energy : energiesMap) {
+        int count = energy.second;
+        for (auto it = EnergyPlayer.begin(); it != EnergyPlayer.end() && count > 0; ) {
+            if (it->index == index && it->type == energy.first) {
+                it = EnergyPlayer.erase(it);
+                --count;
+            } else {
+                ++it;
+            }
+        }
+    }
+}
+
+/*
+    for (auto& energy : EnergyPlayer) {
+        if (energy.index == index1) {
+            energy.index = index2;
+        } else if (energy.index == index2) {
+            energy.index = index1;
+        }
+*/
 
 void GameGr::addStatus(const std::string& name, int player) {
     StatusManager::Status status = StatusManager::getInstance().createStatus(name,name,player);

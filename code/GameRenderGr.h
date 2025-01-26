@@ -39,6 +39,7 @@ public:
     void showOpponentHand(int size);
     void cleanPlayerHand(); 
     void addEnergy(const typeEnergy energie, int index);
+    void removeEnergy(energyList energies,int index);
 
 
 private:

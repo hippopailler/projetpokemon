@@ -27,6 +27,10 @@ energyList::energyList(const std::vector<typeEnergy> &energies){
         _energy[e]++;
 }
 
+energyList::energyList(const typeEnergy &energy){
+    _energy[energy]++;
+}
+
 std::string typeEnergyToString(const typeEnergy& type) {
     switch (type) {
         case COLORLESS: return "normale";
@@ -69,7 +73,33 @@ bool energyList::enoughEnergy(const energyList &cost){
     return(true);
 }
 
-// Mutateur
+energyList energyList::coverWith(const energyList &cost) const{
+    energyList coverage;
+    for (auto const& x : cost._energy){
+        if (x.first == COLORLESS) {
+            unsigned int remaining = x.second;
+            for (auto& y : _energy) {
+                if (remaining == 0) break;
+                if (y.second > 0) {
+                    // Le nombre d'énergie qu'on va utliser pour cover les énergies normales
+                    // Autant que possible 
+                    unsigned int used = std::min(y.second, remaining);
+                    coverage._energy[y.first] += used;
+                    remaining -= used;
+                }
+            }
+        } else {
+            coverage._energy[x.first] = x.second;
+        }
+    }
+    return coverage;
+}
+
+std::map<typeEnergy, unsigned int> energyList::energy() const{
+    return _energy;
+}
+
+// Mutateurs
 // ajout d'une énergie
 void energyList::operator+=(const typeEnergy energy){
     _energy[energy]++;

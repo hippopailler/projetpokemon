@@ -13,6 +13,7 @@ public:
     struct Energy {
         sf::Sprite sprite;
         int index; //1 : carte active joueur, 2-4 : carte banc joueur, 5 : carte active ennemi, 4-8 : carte banc ennemi
+        typeEnergy type;
     };
 
     static EnergyManager& getInstance() {
@@ -46,7 +47,8 @@ public:
             targetHeight / static_cast<float>(textureSize.y)
         );
         energy.sprite.setScale(scaleFactor, scaleFactor);
-       
+        energy.type = energie;
+        energy.index = index; 
         return energy;
     }
 

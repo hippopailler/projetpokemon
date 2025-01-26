@@ -79,8 +79,13 @@ void Game::retreat(){
         std::cout << "Choisissez nouveau pokémon actif :";
         std::cin >> choice;
     } while (choice < 0 || choice > 3 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
-    _players[_activePlayer]->activePokemon()->detachEnergy(_players[_activePlayer]->activePokemon()->energyAttached());
+    int position = _activePlayer == 0 ? 1 : 5;
+    energyList retreatCost = _players[_activePlayer]->activePokemon()->retreatCost();
+    energyList coverage = retreatCost.coverWith(_players[_activePlayer]->activePokemon()->energyAttached());
+    _players[_activePlayer]->activePokemon()->detachEnergy(coverage);
+    _gameRender->removeEnergy(coverage, position);
     _players[_activePlayer]->switchActive(choice);
+    _gameRender->switchCard(position, position + choice + 1);
 }
 
 void Game::chooseAction() {

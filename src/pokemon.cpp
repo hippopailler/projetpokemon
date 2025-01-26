@@ -90,6 +90,10 @@ bool Pokemon::canRetreat(){
     return (_energyAttached.enoughEnergy(_data.retreatCost));
 }
 
+energyList Pokemon::retreatCost() const{
+    return _data.retreatCost;
+}
+
 energyList Pokemon::energyAttached(){
     return _energyAttached;
 }
