@@ -94,11 +94,14 @@ void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
 */
     // Initialisation de la main de l'adversaire
     opponentHand.clear();
+    /*
     for (int i = 0; i < opponentCardCount; ++i) {
         sf::Sprite backSprite = CardManager::getInstance().createBackSprite();
         positionCardsAdv(backSprite, i, 50); // Espacement horizontal (haut de l'écran)
         opponentHand.push_back(backSprite);
     }
+    opponentHand.erase(opponentHand.begin() + 1); // Enlever une carte de la main de l'adversaire
+    */
 }
 
 void GameGr::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
@@ -156,6 +159,28 @@ void GameGr::removeCard(int index) {
         playerHand.erase(it, playerHand.end());
     }
 }
+
+void GameGr::showOpponentHand(int size) {
+    // Afficher les cartes de l'adversaire
+    int diff = opponentHand.size() - size;
+    if (diff > 0) {
+        opponentHand.erase(opponentHand.end() - diff, opponentHand.end());
+    }
+    if (diff < 0) {
+        for (int i = opponentHand.size(); i < size; i++) {
+            sf::Sprite backSprite = CardManager::getInstance().createBackSprite();
+            positionCardsAdv(backSprite, i, 50); // Espacement horizontal (haut de l'écran)
+            opponentHand.push_back(backSprite);
+        }
+    }
+}
+
+// attention, ici la main est la main du joueur
+void GameGr::cleanPlayerHand() {
+    for(auto& card : playerHand){
+        if(card.index >= 10) removeCard(card.index);
+    }
+} 
 
 void GameGr::addEnergy(const std::string& name, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);

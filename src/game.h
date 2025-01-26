@@ -30,6 +30,8 @@ public:
     void updateActiveHPTexts(int player);
     void addCard(const std::string& cardID, int index);
     void removeCard(int index);
+    void showPlayerHand();
+    void showOpponentHand();
 
 // Accesseurs
     unsigned int turn() const;

@@ -82,6 +82,7 @@ void Game::retreat(){
 }
 
 void Game::chooseAction() {
+    showPlayerHand();
     //_players[_activePlayer]->showBoard();
     std::cout << "Choisissez une action :\n";
     std::cout << "1. Attacher une énergie\n";
@@ -158,6 +159,7 @@ void Game::placeActivePokemon(int player){
     _players[player]->hand()->removeCard(choice);
     int position = player == 0 ? 1 : 5;
     addCard(_players[player]->activePokemon()->cardID(), position);
+    showPlayerHand();
     updateActiveHPTexts(player);
 }
 
@@ -181,16 +183,21 @@ void Game::placePokemonOnBench(){
 }
 
 void Game::beginGame(){
+    _gameRender->showOpponentHand(5);
     for (int i = 0; i < 2; i++){
         _players[i]->shuffleDeck();
         _players[i]->draw(5);
         while (!_players[i]->hand()->hasBasicPokemonCard()){
             _players[i]->mulligan();
         }
+        if(i == 0){
+            showPlayerHand();
+        }
         std::cout << "Joueur " << i+1 << ", choisissez un pokémon actif : \n";
         _players[i]->printHand();
         placeActivePokemon(i);
     }
+    _gameRender->showOpponentHand(4);
     while (_winner == -1){
         beginTurn();
     }
@@ -250,6 +257,14 @@ void Game::addCard(const std::string& cardID, int index){
 
 void Game::removeCard(int index){
     _gameRender->removeCard(index);
+}
+
+void Game::showPlayerHand(){
+    _gameRender->cleanPlayerHand();
+    Hand* hand = _players[0]->hand();
+    for (unsigned int i = 0; i < hand->size(); i++){
+        addCard(hand->cards()[i]->cardID(), 10+i);
+    }
 }
 
 // Accesseurs

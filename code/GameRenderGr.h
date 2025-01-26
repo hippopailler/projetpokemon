@@ -36,6 +36,8 @@ public:
     void attaque(int attackerIndex, int damage);
     void addCard(const std::string &cardID, int index);
     void removeCard(int index);
+    void showOpponentHand(int size);
+    void cleanPlayerHand(); 
 
 private:
     void processEvents();
