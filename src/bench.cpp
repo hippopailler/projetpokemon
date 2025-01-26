@@ -121,3 +121,19 @@ void Bench::printBench() const{
     }
 }
 
+int Bench::getFirstEmptySlot() const{
+    for (unsigned int i = 0; i < 3; i++) {
+        if (_cards[i] == nullptr) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+std::string Bench::getPokemonId(int index) const{
+    if (_cards[index] != nullptr) {
+        return _cards[index]->cardID();
+    } else {
+        return "none";
+    }
+}

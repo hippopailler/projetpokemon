@@ -27,7 +27,8 @@ public:
     unsigned int find(Pokemon& pokemon) const;
     void printBench() const;
     Pokemon* getCard(unsigned int index) const;
-
+    int getFirstEmptySlot() const;
+    std::string getPokemonId(int index) const;  
 
 private:
     std::array<Pokemon*, 3> _cards;

@@ -175,13 +175,18 @@ void Game::placePokemonOnBench(){
         return;
     }
     _players[_activePlayer]->printHand();
-    int choice = 0;
+    Hand* hand = _players[_activePlayer]->hand();
+    unsigned int choice = 0;
     do {
         std::cout << "Choisissez le pokémon à placer sur le banc :";
         std::cin >> choice;
-    } while ( (choice < 0 || choice > 5) || !_players[_activePlayer]->hand()->cards()[choice]->isPokemon());
-    _players[_activePlayer]->placePokemonOnBench(choice, _turn);
-    _players[_activePlayer]->hand()->removeCard(choice);
+    } while ( choice >= hand->size() || !hand->cards()[choice]->isPokemon());
+    int position = _activePlayer == 0 ? 1 : 5;
+    position += _players[_activePlayer]->bench()->getFirstEmptySlot() + 1;
+    std::string id = _players[_activePlayer]->placePokemonOnBench(choice, _turn);
+    std::cout <<"Position : " << position << ", ID : " << _players[_activePlayer]->bench()->getPokemonId(choice) << std::endl;
+    addCard(id ,position);
+    hand->removeCard(choice);
 }
 
 void Game::beginGame(){

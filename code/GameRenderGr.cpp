@@ -397,7 +397,7 @@ void GameGr::attaque(int attackerIndex, int damage) {
 void GameGr::handleKeyPress(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Space:
-            switchCard(1, 3); // Exemple : changement de carte
+            switchCard(1, 2); // Exemple : changement de carte
             break;
         case sf::Keyboard::A:
             //addCard("Riolu", 12, 70); // Ajout d'une carte

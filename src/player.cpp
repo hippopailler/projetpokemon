@@ -42,12 +42,13 @@ void Player::placeActivePokemon(unsigned int index, int turn) {
     }
 }
 
-void Player::placePokemonOnBench(unsigned int index, int turn) {
+std::string Player::placePokemonOnBench(unsigned int index, int turn) {
     std::unique_ptr<Card> card = _hand->takeCard(index);
     Pokemon* pokemon = dynamic_cast<Pokemon*>(card.get());
     _bench->placeOnBench(*pokemon);
     pokemon->onPlayed(turn);
     card.release(); 
+    return pokemon->cardID();
 }
 
 void Player::switchActive() {
