@@ -29,6 +29,7 @@ public:
 //Graphiques
     void updateActiveHPTexts(int player);
     void addCard(const std::string& cardID, int index);
+    void removeCard(int index);
 
 // Accesseurs
     unsigned int turn() const;

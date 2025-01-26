@@ -248,6 +248,10 @@ void Game::addCard(const std::string& cardID, int index){
     _gameRender->addCard(cardID, index);
 }
 
+void Game::removeCard(int index){
+    _gameRender->removeCard(index);
+}
+
 // Accesseurs
 
 unsigned int Game::turn() const{

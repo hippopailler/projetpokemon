@@ -124,8 +124,14 @@ void GameGr::positionCards(sf::Sprite& sprite, int index) {
 }
 
 void GameGr::addCard(const std::string& cardID, int index) {
-    CardManager::Card  card = CardManager::getInstance().createCard(cardID);
-    positionCards(card.sprite,index);
+    // Vérifier s'il y a déjà une carte à cet index
+    for (const auto& card : playerHand) {
+        if (card.index == index) {
+            removeCard(index);
+        }
+    }
+    CardManager::Card card = CardManager::getInstance().createCard(cardID);
+    positionCards(card.sprite, index);
     // Ajoutez la carte à la collection de cartes du jeu
     card.index = index;
     playerHand.push_back(card);
@@ -141,6 +147,15 @@ void GameGr::addCard(const std::string& name, int index,int hp) {
     playerHand.push_back(card);
 }
 */
+
+void GameGr::removeCard(int index) {
+    auto it = std::remove_if(playerHand.begin(), playerHand.end(), [index](const CardManager::Card& card) {
+        return card.index == index;
+    });
+    if (it != playerHand.end()) {
+        playerHand.erase(it, playerHand.end());
+    }
+}
 
 void GameGr::addEnergy(const std::string& name, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
