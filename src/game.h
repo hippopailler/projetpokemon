@@ -33,6 +33,7 @@ public:
     void showPlayerHand();
     void showOpponentHand();
     void attachEnergyActive(typeEnergy energy, int index);
+    void updateAfterEvolution(int index);  
 
 // Accesseurs
     unsigned int turn() const;

@@ -225,6 +225,7 @@ void Game::evolve(){
             return;
         }
     }
+    int toEvolveIndex = choice;
 
     // choix de la carte d'évolution
     std::cout << "Choisissez l'évolution\n";
@@ -240,6 +241,7 @@ void Game::evolve(){
     if (evolution->evolveFrom().has_value() && toEvolve->canEvolve(_turn, evolution->evolveFrom().value())){
         toEvolve->evolve(evolution, _turn);
         std::cout << "Le pokémon a évolué\n";
+        updateAfterEvolution(toEvolveIndex);
         card.release();
     } else {
         std::cout << "Pas d'évolution" << std::endl;
@@ -271,6 +273,19 @@ void Game::showPlayerHand(){
 
 void Game::attachEnergyActive(typeEnergy energy, int index){
     _gameRender->addEnergy(energy, index);
+}
+
+void Game::updateAfterEvolution(int index){
+    // enlève l'ancienne carte
+    int position = _activePlayer == 0 ? 1 : 5;
+    position += index;
+    _gameRender->removeCard(position);
+    if (index == 0){
+        _gameRender->addCard(_players[_activePlayer]->activePokemon()->cardID(), position);
+    } else {
+        _gameRender->addCard(_players[_activePlayer]->bench()->getCard(index-1)->cardID(), position);
+    }
+    updateActiveHPTexts(_activePlayer);
 }
 
 // Accesseurs
