@@ -35,10 +35,10 @@ void Player::placeActivePokemon(unsigned int index, int turn) {
     if (pokemon) {
         _activePokemon = pokemon;
         pokemon->onPlayed(turn);
-        card.release(); // Release ownership since _activePokemon now owns the pokemon
+        card.release();
     } else {
         std::cout << "La carte sélectionnée n'est pas un Pokemon" << std::endl;
-        _hand->addCard(std::move(card)); // Put the card back into the hand
+        _hand->addCard(std::move(card));
     }
 }
 

@@ -158,7 +158,7 @@ void Game::placeActivePokemon(int player){
     //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
     _players[player]->placeActivePokemon(choice, _turn);
-    _players[player]->hand()->removeCard(choice);
+    //_players[player]->hand()->removeCard(choice);
     int position = player == 0 ? 1 : 5;
     addCard(_players[player]->activePokemon()->cardID(), position);
     showPlayerHand();
