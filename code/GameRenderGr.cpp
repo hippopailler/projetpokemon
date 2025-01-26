@@ -38,7 +38,12 @@ GameGr::GameGr()
     opponentBenchZone.setPosition(681.f, 275.f); 
     opponentBenchZone.setFillColor(sf::Color(255, 0, 0, 100)); // Rouge transparent
     
-    
+    // Initialisation du contour
+    borderRectangle.setPosition(10, 10);
+    borderRectangle.setSize(sf::Vector2f(window.getSize().x - 20, window.getSize().y - 20));
+    borderRectangle.setFillColor(sf::Color::Transparent); // No fill color
+    borderRectangle.setOutlineThickness(10); // Border thickness
+    borderRectangle.setOutlineColor(sf::Color::White); // Border color
 
 if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
         std::cerr << "Erreur: Impossible de charger la police.\n";
@@ -213,6 +218,14 @@ void GameGr::removeAllEnergy(int index){
         else{
             ++energy;
         }
+    }
+}
+
+void GameGr::changeBorder(int player) {
+    if (player == 0) {
+        borderRectangle.setOutlineColor(sf::Color::Blue);
+    } else {
+        borderRectangle.setOutlineColor(sf::Color::Red);
     }
 }
 
@@ -478,6 +491,7 @@ void GameGr::renderWindow() {
         window.draw(status.sprite);
     }
 
+    window.draw(borderRectangle);
     window.display();
 }
 

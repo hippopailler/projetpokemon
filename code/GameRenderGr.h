@@ -41,6 +41,7 @@ public:
     void addEnergy(const typeEnergy energie, int index);
     void removeEnergy(energyList energies,int index);
     void removeAllEnergy(int index);
+    void changeBorder(int player);
 
 
 private:
@@ -51,7 +52,8 @@ private:
     sf::RenderWindow window;
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
-    
+    sf::RectangleShape borderRectangle;
+
     std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
     std::vector<EnergyManager::Energy> EnergyPlayer; // énergie du joueur

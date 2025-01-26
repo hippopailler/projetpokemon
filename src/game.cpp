@@ -151,6 +151,7 @@ void Game::chooseAction() {
 }
 
 void Game::beginTurn(){
+    _gameRender->changeBorder(_activePlayer);
     std::cout << "Début du tour " << _turn+1 << " : c'est au joueur " << _activePlayer + 1
     << "de jouer"<< std::endl;
     draw();
