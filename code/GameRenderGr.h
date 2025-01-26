@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <mutex> 
 
 #include "CardManagerGr.h"
 #include "StatusManagerGr.h"
@@ -12,7 +13,7 @@
 
 class GameGr {
 public:
-    GameGr();
+    GameGr(std::mutex& mtx);
     void run();
 
     void renderWindow();
@@ -60,6 +61,7 @@ private:
     std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
     std::vector<EnergyManager::Energy> EnergyPlayer; // énergie du joueur
+    std::mutex& _mtx;
     
 
     CardManager::Card MainCard;

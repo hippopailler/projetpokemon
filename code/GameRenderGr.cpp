@@ -16,9 +16,10 @@ std::vector<StatusManager::Status> StatusPlayer;
 std::vector<StatusManager::Status> StatusEnnemy;
 
 
-GameGr::GameGr()
+GameGr::GameGr(std::mutex& mtx)
     : window1(sf::VideoMode(1000, 1000), "Pokemon"),
-    window2(sf::VideoMode(1000, 1000), "Pokemon - Player 2") {
+    window2(sf::VideoMode(1000, 1000), "Pokemon - Player 2"),
+    _mtx(mtx) {
     window1.setPosition(sf::Vector2i(500,0));
     // Chargement du fond
     if (!backgroundTexture.loadFromFile("assets/fond.jpg")) {
@@ -427,6 +428,7 @@ void GameGr::handleKeyPress(sf::Keyboard::Key key) {
 
 
 void GameGr::renderWindow() {
+    std::lock_guard<std::mutex> lock(_mtx);
     window1.clear();
     window2.clear();
     window1.draw(backgroundSprite); // Dessiner le fond
@@ -488,7 +490,7 @@ void GameGr::renderWindow() {
 }
 
 void GameGr::run() {
-    while (window1.isOpen()) {
+    while (window1.isOpen() || window2.isOpen() ) {
         sf::Event event;
         while (window1.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
