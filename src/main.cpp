@@ -13,16 +13,28 @@
 #include <iostream>
 #include <thread>           // Pour exécuter plusieurs threads
 #include <unistd.h>         // Pour la gestion du temps
+#include <mutex>
+#include <condition_variable>
+
+std::mutex mtx;
+std::condition_variable cv;
+bool ready = false;
 
 // Fonction pour la logique du jeu (terminal)
-void runLogic(Game& game) {
+void runLogic(Game& game, GameGr& gameRender) {
+    std::unique_lock<std::mutex> lock(mtx);
+    cv.wait(lock, []{ return ready; });
+    gameRender.updateActiveHPTexts(50, 1);
     game.beginGame();  // Lancer la logique
 }
 
 //Fonction pour la fenêtre graphique 
-void runGraphics(Game& game) {
-    GameGr gameRender;  // Initialise la fenêtre graphique avec la logique
-    gameRender.updateActiveHPTexts();  // Synchronise les textes
+void runGraphics(Game& game, GameGr& gameRender) {
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        ready = true;
+    }
+    cv.notify_all();
     gameRender.run();  // Démarre la boucle principale graphique
 }
 
@@ -40,14 +52,14 @@ int main() {
     Player player2(deck2);
 
     Game game(&player1, &player2);
+    GameGr gameRender;
 
     // Création des threads pour exécuter en parallèle
-    std::thread logicThread(runLogic, std::ref(game));  // Thread pour la logique
-    std::thread graphicsThread(runGraphics, std::ref(game));  // Thread pour la fenêtre graphique
-
+    std::thread logicThread(runLogic, std::ref(game), std::ref(gameRender));  // Thread pour la logique
+ 
+    runGraphics(game, gameRender);  // Thread pour la fenêtre graphique
     // Attendre la fin des deux threads
     logicThread.join();
-    graphicsThread.join();
 
     return 0;
 }

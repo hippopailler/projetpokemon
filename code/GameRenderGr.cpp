@@ -60,17 +60,17 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
 void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
-    addCard("A1#001", 1,70);
-    addCard("A1#001", 2,60);
-    addCard("A1#002", 3,60);
-    addCard("A1#001", 4,60);
-    addCard("A1#002", 10,60);
-    addCard("A1#002", 11,60);
+    addCard("A1#001", 1);
+    addCard("A1#001", 2);
+    addCard("A1#002", 3);
+    addCard("A1#001", 4);
+    addCard("A1#002", 10);
+    addCard("A1#002", 11);
 
-    addCard("A1#002",5,70);
+    addCard("A1#002",5);
 
-    addCard("A1#001",6,60);
-    addCard("A1#001",7,60);
+    addCard("A1#001",6);
+    addCard("A1#001",7);
 
     addEnergy("grass", 1);
     addEnergy("grass", 1);
@@ -122,6 +122,15 @@ void GameGr::positionCards(sf::Sprite& sprite, int index) {
     }
 }
 
+void GameGr::addCard(const std::string& cardID, int index) {
+    CardManager::Card  card = CardManager::getInstance().createCard(cardID);
+    positionCards(card.sprite,index);
+    // Ajoutez la carte à la collection de cartes du jeu
+    card.index = index;
+    playerHand.push_back(card);
+}
+
+/*
 void GameGr::addCard(const std::string& name, int index,int hp) {
     CardManager::Card  card = CardManager::getInstance().createCard(name,hp);
     positionCards(card.sprite,index);
@@ -130,6 +139,7 @@ void GameGr::addCard(const std::string& name, int index,int hp) {
     card.hp = hp;
     playerHand.push_back(card);
 }
+*/
 
 void GameGr::addEnergy(const std::string& name, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
@@ -298,9 +308,18 @@ void GameGr::switchCard(int index1, int index2) {
         }
     }
 
-    updateActiveHPTexts();
+    //updateActiveHPTexts();
 }
 
+void GameGr::updateActiveHPTexts(int newHP, int player) {
+    if (player == 1) {
+        playerHPText.setString("HP: " + std::to_string(newHP));
+    } else {
+        opponentHPText.setString("HP: " + std::to_string(newHP));
+    }
+}
+
+/*
 void GameGr::updateActiveHPTexts() {
     for (const auto& card : playerHand) {
         if (card.index == 1) { // Carte active du joueur
@@ -310,20 +329,22 @@ void GameGr::updateActiveHPTexts() {
         }
     }
 }
+*/
+
 
 void GameGr::attaque(int attackerIndex, int damage) {
     // Parcourir les cartes pour trouver la carte correspondant à l'index
     for (auto& card : playerHand) {
         if (card.index == attackerIndex) {
             // Réduire les points de vie
-            card.hp -= damage;
-            if (card.hp < 0) card.hp = 0; // Évite les HP négatifs
+            //card.hp -= damage;
+            //if (card.hp < 0) card.hp = 0; // Évite les HP négatifs
 
             // Mettre à jour le texte correspondant uniquement pour la carte active ciblée
             if (attackerIndex == 1) { // Carte active du joueur
-                playerHPText.setString("HP: " + std::to_string(card.hp));
+                playerHPText.setString("HP: " + std::to_string(600000));
             } else if (attackerIndex == 5) { // Carte active de l'adversaire
-                opponentHPText.setString("HP: " + std::to_string(card.hp));
+                opponentHPText.setString("HP: " + std::to_string(10000));
             
             }
             return; // Une fois le texte mis à jour, on sort de la fonction
@@ -331,13 +352,14 @@ void GameGr::attaque(int attackerIndex, int damage) {
     }
 }
 
+
 void GameGr::handleKeyPress(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Space:
             switchCard(1, 3); // Exemple : changement de carte
             break;
         case sf::Keyboard::A:
-            addCard("Riolu", 12, 70); // Ajout d'une carte
+            //addCard("Riolu", 12, 70); // Ajout d'une carte
             break;
         case sf::Keyboard::B:
             attaque(5, 20); // Attaque avec 20 dégâts

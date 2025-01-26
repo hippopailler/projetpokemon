@@ -12,7 +12,7 @@ public:
 
     struct Card {
         sf::Sprite sprite;
-        int hp;
+        //int hp;
         int index; //1 : carte active joueur, 2-4 : carte banc joueur, 5 : carte active ennemi, 4-8 : carte banc ennemi, 10- pour la main
         std::vector<EnergyManager::Energy> energystock;
     };
@@ -38,10 +38,9 @@ public:
     }
 
     // Crée une carte avec des points de vie
-    Card createCard(const std::string& cardID, int hp) {
+    Card createCard(const std::string& cardID) {
         Card card;
         card.sprite.setTexture(getTexture(cardID));
-        card.hp = hp;
 
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
         const sf::Vector2u textureSize = card.sprite.getTexture()->getSize();
