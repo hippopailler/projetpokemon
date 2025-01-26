@@ -34,6 +34,7 @@ public:
     void updateActiveHPTexts(int newHP, int player);
 
     void attaque(int attackerIndex, int damage);
+    void addCard(const std::string &cardID, int index);
 
 private:
     void processEvents();
@@ -59,7 +60,6 @@ private:
     void positionCards(sf::Sprite &sprite, int index);
 
     void addCard(const std::string &name, int x,int hp);
-    void addCard(const std::string &cardID, int index);
 
     
 

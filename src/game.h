@@ -5,11 +5,13 @@
 #include"move.h"
 #include"energy.h"
 #include"pokemon.h"
+#include"../code/GameRenderGr.h"
 #include<array>
 
 class Game{
 public:
-    Game(Player*, Player*);
+// Mutateurs
+    Game(Player*, Player*, GameGr*);
     void draw();
     void endTurn();
     void attack(Move);
@@ -24,6 +26,10 @@ public:
     void beginGame();
     void evolve();
 
+//Graphiques
+    void updateActiveHPTexts(int player);
+    void addCard(const std::string& cardID, int index);
+
 // Accesseurs
     unsigned int turn() const;
     const Player* current_player() const;
@@ -35,6 +41,7 @@ private:
     bool _energyPlayed;
     int _winner;
     typeEnergy _energy;
+    GameGr* _gameRender;
 };
 
 #endif

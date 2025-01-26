@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 
-Game::Game(Player* player1, Player* player2) {
+Game::Game(Player* player1, Player* player2, GameGr* gameRender){
     _players[0] = player1;
     _players[1] = player2;
     _activePlayer = 0;
@@ -9,7 +9,9 @@ Game::Game(Player* player1, Player* player2) {
     _energyPlayed = false;
     _winner = -1;
     _energy = COLORLESS;
+    _gameRender = gameRender;
 }
+
 // Mutateur
 void Game::draw(){
     _players[_activePlayer]->draw();
@@ -154,6 +156,9 @@ void Game::placeActivePokemon(int player){
     //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
     _players[player]->placeActivePokemon(choice, _turn);
     _players[player]->hand()->removeCard(choice);
+    int position = player == 0 ? 1 : 5;
+    addCard(_players[player]->activePokemon()->cardID(), position);
+    updateActiveHPTexts(player);
 }
 
 void Game::placePokemonOnBench(){
@@ -211,6 +216,7 @@ void Game::evolve(){
             return;
         }
     }
+
     // choix de la carte d'évolution
     std::cout << "Choisissez l'évolution\n";
     _players[_activePlayer]->printHand();
@@ -230,6 +236,16 @@ void Game::evolve(){
         std::cout << "Pas d'évolution" << std::endl;
         _players[_activePlayer]->hand()->addCard(std::move(card));
     }
+}
+
+// Graphismes
+
+void Game::updateActiveHPTexts(int player){
+    _gameRender->updateActiveHPTexts(_players[player]->activePokemon()->hp(), player);
+}
+
+void Game::addCard(const std::string& cardID, int index){
+    _gameRender->addCard(cardID, index);
 }
 
 // Accesseurs

@@ -60,6 +60,7 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
 void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
+    /*
     addCard("A1#001", 1);
     addCard("A1#001", 2);
     addCard("A1#002", 3);
@@ -90,7 +91,7 @@ void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     addStatus("poison", 1);
     addStatus("poison", 1);
     addStatus("sleep", 0);
-
+*/
     // Initialisation de la main de l'adversaire
     opponentHand.clear();
     for (int i = 0; i < opponentCardCount; ++i) {
@@ -312,7 +313,7 @@ void GameGr::switchCard(int index1, int index2) {
 }
 
 void GameGr::updateActiveHPTexts(int newHP, int player) {
-    if (player == 1) {
+    if (player == 0) {
         playerHPText.setString("HP: " + std::to_string(newHP));
     } else {
         opponentHPText.setString("HP: " + std::to_string(newHP));

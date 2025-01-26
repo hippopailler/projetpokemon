@@ -24,7 +24,7 @@ bool ready = false;
 void runLogic(Game& game, GameGr& gameRender) {
     std::unique_lock<std::mutex> lock(mtx);
     cv.wait(lock, []{ return ready; });
-    gameRender.updateActiveHPTexts(50, 1);
+    //gameRender.updateActiveHPTexts(50, 1);
     game.beginGame();  // Lancer la logique
 }
 
@@ -51,8 +51,8 @@ int main() {
     Player player1(deck1);
     Player player2(deck2);
 
-    Game game(&player1, &player2);
     GameGr gameRender;
+    Game game(&player1, &player2, &gameRender);
 
     // Création des threads pour exécuter en parallèle
     std::thread logicThread(runLogic, std::ref(game), std::ref(gameRender));  // Thread pour la logique
