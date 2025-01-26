@@ -37,7 +37,9 @@ public:
     void addCard(const std::string &cardID, int index);
     void removeCard(int index);
     void showOpponentHand(int size);
+    void addOpponentCard(const std::string &name);
     void cleanPlayerHand(); 
+    void cleanOpponentHand();
     void addEnergy(const typeEnergy energie, int index);
     void removeEnergy(energyList energies,int index);
     void removeAllEnergy(int index);
@@ -49,7 +51,8 @@ private:
     void update();
     void render();
 
-    sf::RenderWindow window;
+    sf::RenderWindow window1;
+    sf::RenderWindow window2;
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
     sf::RectangleShape borderRectangle;

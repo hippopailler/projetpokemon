@@ -17,8 +17,9 @@ std::vector<StatusManager::Status> StatusEnnemy;
 
 
 GameGr::GameGr()
-    : window(sf::VideoMode(1000, 1000), "Pokemon") {
-    window.setPosition(sf::Vector2i(500,0));
+    : window1(sf::VideoMode(1000, 1000), "Pokemon"),
+    window2(sf::VideoMode(1000, 1000), "Pokemon - Player 2") {
+    window1.setPosition(sf::Vector2i(500,0));
     // Chargement du fond
     if (!backgroundTexture.loadFromFile("assets/fond.jpg")) {
         std::cerr << "Erreur: Impossible de charger l'image de fond.\n";
@@ -26,6 +27,7 @@ GameGr::GameGr()
     }
     
     backgroundSprite.setTexture(backgroundTexture);
+
     // Définir la taille standard des cartes
     CardManager::getInstance().setTargetSize(150.f, 200.f);
 
@@ -40,7 +42,7 @@ GameGr::GameGr()
     
     // Initialisation du contour
     borderRectangle.setPosition(10, 10);
-    borderRectangle.setSize(sf::Vector2f(window.getSize().x - 20, window.getSize().y - 20));
+    borderRectangle.setSize(sf::Vector2f(window1.getSize().x - 20, window1.getSize().y - 20));
     borderRectangle.setFillColor(sf::Color::Transparent); // No fill color
     borderRectangle.setOutlineThickness(10); // Border thickness
     borderRectangle.setOutlineColor(sf::Color::White); // Border color
@@ -66,47 +68,12 @@ void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
     /*
-    addCard("A1#001", 1);
-    addCard("A1#001", 2);
-    addCard("A1#002", 3);
-    addCard("A1#001", 4);
-    addCard("A1#002", 10);
-    addCard("A1#002", 11);
-
-    addCard("A1#002",5);
-
-    addCard("A1#001",6);
-    addCard("A1#001",7);
-
-    addEnergy("grass", 1);
-    addEnergy("grass", 1);
-    addEnergy("psy", 5);
-    addEnergy("psy", 5);
-
-    addEnergy("fire",3);
-    addEnergy("fire",3);
-    addEnergy("water",4);
-    addEnergy("water",2);
-
-    addEnergy("fire",6);
-    addEnergy("fire",6);
-    addEnergy("water",7);
-    
-
     addStatus("poison", 1);
     addStatus("poison", 1);
     addStatus("sleep", 0);
 */
     // Initialisation de la main de l'adversaire
     opponentHand.clear();
-    /*
-    for (int i = 0; i < opponentCardCount; ++i) {
-        sf::Sprite backSprite = CardManager::getInstance().createBackSprite();
-        positionCardsAdv(backSprite, i, 50); // Espacement horizontal (haut de l'écran)
-        opponentHand.push_back(backSprite);
-    }
-    opponentHand.erase(opponentHand.begin() + 1); // Enlever une carte de la main de l'adversaire
-    */
 }
 
 void GameGr::positionCardsAdv(sf::Sprite& sprite, int index, int yPosition) {
@@ -145,17 +112,6 @@ void GameGr::addCard(const std::string& cardID, int index) {
     playerHand.push_back(card);
 }
 
-/*
-void GameGr::addCard(const std::string& name, int index,int hp) {
-    CardManager::Card  card = CardManager::getInstance().createCard(name,hp);
-    positionCards(card.sprite,index);
-    // Ajoutez la carte à la collection de cartes du jeu
-    card.index = index;
-    card.hp = hp;
-    playerHand.push_back(card);
-}
-*/
-
 void GameGr::removeCard(int index) {
     auto it = std::remove_if(playerHand.begin(), playerHand.end(), [index](const CardManager::Card& card) {
         return card.index == index;
@@ -180,12 +136,22 @@ void GameGr::showOpponentHand(int size) {
     }
 }
 
+void GameGr::addOpponentCard(const std::string& name) {
+    sf::Sprite cardSprite = CardManager::getInstance().createCard(name).sprite;
+    positionCardsAdv(cardSprite, opponentHand.size(), 50); // Espacement horizontal (haut de l'écran)
+    opponentHand.push_back(cardSprite);
+}
+
 // attention, ici la main est la main du joueur
 void GameGr::cleanPlayerHand() {
     for(auto& card : playerHand){
         if(card.index >= 10) removeCard(card.index);
     }
 } 
+
+void GameGr::cleanOpponentHand() {
+    opponentHand.clear();
+}
 
 void GameGr::addEnergy(const typeEnergy energie, int index) {
     EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(energie,index);
@@ -461,46 +427,72 @@ void GameGr::handleKeyPress(sf::Keyboard::Key key) {
 
 
 void GameGr::renderWindow() {
-    window.clear();
-    window.draw(backgroundSprite); // Dessiner le fond
+    window1.clear();
+    window2.clear();
+    window1.draw(backgroundSprite); // Dessiner le fond
+    window2.draw(backgroundSprite);
 
     // Dessiner les zones de banc
-    window.draw(playerBenchZone);
-    window.draw(opponentBenchZone);
+    window1.draw(playerBenchZone);
+    window1.draw(opponentBenchZone);
+    window2.draw(playerBenchZone);
+    window2.draw(opponentBenchZone);
+
 
     for (const auto& card : playerHand) {
-        window.draw(card.sprite); // Dessiner chaque carte
+        // On dessinne les cartes pour le J1
+        window1.draw(card.sprite);
+        //sf::Sprite cardSprite2 = card.sprite;
+        // Modifier l'image du sprite pour window2  dans la main
+        if (card.index > 9) { // carte dans la main
+            sf::Sprite cardSprite2 = CardManager::getInstance().createBackSprite();
+            cardSprite2.setPosition(card.sprite.getPosition());
+            window2.draw(cardSprite2);
+        }
+        else{
+            window2.draw(card.sprite);
+        }
     }
 
     for (const auto& card : opponentHand) {
-        window.draw(card);
+        window2.draw(card);
+        sf::Sprite cardSprite1 = CardManager::getInstance().createBackSprite();
+        cardSprite1.setPosition(card.getPosition());
+        window1.draw(cardSprite1);
     }
 
     // Dessiner les points de vie
-    window.draw(playerHPText);
-    window.draw(opponentHPText);
+    window1.draw(playerHPText);
+    window1.draw(opponentHPText);
+    window2.draw(playerHPText);
+    window2.draw(opponentHPText);
 
     for (const auto& energy : EnergyPlayer) {
-        window.draw(energy.sprite);
+        window1.draw(energy.sprite);
+        window2.draw(energy.sprite);
     }
 
     for (const auto& status : StatusPlayer) {
-        window.draw(status.sprite);
+        window1.draw(status.sprite);
+        window2.draw(status.sprite);
     }
     for (const auto& status : StatusEnnemy) {
-        window.draw(status.sprite);
+        window1.draw(status.sprite);
+        window2.draw(status.sprite);
     }
 
-    window.draw(borderRectangle);
-    window.display();
+    window1.draw(borderRectangle);
+    window2.draw(borderRectangle);
+    window1.display();
+    window2.display();
 }
 
 void GameGr::run() {
-    while (window.isOpen()) {
+    while (window1.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window1.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                window1.close();
             } else if (event.type == sf::Event::MouseButtonPressed) {
                 handleMouseClick(event.mouseButton);
             } else if (event.type == sf::Event::KeyPressed) {
@@ -508,6 +500,15 @@ void GameGr::run() {
             }
         }
 
+        while (window2.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window2.close();
+            } else if (event.type == sf::Event::MouseButtonPressed) {
+                handleMouseClick(event.mouseButton);
+            } else if (event.type == sf::Event::KeyPressed) {
+                handleKeyPress(event.key.code);
+            }
+        }
         // Dessiner la fenêtre
         renderWindow();
     }
