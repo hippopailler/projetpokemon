@@ -38,6 +38,8 @@ public:
     void removeCard(int index);
     void showOpponentHand(int size);
     void cleanPlayerHand(); 
+    void addEnergy(const typeEnergy energie, int index);
+
 
 private:
     void processEvents();
@@ -51,6 +53,7 @@ private:
     std::vector<CardManager::Card> playerHand;     // Cartes du joueur (dos visible)
     std::vector<sf::Sprite> opponentHand;
     std::vector<EnergyManager::Energy> EnergyPlayer; // énergie du joueur
+    
 
     CardManager::Card MainCard;
     
@@ -68,7 +71,6 @@ private:
 
     
 
-    void addEnergy(const std::string &name, int index);
 
     void addStatus(const std::string &name, int player); //player prendra la valeur 1 pour le joueur et 5 pour l'adversaire
 };

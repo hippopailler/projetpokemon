@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include "../src/energy.h"
 
 class EnergyManager {
 public:
@@ -20,7 +21,8 @@ public:
     }
 
     // Retourne une texture en fonction du nom de la carte
-    const sf::Texture& getTexture(const std::string& cardName) {
+    const sf::Texture& getTexture(typeEnergy energie) {
+        std::string cardName = typeEnergyToString(energie);
         if (textures.find(cardName) == textures.end()) {
             sf::Texture texture;
             if (!texture.loadFromFile("assets/energy/" + cardName + ".png")) {
@@ -34,9 +36,9 @@ public:
     }
 
     // Crée un sprite redimensionné à la taille standard
-    Energy createEnergy(const std::string& cardName, int index) {
+    Energy createEnergy(const typeEnergy energie, int index) {
         Energy energy;
-        energy.sprite.setTexture(getTexture(cardName));
+        energy.sprite.setTexture(getTexture(energie));
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
         const sf::Vector2u textureSize = energy.sprite.getTexture()->getSize();
         float scaleFactor = std::min(

@@ -182,8 +182,8 @@ void GameGr::cleanPlayerHand() {
     }
 } 
 
-void GameGr::addEnergy(const std::string& name, int index) {
-    EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(name,index);
+void GameGr::addEnergy(const typeEnergy energie, int index) {
+    EnergyManager:: Energy energy = EnergyManager::getInstance().createEnergy(energie,index);
     positionEnergy(energy.sprite, index,EnergyPlayer);
     energy.index = index;
     // Ajoutez la carte à la collection de cartes du jeu
@@ -412,7 +412,7 @@ void GameGr::handleKeyPress(sf::Keyboard::Key key) {
             attaque(1, -10); // Soin (dégâts négatifs)
             break;
         case sf::Keyboard::E:
-            addEnergy("water", 1); // Ajout d'énergie
+            addEnergy(WATER, 1); // Ajout d'énergie
             break;
         default:
             std::cout << "Touche non attribuée." << std::endl;

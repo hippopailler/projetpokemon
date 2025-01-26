@@ -56,6 +56,8 @@ void Game::attachEnergyActive(typeEnergy energy){
     }
     _players[_activePlayer]->attachEnergyActive(energy);
     std::cout << "Energie attachée\n";
+    int position = _activePlayer == 0 ? 1 : 5;
+    attachEnergyActive(energy, position);
     _energyPlayed = true;
 }
 
@@ -265,6 +267,10 @@ void Game::showPlayerHand(){
     for (unsigned int i = 0; i < hand->size(); i++){
         addCard(hand->cards()[i]->cardID(), 10+i);
     }
+}
+
+void Game::attachEnergyActive(typeEnergy energy, int index){
+    _gameRender->addEnergy(energy, index);
 }
 
 // Accesseurs

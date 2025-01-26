@@ -32,6 +32,7 @@ public:
     void removeCard(int index);
     void showPlayerHand();
     void showOpponentHand();
+    void attachEnergyActive(typeEnergy energy, int index);
 
 // Accesseurs
     unsigned int turn() const;
