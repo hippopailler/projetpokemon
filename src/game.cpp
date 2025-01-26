@@ -165,7 +165,7 @@ void Game::placeActivePokemon(int player){
     do {
         std::cout << "Choisissez votre pokemon actif :";
         std::cin >> choice;
-    } while ( (choice < 0 || choice > 5) || !_players[player]->hand()->cards()[choice]->isPokemon() || !dynamic_cast<Pokemon*>(_players[player]->hand()->cards()[choice].get())->isBasic());
+    } while ( (choice < 0 || choice > 4) || !_players[player]->hand()->cards()[choice]->isPokemon() || !dynamic_cast<Pokemon*>(_players[player]->hand()->cards()[choice].get())->isBasic());
     //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
     _players[player]->placeActivePokemon(choice, _turn);
@@ -195,9 +195,7 @@ void Game::placePokemonOnBench(){
     int position = _activePlayer == 0 ? 1 : 5;
     position += _players[_activePlayer]->bench()->getFirstEmptySlot() + 1;
     std::string id = _players[_activePlayer]->placePokemonOnBench(choice, _turn);
-    std::cout <<"Position : " << position << ", ID : " << _players[_activePlayer]->bench()->getPokemonId(choice) << std::endl;
     addCard(id ,position);
-    hand->removeCard(choice);
 }
 
 void Game::beginGame(){
