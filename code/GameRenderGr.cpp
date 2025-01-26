@@ -205,14 +205,16 @@ void GameGr::removeEnergy(energyList energies, int index){
     }
 }
 
-/*
-    for (auto& energy : EnergyPlayer) {
-        if (energy.index == index1) {
-            energy.index = index2;
-        } else if (energy.index == index2) {
-            energy.index = index1;
+void GameGr::removeAllEnergy(int index){
+    for (auto energy = EnergyPlayer.begin(); energy != EnergyPlayer.end();){
+        if (energy->index == index){
+            energy = EnergyPlayer.erase(energy);
         }
-*/
+        else{
+            ++energy;
+        }
+    }
+}
 
 void GameGr::addStatus(const std::string& name, int player) {
     StatusManager::Status status = StatusManager::getInstance().createStatus(name,name,player);

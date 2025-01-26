@@ -30,13 +30,19 @@ void Game::attack(Move move){
     if (canUse){
         unsigned int dmg = activePokemon->attackWithMove(move);
         opponentPokemon->takeDamage(dmg);
+        updateActiveHPTexts(1 - _activePlayer);
         if (opponentPokemon->isFainted()){
             std::cout << "Le pokemon adverse est KO\n";
             if (!_players[1 - _activePlayer]->hand()->hasPokemonCard()){
                 _winner = _activePlayer;
                 return;
             }
-            _players[1 - _activePlayer]->switchActive();
+            int position = _activePlayer = 0 ? 5:1;
+            int benchPosition = _players[1 - _activePlayer]->switchActive() + 1;
+            _gameRender->switchCard(position, position + benchPosition);
+            removeCard(position + benchPosition);
+            _gameRender->removeAllEnergy(position + benchPosition);
+            updateActiveHPTexts(1 - _activePlayer);
         }
         endTurn();
         return;

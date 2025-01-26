@@ -18,7 +18,7 @@ void draw();
 void draw(unsigned int amount);
 void placeActivePokemon(unsigned int index, int turn);
 std::string placePokemonOnBench(unsigned int index, int turn);
-void switchActive();
+int switchActive();
 void switchActive(unsigned int position);
 void activeDamaged(unsigned int damage, typeEnergy energy);
 // void heal(Pokemon& pokemon, unsigned int amount);

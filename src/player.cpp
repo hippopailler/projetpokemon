@@ -51,7 +51,7 @@ std::string Player::placePokemonOnBench(unsigned int index, int turn) {
     return pokemon->cardID();
 }
 
-void Player::switchActive() {
+int Player::switchActive() {
     unsigned int position;
     do  {
         _bench->printBench();
@@ -59,6 +59,7 @@ void Player::switchActive() {
         std::cin >> position;
     } while (position >= 3 || _bench->pokemonInSlot(position) == false);
     switchActive(position);
+    return position;
 }
 
 void Player::switchActive(unsigned int position) {
