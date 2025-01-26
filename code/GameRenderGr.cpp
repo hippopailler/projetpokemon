@@ -60,17 +60,17 @@ if (!font.loadFromFile("assets/Bubble Garden Regular.ttf")) {
 void GameGr::initializeHands(int playerCardCount, int opponentCardCount) {
     // Initialisation de la main du joueur
     playerHand.clear();
-    addCard("Riolu", 1,70);
-    addCard("Pachirisu", 2,60);
-    addCard("Etourmi", 3,60);
-    addCard("Mascaiman", 4,60);
-    addCard("Tarsal", 10,60);
-    addCard("Pachirisu", 11,60);
+    addCard("A1#001", 1,70);
+    addCard("A1#001", 2,60);
+    addCard("A1#002", 3,60);
+    addCard("A1#001", 4,60);
+    addCard("A1#002", 10,60);
+    addCard("A1#002", 11,60);
 
-    addCard("Tarsal",5,70);
+    addCard("A1#002",5,70);
 
-    addCard("Bulbasaur",6,60);
-    addCard("Etourmi",7,60);
+    addCard("A1#001",6,60);
+    addCard("A1#001",7,60);
 
     addEnergy("grass", 1);
     addEnergy("grass", 1);

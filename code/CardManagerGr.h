@@ -24,23 +24,23 @@ public:
     }
 
     // Retourne une texture en fonction du nom de la carte
-    const sf::Texture& getTexture(const std::string& cardName) {
-        if (textures.find(cardName) == textures.end()) {
+    const sf::Texture& getTexture(const std::string& cardID) {
+        if (textures.find(cardID) == textures.end()) {
             sf::Texture texture;
-            if (!texture.loadFromFile("assets/pokemon/" + cardName + ".png")) {
-                std::cerr << "Erreur: Impossible de charger " << cardName << ".png\n";
-                textures[cardName] = sf::Texture(); // Texture vide par défaut
+            if (!texture.loadFromFile("assets/cards/" + cardID + ".png")) {
+                std::cerr << "Erreur: Impossible de charger " << cardID << ".png\n";
+                textures[cardID] = sf::Texture(); // Texture vide par défaut
             } else {
-                textures[cardName] = std::move(texture);
+                textures[cardID] = std::move(texture);
             }
         }
-        return textures[cardName];
+        return textures[cardID];
     }
 
     // Crée une carte avec des points de vie
-    Card createCard(const std::string& cardName, int hp) {
+    Card createCard(const std::string& cardID, int hp) {
         Card card;
-        card.sprite.setTexture(getTexture(cardName));
+        card.sprite.setTexture(getTexture(cardID));
         card.hp = hp;
 
         // Redimensionner pour s'assurer que toutes les cartes ont une taille uniforme
