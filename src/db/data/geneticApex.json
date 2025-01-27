@@ -1,97 +1,5600 @@
 [
-    {
-        "cardID": "A1#001",
-        "name": "Bulbasaur",
-        "hp": 70,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "retreatCost": ["COLORLESS"],
-        "isEx": false,
-        "moves": [
-            { "name": "Vine Whip", "power": 40, "cost": ["GRASS", "COLORLESS"] }
+  {
+    "cardID": "A1#001",
+    "name": "Bulbasaur",
+    "hp": 70,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Vine Whip",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
         ]
-    },
-
-    {
-        "cardID": "A1#002",
-        "name": "Ivysaur",
-        "hp": 90,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "retreatCost": ["COLORLESS", "COLORLESS"],
-        "isEx": false,
-        "moves": [
-            { "name": "Razor Leaf", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] }
-        ],
-        "evolvesFrom": "Bulbasaur"
-    },
-    
-    {
-        "cardID": "A1#003",
-        "name": "Venusaur",
-        "hp": 160,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "retreatCost": ["COLORLESS", "COLORLESS", "COLORLESS"],
-        "isEx": false,
-        "moves": [
-            { "name": "Mega Drain", "power": 80, "cost": ["GRASS", "GRASS", "COLORLESS", "COLORLESS"] }
-        ],
-        "evolvesFrom": "Ivysaur"
-    },
-    
-    {
-        "cardID": "A1#004",
-        "name": "Venusaur",
-        "hp": 190,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "isEx": true,
-        "retreatCost": ["COLORLESS", "COLORLESS", "COLORLESS"],
-        "moves": [
-            { "name": "Razor Leaf", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] },
-            { "name": "Giant Bloom", "power": 100, "cost": ["GRASS", "GRASS", "COLORLESS", "COLORLESS"] }
-        ],
-        "evolvesFrom": "Ivysaur"
-    },
-    
-    {
-        "cardID": "A1#005",
-        "name": "Caterpie",
-        "hp": 50,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "isEx":false,
-        "retreatCost": ["COLORLESS"],
-        "moves": [
-            { "name": "Find a Friend", "power": 0, "cost": ["COLORLESS"] }
+      }
+    ]
+  },
+  {
+    "cardID": "A1#002",
+    "name": "Ivysaur",
+    "hp": 90,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Razor Leaf",
+        "power": 60,
+        "cost": [
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
         ]
-    },
-    
-    {
-        "cardID": "A1#006",
-        "name": "Metapod",
-        "hp": 80,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "isEx":false,
-        "retreatCost": ["COLORLESS","COLORLESS"],
-        "moves": [
-            { "name": "Bug Bite", "power": 30, "cost": ["COLORLESS", "COLORLESS"] }
-        ],
-        "evolvesFrom": "Caterpie"
-    },
-    
-    {
-        "cardID": "A1#007",
-        "name": "Butterfree",
-        "hp": 120,
-        "type": "GRASS",
-        "weakness": "FIRE",
-        "isEx":false,
-        "retreatCost": ["COLORLESS"],
-        "moves": [
-            { "name": "Gust", "power": 60, "cost": ["GRASS", "COLORLESS", "COLORLESS"] }
+      }
+    ],
+    "evolvesFrom": "Bulbasaur"
+  },
+  {
+    "cardID": "A1#003",
+    "name": "Venusaur",
+    "hp": 160,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mega Drain",
+        "power": 80,
+        "cost": [
+          "GRASS",
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
         ]
-    }
+      }
+    ],
+    "evolvesFrom": "Ivysaur"
+  },
+  {
+    "cardID": "A1#004",
+    "name": "Venusaur ex",
+    "hp": 190,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Razor Leaf",
+        "power": 60,
+        "cost": [
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Giant Bloom",
+        "power": 100,
+        "cost": [
+          "GRASS",
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ivysaur"
+  },
+  {
+    "cardID": "A1#005",
+    "name": "Caterpie",
+    "hp": 50,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#006",
+    "name": "Metapod",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bug Bite",
+        "power": 30,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Caterpie"
+  },
+  {
+    "cardID": "A1#007",
+    "name": "Butterfree",
+    "hp": 120,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gust",
+        "power": 60,
+        "cost": [
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Metapod"
+  },
+  {
+    "cardID": "A1#008",
+    "name": "Weedle",
+    "hp": 50,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sting",
+        "power": 20,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#009",
+    "name": "Kakuna",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bug Bite",
+        "power": 30,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Weedle"
+  },
+  {
+    "cardID": "A1#010",
+    "name": "Beedrill",
+    "hp": 120,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sharp Sting",
+        "power": 70,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Kakuna"
+  },
+  {
+    "cardID": "A1#011",
+    "name": "Oddish",
+    "hp": 60,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ram",
+        "power": 20,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#012",
+    "name": "Gloom",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Drool",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Oddish"
+  },
+  {
+    "cardID": "A1#013",
+    "name": "Vileplume",
+    "hp": 140,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Soothing Scent",
+        "power": 80,
+        "cost": [
+          "GRASS",
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Gloom"
+  },
+  {
+    "cardID": "A1#014",
+    "name": "Paras",
+    "hp": 70,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Scratch",
+        "power": 30,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#015",
+    "name": "Parasect",
+    "hp": 120,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 80,
+        "cost": [
+          "GRASS",
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Paras"
+  },
+  {
+    "cardID": "A1#016",
+    "name": "Venonat",
+    "hp": 60,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#017",
+    "name": "Venomoth",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Poison Powder",
+        "power": 30,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Venonat"
+  },
+  {
+    "cardID": "A1#018",
+    "name": "Bellsprout",
+    "hp": 60,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Vine Whip",
+        "power": 20,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#019",
+    "name": "Weepinbell",
+    "hp": 90,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Razor Leaf",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Bellsprout"
+  },
+  {
+    "cardID": "A1#020",
+    "name": "Victreebel",
+    "hp": 140,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Vine Whip",
+        "power": 60,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Weepinbell"
+  },
+  {
+    "cardID": "A1#021",
+    "name": "Exeggcute",
+    "hp": 50,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Seed Bomb",
+        "power": 20,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#022",
+    "name": "Exeggutor",
+    "hp": 130,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [],
+    "evolvesFrom": "Exeggcute"
+  },
+  {
+    "cardID": "A1#023",
+    "name": "Exeggutor ex",
+    "hp": 160,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [],
+    "evolvesFrom": "Exeggcute"
+  },
+  {
+    "cardID": "A1#024",
+    "name": "Tangela",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Absorb",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#025",
+    "name": "Scyther",
+    "hp": 70,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sharp Scythe",
+        "power": 30,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#026",
+    "name": "Pinsir",
+    "hp": 90,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#027",
+    "name": "Cottonee",
+    "hp": 50,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Attach",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#028",
+    "name": "Whimsicott",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rolling Tackle",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Cottonee"
+  },
+  {
+    "cardID": "A1#029",
+    "name": "Petilil",
+    "hp": 60,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Blot",
+        "power": 10,
+        "cost": [
+          "GRASS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#030",
+    "name": "Lilligant",
+    "hp": 100,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Leaf Supply",
+        "power": 50,
+        "cost": [
+          "GRASS",
+          "GRASS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Petilil"
+  },
+  {
+    "cardID": "A1#031",
+    "name": "Skiddo",
+    "hp": 70,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Surprise Attack",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#032",
+    "name": "Gogoat",
+    "hp": 120,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Razor Leaf",
+        "power": 70,
+        "cost": [
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Skiddo"
+  },
+  {
+    "cardID": "A1#033",
+    "name": "Charmander",
+    "hp": 60,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ember",
+        "power": 30,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#034",
+    "name": "Charmeleon",
+    "hp": 90,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Claws",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmander"
+  },
+  {
+    "cardID": "A1#035",
+    "name": "Charizard",
+    "hp": 150,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Spin",
+        "power": 150,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmeleon"
+  },
+  {
+    "cardID": "A1#036",
+    "name": "Charizard ex",
+    "hp": 180,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Crimson Storm",
+        "power": 200,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmeleon"
+  },
+  {
+    "cardID": "A1#037",
+    "name": "Vulpix",
+    "hp": 50,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#038",
+    "name": "Ninetales",
+    "hp": 90,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flamethrower",
+        "power": 90,
+        "cost": [
+          "FIRE",
+          "FIRE"
+        ]
+      }
+    ],
+    "evolvesFrom": "Vulpix"
+  },
+  {
+    "cardID": "A1#039",
+    "name": "Growlithe",
+    "hp": 70,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bite",
+        "power": 20,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#040",
+    "name": "Arcanine",
+    "hp": 130,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Heat Tackle",
+        "power": 100,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Growlithe"
+  },
+  {
+    "cardID": "A1#041",
+    "name": "Arcanine ex",
+    "hp": 150,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Inferno Onrush",
+        "power": 120,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Growlithe"
+  },
+  {
+    "cardID": "A1#042",
+    "name": "Ponyta",
+    "hp": 60,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flare",
+        "power": 20,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#043",
+    "name": "Rapidash",
+    "hp": 100,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Mane",
+        "power": 40,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ponyta"
+  },
+  {
+    "cardID": "A1#044",
+    "name": "Magmar",
+    "hp": 80,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Magma Punch",
+        "power": 50,
+        "cost": [
+          "FIRE",
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#045",
+    "name": "Flareon",
+    "hp": 120,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flamethrower",
+        "power": 110,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Eevee"
+  },
+  {
+    "cardID": "A1#046",
+    "name": "Moltres",
+    "hp": 100,
+    "type": "FIRE",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sky Attack",
+        "power": 130,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#047",
+    "name": "Moltres ex",
+    "hp": 140,
+    "type": "FIRE",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Heat Blast",
+        "power": 70,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#048",
+    "name": "Heatmor",
+    "hp": 80,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Combustion",
+        "power": 30,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#049",
+    "name": "Salandit",
+    "hp": 60,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Scratch",
+        "power": 20,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#050",
+    "name": "Salazzle",
+    "hp": 90,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Claws",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Salandit"
+  },
+  {
+    "cardID": "A1#051",
+    "name": "Sizzlipede",
+    "hp": 60,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gnaw",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#052",
+    "name": "Centiskorch",
+    "hp": 130,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Blast",
+        "power": 130,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Sizzlipede"
+  },
+  {
+    "cardID": "A1#053",
+    "name": "Squirtle",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Water Gun",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#054",
+    "name": "Wartortle",
+    "hp": 80,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wave Splash",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Squirtle"
+  },
+  {
+    "cardID": "A1#055",
+    "name": "Blastoise",
+    "hp": 150,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Wartortle"
+  },
+  {
+    "cardID": "A1#056",
+    "name": "Blastoise ex",
+    "hp": 180,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Surf",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Wartortle"
+  },
+  {
+    "cardID": "A1#057",
+    "name": "Psyduck",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Headache",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#058",
+    "name": "Golduck",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Aqua Edge",
+        "power": 70,
+        "cost": [
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Psyduck"
+  },
+  {
+    "cardID": "A1#059",
+    "name": "Poliwag",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Razor Fin",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#060",
+    "name": "Poliwhirl",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Knuckle Punch",
+        "power": 40,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Poliwag"
+  },
+  {
+    "cardID": "A1#061",
+    "name": "Poliwrath",
+    "hp": 150,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mega Punch",
+        "power": 80,
+        "cost": [
+          "WATER",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Poliwhirl"
+  },
+  {
+    "cardID": "A1#062",
+    "name": "Tentacool",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gentle Slap",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#063",
+    "name": "Tentacruel",
+    "hp": 110,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Poison Tentacles",
+        "power": 50,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Tentacool"
+  },
+  {
+    "cardID": "A1#064",
+    "name": "Seel",
+    "hp": 80,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Headbutt",
+        "power": 30,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#065",
+    "name": "Dewgong",
+    "hp": 120,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Surf",
+        "power": 90,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Seel"
+  },
+  {
+    "cardID": "A1#066",
+    "name": "Shellder",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tongue Slap",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#067",
+    "name": "Cloyster",
+    "hp": 120,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Surf",
+        "power": 70,
+        "cost": [
+          "WATER",
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Shellder"
+  },
+  {
+    "cardID": "A1#068",
+    "name": "Krabby",
+    "hp": 70,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Vise Grip",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#069",
+    "name": "Kingler",
+    "hp": 120,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Krabby"
+  },
+  {
+    "cardID": "A1#070",
+    "name": "Horsea",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Water Gun",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#071",
+    "name": "Seadra",
+    "hp": 70,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Horsea"
+  },
+  {
+    "cardID": "A1#072",
+    "name": "Goldeen",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flop",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#073",
+    "name": "Seaking",
+    "hp": 100,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Horn Hazard",
+        "power": 80,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Goldeen"
+  },
+  {
+    "cardID": "A1#074",
+    "name": "Staryu",
+    "hp": 50,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Smack",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#075",
+    "name": "Starmie",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wave Splash",
+        "power": 40,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Staryu"
+  },
+  {
+    "cardID": "A1#076",
+    "name": "Starmie ex",
+    "hp": 130,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Hydro Splash",
+        "power": 90,
+        "cost": [
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Staryu"
+  },
+  {
+    "cardID": "A1#077",
+    "name": "Magikarp",
+    "hp": 30,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Splash",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#078",
+    "name": "Gyarados",
+    "hp": 150,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Hyper Beam",
+        "power": 100,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Magikarp"
+  },
+  {
+    "cardID": "A1#079",
+    "name": "Lapras",
+    "hp": 100,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#080",
+    "name": "Vaporeon",
+    "hp": 130,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bubble Drain",
+        "power": 60,
+        "cost": [
+          "WATER",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Eevee"
+  },
+  {
+    "cardID": "A1#081",
+    "name": "Omanyte",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Water Gun",
+        "power": 40,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Helix Fossil"
+  },
+  {
+    "cardID": "A1#082",
+    "name": "Omastar",
+    "hp": 140,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ancient Whirlpool",
+        "power": 70,
+        "cost": [
+          "WATER",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Omanyte"
+  },
+  {
+    "cardID": "A1#083",
+    "name": "Articuno",
+    "hp": 100,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ice Beam",
+        "power": 60,
+        "cost": [
+          "WATER",
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#084",
+    "name": "Articuno ex",
+    "hp": 140,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Ice Wing",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Blizzard",
+        "power": 80,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#085",
+    "name": "Ducklett",
+    "hp": 50,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flap",
+        "power": 30,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#086",
+    "name": "Swanna",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wing Attack",
+        "power": 70,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ducklett"
+  },
+  {
+    "cardID": "A1#087",
+    "name": "Froakie",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Flop",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#088",
+    "name": "Frogadier",
+    "hp": 80,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Water Drip",
+        "power": 30,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Froakie"
+  },
+  {
+    "cardID": "A1#089",
+    "name": "Greninja",
+    "hp": 120,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mist Slash",
+        "power": 60,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Frogadier"
+  },
+  {
+    "cardID": "A1#090",
+    "name": "Pyukumuku",
+    "hp": 70,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rain Splash",
+        "power": 30,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#091",
+    "name": "Bruxish",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#092",
+    "name": "Snom",
+    "hp": 50,
+    "type": "WATER",
+    "weakness": "METAL",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ram",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#093",
+    "name": "Frosmoth",
+    "hp": 90,
+    "type": "WATER",
+    "weakness": "METAL",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Powder Snow",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Snom"
+  },
+  {
+    "cardID": "A1#094",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gnaw",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#095",
+    "name": "Raichu",
+    "hp": 100,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Thunderbolt",
+        "power": 140,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING",
+          "LIGHTNING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Pikachu"
+  },
+  {
+    "cardID": "A1#096",
+    "name": "Pikachu ex",
+    "hp": 120,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": []
+  },
+  {
+    "cardID": "A1#097",
+    "name": "Magnemite",
+    "hp": 60,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Lightning Ball",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#098",
+    "name": "Magneton",
+    "hp": 80,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Spinning Attack",
+        "power": 60,
+        "cost": [
+          "LIGHTNING",
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Magnemite"
+  },
+  {
+    "cardID": "A1#099",
+    "name": "Voltorb",
+    "hp": 60,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#100",
+    "name": "Electrode",
+    "hp": 80,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Electro Ball",
+        "power": 70,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Voltorb"
+  },
+  {
+    "cardID": "A1#101",
+    "name": "Electabuzz",
+    "hp": 70,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#102",
+    "name": "Jolteon",
+    "hp": 90,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Eevee"
+  },
+  {
+    "cardID": "A1#103",
+    "name": "Zapdos",
+    "hp": 100,
+    "type": "LIGHTNING",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Raging Thunder",
+        "power": 100,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#104",
+    "name": "Zapdos ex",
+    "hp": 130,
+    "type": "LIGHTNING",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#105",
+    "name": "Blitzle",
+    "hp": 60,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Zap Kick",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#106",
+    "name": "Zebstrika",
+    "hp": 90,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Blitzle"
+  },
+  {
+    "cardID": "A1#107",
+    "name": "Tynamo",
+    "hp": 30,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tiny Charge",
+        "power": 30,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#108",
+    "name": "Eelektrik",
+    "hp": 80,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Head Bolt",
+        "power": 40,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Tynamo"
+  },
+  {
+    "cardID": "A1#109",
+    "name": "Eelektross",
+    "hp": 140,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Thunder Fang",
+        "power": 80,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Eelektrik"
+  },
+  {
+    "cardID": "A1#110",
+    "name": "Helioptile",
+    "hp": 60,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tail Whap",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#111",
+    "name": "Heliolisk",
+    "hp": 90,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Helioptile"
+  },
+  {
+    "cardID": "A1#112",
+    "name": "Pincurchin",
+    "hp": 70,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Thunder Shock",
+        "power": 30,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#113",
+    "name": "Clefairy",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "METAL",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Slap",
+        "power": 20,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#114",
+    "name": "Clefable",
+    "hp": 100,
+    "type": "PSYCHIC",
+    "weakness": "METAL",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Magical Shot",
+        "power": 40,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Clefairy"
+  },
+  {
+    "cardID": "A1#115",
+    "name": "Abra",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#116",
+    "name": "Kadabra",
+    "hp": 80,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Super Psy Bolt",
+        "power": 60,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Abra"
+  },
+  {
+    "cardID": "A1#117",
+    "name": "Alakazam",
+    "hp": 130,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Kadabra"
+  },
+  {
+    "cardID": "A1#118",
+    "name": "Slowpoke",
+    "hp": 70,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tail Whap",
+        "power": 30,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#119",
+    "name": "Slowbro",
+    "hp": 130,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Super Psy Bolt",
+        "power": 80,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Slowpoke"
+  },
+  {
+    "cardID": "A1#120",
+    "name": "Gastly",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Suffocating Gas",
+        "power": 20,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#121",
+    "name": "Haunter",
+    "hp": 80,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Will-O-Wisp",
+        "power": 30,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Gastly"
+  },
+  {
+    "cardID": "A1#122",
+    "name": "Gengar",
+    "hp": 130,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bother",
+        "power": 50,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Haunter"
+  },
+  {
+    "cardID": "A1#123",
+    "name": "Gengar ex",
+    "hp": 170,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Spooky Shot",
+        "power": 100,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Haunter"
+  },
+  {
+    "cardID": "A1#124",
+    "name": "Drowzee",
+    "hp": 70,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mumble",
+        "power": 30,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#125",
+    "name": "Hypno",
+    "hp": 100,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Psypunch",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Drowzee"
+  },
+  {
+    "cardID": "A1#126",
+    "name": "Mr. Mime",
+    "hp": 80,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Barrier Attack",
+        "power": 30,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#127",
+    "name": "Jynx",
+    "hp": 80,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#128",
+    "name": "Mewtwo",
+    "hp": 120,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Power Blast",
+        "power": 120,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#129",
+    "name": "Mewtwo ex",
+    "hp": 150,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Psychic Sphere",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Psydrive",
+        "power": 150,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#130",
+    "name": "Ralts",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ram",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#131",
+    "name": "Kirlia",
+    "hp": 80,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Smack",
+        "power": 30,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ralts"
+  },
+  {
+    "cardID": "A1#132",
+    "name": "Gardevoir",
+    "hp": 110,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Psyshot",
+        "power": 60,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Kirlia"
+  },
+  {
+    "cardID": "A1#133",
+    "name": "Woobat",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gnaw",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#134",
+    "name": "Swoobat",
+    "hp": 90,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Heart Stamp",
+        "power": 60,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Woobat"
+  },
+  {
+    "cardID": "A1#135",
+    "name": "Golett",
+    "hp": 90,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mega Punch",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#136",
+    "name": "Golurk",
+    "hp": 140,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Golett"
+  },
+  {
+    "cardID": "A1#137",
+    "name": "Sandshrew",
+    "hp": 70,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Scratch",
+        "power": 10,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#138",
+    "name": "Sandslash",
+    "hp": 100,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 70,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Sandshrew"
+  },
+  {
+    "cardID": "A1#139",
+    "name": "Diglett",
+    "hp": 50,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mud-Slap",
+        "power": 20,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#140",
+    "name": "Dugtrio",
+    "hp": 70,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Dig",
+        "power": 40,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Diglett"
+  },
+  {
+    "cardID": "A1#141",
+    "name": "Mankey",
+    "hp": 60,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Low Kick",
+        "power": 20,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#142",
+    "name": "Primeape",
+    "hp": 90,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Mankey"
+  },
+  {
+    "cardID": "A1#143",
+    "name": "Machop",
+    "hp": 70,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Knuckle Punch",
+        "power": 20,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#144",
+    "name": "Machoke",
+    "hp": 100,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Strength",
+        "power": 50,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Machop"
+  },
+  {
+    "cardID": "A1#145",
+    "name": "Machamp",
+    "hp": 150,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Seismic Toss",
+        "power": 100,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Machoke"
+  },
+  {
+    "cardID": "A1#146",
+    "name": "Machamp ex",
+    "hp": 180,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Mega Punch",
+        "power": 120,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Machoke"
+  },
+  {
+    "cardID": "A1#147",
+    "name": "Geodude",
+    "hp": 70,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#148",
+    "name": "Graveler",
+    "hp": 100,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rollout",
+        "power": 70,
+        "cost": [
+          "FIGHTING",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Geodude"
+  },
+  {
+    "cardID": "A1#149",
+    "name": "Golem",
+    "hp": 160,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Double-Edge",
+        "power": 150,
+        "cost": [
+          "FIGHTING",
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Graveler"
+  },
+  {
+    "cardID": "A1#150",
+    "name": "Onix",
+    "hp": 110,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Land Crush",
+        "power": 70,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#151",
+    "name": "Cubone",
+    "hp": 60,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#152",
+    "name": "Marowak",
+    "hp": 100,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bone Beatdown",
+        "power": 40,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Cubone"
+  },
+  {
+    "cardID": "A1#153",
+    "name": "Marowak ex",
+    "hp": 140,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [],
+    "evolvesFrom": "Cubone"
+  },
+  {
+    "cardID": "A1#154",
+    "name": "Hitmonlee",
+    "hp": 80,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#155",
+    "name": "Hitmonchan",
+    "hp": 80,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Jab",
+        "power": 30,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#156",
+    "name": "Rhyhorn",
+    "hp": 80,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 60,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#157",
+    "name": "Rhydon",
+    "hp": 120,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Horn Drill",
+        "power": 100,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Rhyhorn"
+  },
+  {
+    "cardID": "A1#158",
+    "name": "Kabuto",
+    "hp": 90,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Shell Attack",
+        "power": 40,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Dome Fossil"
+  },
+  {
+    "cardID": "A1#159",
+    "name": "Kabutops",
+    "hp": 140,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Leech Life",
+        "power": 50,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Kabuto"
+  },
+  {
+    "cardID": "A1#160",
+    "name": "Mienfoo",
+    "hp": 60,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Pound",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#161",
+    "name": "Mienshao",
+    "hp": 80,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Spiral Kick",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Mienfoo"
+  },
+  {
+    "cardID": "A1#162",
+    "name": "Clobbopus",
+    "hp": 80,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Knuckle Punch",
+        "power": 30,
+        "cost": [
+          "FIGHTING",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#163",
+    "name": "Grapploct",
+    "hp": 130,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Knock Back",
+        "power": 70,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Clobbopus"
+  },
+  {
+    "cardID": "A1#164",
+    "name": "Ekans",
+    "hp": 60,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bite",
+        "power": 20,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#165",
+    "name": "Arbok",
+    "hp": 100,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Corner",
+        "power": 60,
+        "cost": [
+          "DARKNESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ekans"
+  },
+  {
+    "cardID": "A1#166",
+    "name": "Nidoran♀",
+    "hp": 60,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#167",
+    "name": "Nidorina",
+    "hp": 80,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bite",
+        "power": 30,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Nidoran♀"
+  },
+  {
+    "cardID": "A1#168",
+    "name": "Nidoqueen",
+    "hp": 140,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Nidorina"
+  },
+  {
+    "cardID": "A1#169",
+    "name": "Nidoran♂",
+    "hp": 60,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#170",
+    "name": "Nidorino",
+    "hp": 90,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Horn Attack",
+        "power": 40,
+        "cost": [
+          "DARKNESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Nidoran♂"
+  },
+  {
+    "cardID": "A1#171",
+    "name": "Nidoking",
+    "hp": 150,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Poison Horn",
+        "power": 90,
+        "cost": [
+          "DARKNESS",
+          "DARKNESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Nidorino"
+  },
+  {
+    "cardID": "A1#172",
+    "name": "Zubat",
+    "hp": 50,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Glide",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#173",
+    "name": "Golbat",
+    "hp": 70,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wing Attack",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Zubat"
+  },
+  {
+    "cardID": "A1#174",
+    "name": "Grimer",
+    "hp": 70,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Poison Gas",
+        "power": 10,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#175",
+    "name": "Muk",
+    "hp": 130,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Grimer"
+  },
+  {
+    "cardID": "A1#176",
+    "name": "Koffing",
+    "hp": 70,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Suffocating Gas",
+        "power": 20,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#177",
+    "name": "Weezing",
+    "hp": 110,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 30,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Koffing"
+  },
+  {
+    "cardID": "A1#178",
+    "name": "Mawile",
+    "hp": 70,
+    "type": "METAL",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Crunch",
+        "power": 20,
+        "cost": [
+          "METAL"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#179",
+    "name": "Pawniard",
+    "hp": 50,
+    "type": "METAL",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Pierce",
+        "power": 30,
+        "cost": [
+          "METAL"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#180",
+    "name": "Bisharp",
+    "hp": 90,
+    "type": "METAL",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Metal Claw",
+        "power": 70,
+        "cost": [
+          "METAL",
+          "METAL"
+        ]
+      }
+    ],
+    "evolvesFrom": "Pawniard"
+  },
+  {
+    "cardID": "A1#181",
+    "name": "Meltan",
+    "hp": 60,
+    "type": "METAL",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#182",
+    "name": "Melmetal",
+    "hp": 130,
+    "type": "METAL",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Heavy Impact",
+        "power": 120,
+        "cost": [
+          "METAL",
+          "METAL",
+          "METAL",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Meltan"
+  },
+  {
+    "cardID": "A1#183",
+    "name": "Dratini",
+    "hp": 70,
+    "type": "DRAGON",
+    "weakness": "NONE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ram",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#184",
+    "name": "Dragonair",
+    "hp": 100,
+    "type": "DRAGON",
+    "weakness": "NONE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tail Smack",
+        "power": 80,
+        "cost": [
+          "WATER",
+          "LIGHTNING",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Dratini"
+  },
+  {
+    "cardID": "A1#185",
+    "name": "Dragonite",
+    "hp": 160,
+    "type": "DRAGON",
+    "weakness": "NONE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Dragonair"
+  },
+  {
+    "cardID": "A1#186",
+    "name": "Pidgey",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gust",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#187",
+    "name": "Pidgeotto",
+    "hp": 80,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gust",
+        "power": 30,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Pidgey"
+  },
+  {
+    "cardID": "A1#188",
+    "name": "Pidgeot",
+    "hp": 130,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wing Attack",
+        "power": 70,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Pidgeotto"
+  },
+  {
+    "cardID": "A1#189",
+    "name": "Rattata",
+    "hp": 40,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gnaw",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#190",
+    "name": "Raticate",
+    "hp": 80,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Bite",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Rattata"
+  },
+  {
+    "cardID": "A1#191",
+    "name": "Spearow",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#192",
+    "name": "Fearow",
+    "hp": 100,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Drill Run",
+        "power": 50,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Spearow"
+  },
+  {
+    "cardID": "A1#193",
+    "name": "Jigglypuff",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Pound",
+        "power": 30,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#194",
+    "name": "Wigglytuff",
+    "hp": 100,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Hyper Voice",
+        "power": 60,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Jigglypuff"
+  },
+  {
+    "cardID": "A1#195",
+    "name": "Wigglytuff ex",
+    "hp": 140,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Sleepy Song",
+        "power": 80,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Jigglypuff"
+  },
+  {
+    "cardID": "A1#196",
+    "name": "Meowth",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Pay Day",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#197",
+    "name": "Persian",
+    "hp": 90,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Shadow Claw",
+        "power": 40,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Meowth"
+  },
+  {
+    "cardID": "A1#198",
+    "name": "Farfetch'd",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Leek Slap",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#199",
+    "name": "Doduo",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#200",
+    "name": "Dodrio",
+    "hp": 80,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Drill Peck",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Doduo"
+  },
+  {
+    "cardID": "A1#201",
+    "name": "Lickitung",
+    "hp": 90,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#202",
+    "name": "Chansey",
+    "hp": 120,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Gentle Slap",
+        "power": 60,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#203",
+    "name": "Kangaskhan",
+    "hp": 100,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#204",
+    "name": "Tauros",
+    "hp": 100,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Horn Attack",
+        "power": 50,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#205",
+    "name": "Ditto",
+    "hp": 70,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#206",
+    "name": "Eevee",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#207",
+    "name": "Eevee",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#208",
+    "name": "Eevee",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#209",
+    "name": "Porygon",
+    "hp": 50,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sharpen",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#210",
+    "name": "Aerodactyl",
+    "hp": 100,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Old Amber"
+  },
+  {
+    "cardID": "A1#211",
+    "name": "Snorlax",
+    "hp": 150,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rollout",
+        "power": 70,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#212",
+    "name": "Minccino",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tail Smack",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#213",
+    "name": "Cinccino",
+    "hp": 90,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Minccino"
+  },
+  {
+    "cardID": "A1#214",
+    "name": "Wooloo",
+    "hp": 70,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 30,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#215",
+    "name": "Dubwool",
+    "hp": 120,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rolling Tackle",
+        "power": 80,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Wooloo"
+  },
+  {
+    "cardID": "A1#227",
+    "name": "Bulbasaur",
+    "hp": 70,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Vine Whip",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#228",
+    "name": "Gloom",
+    "hp": 80,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Drool",
+        "power": 40,
+        "cost": [
+          "GRASS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Oddish"
+  },
+  {
+    "cardID": "A1#229",
+    "name": "Pinsir",
+    "hp": 90,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#230",
+    "name": "Charmander",
+    "hp": 60,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Ember",
+        "power": 30,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#231",
+    "name": "Rapidash",
+    "hp": 100,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Fire Mane",
+        "power": 40,
+        "cost": [
+          "FIRE"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ponyta"
+  },
+  {
+    "cardID": "A1#232",
+    "name": "Squirtle",
+    "hp": 60,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Water Gun",
+        "power": 20,
+        "cost": [
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#233",
+    "name": "Gyarados",
+    "hp": 150,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Hyper Beam",
+        "power": 100,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Magikarp"
+  },
+  {
+    "cardID": "A1#234",
+    "name": "Lapras",
+    "hp": 100,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#235",
+    "name": "Electrode",
+    "hp": 80,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Electro Ball",
+        "power": 70,
+        "cost": [
+          "LIGHTNING",
+          "LIGHTNING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Voltorb"
+  },
+  {
+    "cardID": "A1#236",
+    "name": "Alakazam",
+    "hp": 130,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Kadabra"
+  },
+  {
+    "cardID": "A1#237",
+    "name": "Slowpoke",
+    "hp": 70,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tail Whap",
+        "power": 30,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#238",
+    "name": "Diglett",
+    "hp": 50,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Mud-Slap",
+        "power": 20,
+        "cost": [
+          "FIGHTING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#239",
+    "name": "Cubone",
+    "hp": 60,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#240",
+    "name": "Nidoqueen",
+    "hp": 140,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Nidorina"
+  },
+  {
+    "cardID": "A1#241",
+    "name": "Nidoking",
+    "hp": 150,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Poison Horn",
+        "power": 90,
+        "cost": [
+          "DARKNESS",
+          "DARKNESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Nidorino"
+  },
+  {
+    "cardID": "A1#242",
+    "name": "Golbat",
+    "hp": 70,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wing Attack",
+        "power": 40,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Zubat"
+  },
+  {
+    "cardID": "A1#243",
+    "name": "Weezing",
+    "hp": 110,
+    "type": "DARKNESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 30,
+        "cost": [
+          "DARKNESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Koffing"
+  },
+  {
+    "cardID": "A1#244",
+    "name": "Dragonite",
+    "hp": 160,
+    "type": "DRAGON",
+    "weakness": "NONE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [],
+    "evolvesFrom": "Dragonair"
+  },
+  {
+    "cardID": "A1#245",
+    "name": "Pidgeot",
+    "hp": 130,
+    "type": "COLORLESS",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Wing Attack",
+        "power": 70,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Pidgeotto"
+  },
+  {
+    "cardID": "A1#246",
+    "name": "Meowth",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Pay Day",
+        "power": 10,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#247",
+    "name": "Ditto",
+    "hp": 70,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": []
+  },
+  {
+    "cardID": "A1#248",
+    "name": "Eevee",
+    "hp": 60,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Tackle",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#249",
+    "name": "Porygon",
+    "hp": 50,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Sharpen",
+        "power": 20,
+        "cost": [
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#250",
+    "name": "Snorlax",
+    "hp": 150,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Rollout",
+        "power": 70,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#251",
+    "name": "Venusaur ex",
+    "hp": 190,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Razor Leaf",
+        "power": 60,
+        "cost": [
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Giant Bloom",
+        "power": 100,
+        "cost": [
+          "GRASS",
+          "GRASS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Ivysaur"
+  },
+  {
+    "cardID": "A1#252",
+    "name": "Exeggutor ex",
+    "hp": 160,
+    "type": "GRASS",
+    "weakness": "FIRE",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [],
+    "evolvesFrom": "Exeggcute"
+  },
+  {
+    "cardID": "A1#253",
+    "name": "Charizard ex",
+    "hp": 180,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Crimson Storm",
+        "power": 200,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmeleon"
+  },
+  {
+    "cardID": "A1#254",
+    "name": "Arcanine ex",
+    "hp": 150,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Inferno Onrush",
+        "power": 120,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Growlithe"
+  },
+  {
+    "cardID": "A1#255",
+    "name": "Moltres ex",
+    "hp": 140,
+    "type": "FIRE",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Heat Blast",
+        "power": 70,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#256",
+    "name": "Blastoise ex",
+    "hp": 180,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Surf",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Wartortle"
+  },
+  {
+    "cardID": "A1#257",
+    "name": "Starmie ex",
+    "hp": 130,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Hydro Splash",
+        "power": 90,
+        "cost": [
+          "WATER",
+          "WATER"
+        ]
+      }
+    ],
+    "evolvesFrom": "Staryu"
+  },
+  {
+    "cardID": "A1#258",
+    "name": "Articuno ex",
+    "hp": 140,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Ice Wing",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Blizzard",
+        "power": 80,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#259",
+    "name": "Pikachu ex",
+    "hp": 120,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": []
+  },
+  {
+    "cardID": "A1#260",
+    "name": "Zapdos ex",
+    "hp": 130,
+    "type": "LIGHTNING",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#261",
+    "name": "Gengar ex",
+    "hp": 170,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Spooky Shot",
+        "power": 100,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Haunter"
+  },
+  {
+    "cardID": "A1#262",
+    "name": "Mewtwo ex",
+    "hp": 150,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Psychic Sphere",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Psydrive",
+        "power": 150,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#263",
+    "name": "Machamp ex",
+    "hp": 180,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Mega Punch",
+        "power": 120,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Machoke"
+  },
+  {
+    "cardID": "A1#264",
+    "name": "Marowak ex",
+    "hp": 140,
+    "type": "FIGHTING",
+    "weakness": "GRASS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [],
+    "evolvesFrom": "Cubone"
+  },
+  {
+    "cardID": "A1#265",
+    "name": "Wigglytuff ex",
+    "hp": 140,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Sleepy Song",
+        "power": 80,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Jigglypuff"
+  },
+  {
+    "cardID": "A1#274",
+    "name": "Moltres ex",
+    "hp": 140,
+    "type": "FIRE",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Heat Blast",
+        "power": 70,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#275",
+    "name": "Articuno ex",
+    "hp": 140,
+    "type": "WATER",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Ice Wing",
+        "power": 40,
+        "cost": [
+          "WATER",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Blizzard",
+        "power": 80,
+        "cost": [
+          "WATER",
+          "WATER",
+          "WATER"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#276",
+    "name": "Zapdos ex",
+    "hp": 130,
+    "type": "LIGHTNING",
+    "weakness": "LIGHTNING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Peck",
+        "power": 20,
+        "cost": [
+          "LIGHTNING"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#277",
+    "name": "Gengar ex",
+    "hp": 170,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Spooky Shot",
+        "power": 100,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "evolvesFrom": "Haunter"
+  },
+  {
+    "cardID": "A1#278",
+    "name": "Machamp ex",
+    "hp": 180,
+    "type": "FIGHTING",
+    "weakness": "PSYCHIC",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Mega Punch",
+        "power": 120,
+        "cost": [
+          "FIGHTING",
+          "FIGHTING",
+          "FIGHTING"
+        ]
+      }
+    ],
+    "evolvesFrom": "Machoke"
+  },
+  {
+    "cardID": "A1#279",
+    "name": "Wigglytuff ex",
+    "hp": 140,
+    "type": "COLORLESS",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Sleepy Song",
+        "power": 80,
+        "cost": [
+          "COLORLESS",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Jigglypuff"
+  },
+  {
+    "cardID": "A1#280",
+    "name": "Charizard ex",
+    "hp": 180,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Crimson Storm",
+        "power": 200,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmeleon"
+  },
+  {
+    "cardID": "A1#281",
+    "name": "Pikachu ex",
+    "hp": 120,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": []
+  },
+  {
+    "cardID": "A1#282",
+    "name": "Mewtwo ex",
+    "hp": 150,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Psychic Sphere",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Psydrive",
+        "power": 150,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#283",
+    "name": "Mew",
+    "hp": 60,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": false,
+    "moves": [
+      {
+        "name": "Psy Report",
+        "power": 20,
+        "cost": [
+          "PSYCHIC"
+        ]
+      }
+    ]
+  },
+  {
+    "cardID": "A1#284",
+    "name": "Charizard ex",
+    "hp": 180,
+    "type": "FIRE",
+    "weakness": "WATER",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Slash",
+        "power": 60,
+        "cost": [
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Crimson Storm",
+        "power": 200,
+        "cost": [
+          "FIRE",
+          "FIRE",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ],
+    "evolvesFrom": "Charmeleon"
+  },
+  {
+    "cardID": "A1#285",
+    "name": "Pikachu ex",
+    "hp": 120,
+    "type": "LIGHTNING",
+    "weakness": "FIGHTING",
+    "retreatCost": [
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": []
+  },
+  {
+    "cardID": "A1#286",
+    "name": "Mewtwo ex",
+    "hp": 150,
+    "type": "PSYCHIC",
+    "weakness": "DARKNESS",
+    "retreatCost": [
+      "COLORLESS",
+      "COLORLESS"
+    ],
+    "isEx": true,
+    "moves": [
+      {
+        "name": "Psychic Sphere",
+        "power": 50,
+        "cost": [
+          "PSYCHIC",
+          "COLORLESS"
+        ]
+      },
+      {
+        "name": "Psydrive",
+        "power": 150,
+        "cost": [
+          "PSYCHIC",
+          "PSYCHIC",
+          "COLORLESS",
+          "COLORLESS"
+        ]
+      }
+    ]
+  }
 ]

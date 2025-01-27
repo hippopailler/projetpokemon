@@ -11,7 +11,8 @@
 using json = nlohmann::json;
 
 std::unordered_map<std::string, std::string> prefixToFile = {
-    {"A1", "./src/db/data/geneticApex.json"}
+    {"A1", "./src/db/data/geneticApex.json"},
+    {"A1a", "./src/db/data/mythicalIsland.json"}
 };
 
 std::string getPrefix(const std::string& cardID) {

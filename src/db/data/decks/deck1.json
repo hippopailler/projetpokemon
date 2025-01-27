@@ -12,6 +12,14 @@
         {
             "cardID": "A1#003",
             "count": 2
+        },
+        {
+            "cardID": "A1a#001",
+            "count": 2
+        },
+        {
+            "cardID": "A1a#002",
+            "count": 2
         }
     ]
 }
