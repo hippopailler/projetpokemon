@@ -1,8 +1,10 @@
 # Pokemon TCGP Battler
 
-Ce projet est un projet de C++ dans le cadre du cours IN201. Il s'agit d'un simulateur de combats de Pokémon TCG Pocket.
+Ce projet est un projet de C++ dans le cadre du cours IN201. Il s'agit d'un simulateur de combats de Pokémon TCG Pocket. Il est également accompagné d'un scraper permettant de récupérer et d'adapter toutes les données nécessaires au jeu depuis le site [Limitles TCG](https://pocket.limitlesstcg.com).
 
 ## Installation
+
+### Battler
 
 Installez g++ et [SFML](https://www.sfml-dev.org/tutorials/3.0/getting-started/migrate/)  
 Par exemple, sur Debian, utilisez :  
@@ -17,6 +19,22 @@ Clonez le projet et rendez vous à sa racine (*./PROJETPOKEMON*). Utilisez le *M
 make
 ./build/pokemon_game
 ```
+
+### Scrapper
+
+Installez *Node.js* et *npm* si besoin.
+```shell
+sudo apt-get update
+sudo apt-get install nodejs npm
+```
+Rendez-vous dans le dossier *./src/db* et installez les dépendances, lancez le scrapper.
+
+```shell
+cd ./src/db
+npm install
+npm start
+```
+
 
 ## Fonctionnalités
 
