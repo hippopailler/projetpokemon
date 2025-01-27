@@ -6,6 +6,7 @@
 #include"energy.h"
 #include"pokemon.h"
 #include"../code/GameRenderGr.h"
+#include "color.h"
 #include<array>
 
 class Game{

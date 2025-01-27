@@ -99,6 +99,12 @@ std::map<typeEnergy, unsigned int> energyList::energy() const{
     return _energy;
 }
 
+void energyList::print() const{
+    for (auto const x : _energy){
+        std::cout << " " << x.second << " énergies " << typeEnergyToString(x.first) << ",";
+    }
+}
+
 // Mutateurs
 // ajout d'une énergie
 void energyList::operator+=(const typeEnergy energy){

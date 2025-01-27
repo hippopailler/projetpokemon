@@ -33,6 +33,7 @@ public:
     bool enoughEnergy(const energyList& cost);
     energyList coverWith(const energyList& cost) const;
     std::map<typeEnergy, unsigned int> energy() const;
+    void print() const;
 
     // Mutateur
     void operator+=(const typeEnergy energy);

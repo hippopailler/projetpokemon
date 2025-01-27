@@ -1,4 +1,5 @@
 #include "pokemon.h"
+#include "color.h"
 #include <iostream>
 
 Pokemon::Pokemon(pokemonData data) :
@@ -13,12 +14,14 @@ void Pokemon::takeDamage(const unsigned int damage) {
 Move Pokemon::chooseMove() {
     std::cout << "Choisissez une attaque pour " << _data.name << " :\n";
     for (size_t i = 0; i < _data.moves.size(); ++i) {
-        std::cout << i + 1 << ". " << _data.moves[i].getName() << " (Puissance: " << _data.moves[i].getPower() << ")\n";
+        std::cout << i + 1 << ". " << _data.moves[i].getName() << " (Puissance: " << _data.moves[i].getPower() << ")";
+        _data.moves[i].cost().print();
+        std::cout << "\n";
     }
 
     size_t choice;
     do {
-        std::cout << "Entrez le numéro de l'attaque : ";
+        std::cout << BLUE << "Entrez le numéro de l'attaque : " << RESET;
         std::cin >> choice;
     } while (choice < 1 || choice > _data.moves.size());
 
