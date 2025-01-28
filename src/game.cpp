@@ -84,7 +84,13 @@ void Game::retreat(){
     do {
         std::cout << BLUE << "Choisissez nouveau pokémon actif :" << RESET;
         std::cin >> choice;
-    } while (choice < 0 || choice > 3 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cout << RED << "Entrée invalide. Entre un chiffre entre 0 et 2." << RESET << std::endl;
+            choice = -1;
+        }
+    } while (choice < 0 || choice > 2 || !_players[_activePlayer]->bench()->pokemonInSlot(choice));
     int position = _activePlayer == 0 ? 1 : 5;
     energyList retreatCost = _players[_activePlayer]->activePokemon()->retreatCost();
     energyList coverage = retreatCost.coverWith(_players[_activePlayer]->activePokemon()->energyAttached());
@@ -174,6 +180,12 @@ void Game::placeActivePokemon(int player){
     do {
         std::cout << BLUE << "Choisissez votre pokemon actif :" << RESET;
         std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cout << RED << "Entrée invalide. Entre un chiffre entre 0 et 4." << RESET << std::endl;
+            choice = -1;
+        }
     } while ( (choice < 0 || choice > 4) || !_players[player]->hand()->cards()[choice]->isPokemon() || !dynamic_cast<Pokemon*>(_players[player]->hand()->cards()[choice].get())->isBasic());
     //const std::unique_ptr<Card>& chosenCard = _players[player]->hand()->cards()[choice];
     //Pokemon* chosenPokemon = dynamic_cast<Pokemon*>(chosenCard.get());
@@ -200,6 +212,12 @@ void Game::placePokemonOnBench(){
     do {
         std::cout << BLUE << "Choisissez le pokémon à placer sur le banc :" << RESET;
         std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cout << RED << "Entrée invalide. Entre un chiffre." << RESET << std::endl;
+            choice = -1;
+        }
     } while ( choice >= hand->size() || !hand->cards()[choice]->isPokemon());
     int position = _activePlayer == 0 ? 1 : 5;
     position += _players[_activePlayer]->bench()->getFirstEmptySlot() + 1;
@@ -233,6 +251,12 @@ void Game::evolve(){
     _players[_activePlayer]->showBoard();
     do{
         std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cout << RED << "Entrée invalide. Entre un chiffre." << RESET << std::endl;
+            choice = -1;
+        }
     } while (choice > 5);
 
     Pokemon* toEvolve;
@@ -253,6 +277,12 @@ void Game::evolve(){
     _players[_activePlayer]->printHand();
     do{
         std::cin >> choice;
+        if (std::cin.fail()) {
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            std::cout << RED << "Entrée invalide. Entre un chiffre." << RESET << std::endl;
+            choice = -1;
+        }
     } while (choice >= _players[_activePlayer]->hand()->size());
 
     std::unique_ptr<Card> card = _players[_activePlayer]->hand()->takeCard(choice);
