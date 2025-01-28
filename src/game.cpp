@@ -140,6 +140,11 @@ void Game::chooseAction() {
             break;
         }
         Pokemon* activePokemon = _players[_activePlayer]->activePokemon();
+        if(!activePokemon->hasAttacks()){
+            std::cout << RED << "Pas d'attaque disponible\n" << RESET;
+            chooseAction();
+            break;
+        }
         Move move = activePokemon->chooseMove();
         attack(move);
         break;

@@ -1,0 +1,25 @@
+{
+    "energyType": ["FIGHTING"],
+    "cardsList": [
+        {
+            "cardID": "A1a#043",
+            "count": 2
+        },
+        {
+            "cardID": "A1a#044",
+            "count": 2
+        },
+        {
+            "cardID": "A1a#045",
+            "count": 2
+        },
+        {
+            "cardID": "A1#141",
+            "count": 2
+        },
+        {
+            "cardID": "A1a#042",
+            "count": 2
+        }
+    ]
+}

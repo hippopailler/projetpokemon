@@ -53,6 +53,7 @@ public:
     bool canEvolve(unsigned int, std::string);
     std::optional<std::string> evolveFrom() const;
     bool isBasic() const;
+    bool hasAttacks() const;
 
 private:
     pokemonData _data;
